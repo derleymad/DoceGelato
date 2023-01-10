@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Bolo",
+    "preco": "12,70",
+    "description": "",
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg",
+  },
+  {
+    "id": 2,
+    "title": "Pizza",
+    "preco": "10,50",
+    "description": "",
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/2.jpg",
+  },
+  {
+    "id": 3,
+    "title": "Sorvete",
+    "preco": "9,20",
+    "description": "",
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/3.jpg",
+  },
+  {
+    "id": 4,
+    "title": "Chocolate",
+    "preco": "15,50",
+    "description": "",
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/4.jpg",
+  }
+]
