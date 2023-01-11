@@ -1,0 +1,129 @@
+[
+  {
+    "id": 1,
+    "title": "Entradas",
+    "description": "",
+    "comidas": [
+      {
+        "comida_id": 1,
+        "comida_title": "Escondidinho de Carne de Sol",
+        "comida_desc":"Com arroz, Porção individual",
+        "comida_preco":"11,00",
+        "image":""
+      },
+      {
+        "comida_id": 2,
+        "comida_title": "Panqueca de Frango Catupiry",
+        "comida_desc":"Arroz opcional",
+        "comida_preco":"7,00",
+        "image":""
+      },
+      {
+        "comida_id": 3,
+        "comida_title": "Panqueca de Calabresa e Bacon",
+        "comida_desc":"Arroz opcional",
+        "comida_preco":"8,00",
+        "image":""
+      },
+      {
+        "comida_id": 4,
+        "comida_title": "Panqueca de Frango e Calabresa",
+        "comida_desc":"Arroz opcional",
+        "comida_preco":"8,00",
+        "image":""
+      },
+      {
+        "comida_id": 5,
+        "comida_title": "Panqueca de Carne de Sol",
+        "comida_desc":"Arroz opcional",
+        "comida_preco":"9,00",
+        "image":""
+      },
+      {
+        "comida_id": 6,
+        "comida_title": "Panqueca Mista",
+        "comida_desc":"Arroz opcional",
+        "comida_preco":"9",
+        "image":""
+      },
+      {
+        "comida_id": 7,
+        "comida_title": "Batata Frita",
+        "comida_desc":"Sem recheio",
+        "comida_preco":"9,00",
+        "image":""
+      },
+      {
+        "comida_id": 8,
+        "comida_title": "Batata Frita Recheada",
+        "comida_desc":"Com bacon e queijo",
+        "comida_preco":"13,00",
+        "image":""
+      }
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Salgados",
+    "description": "",
+    "comidas": [
+
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Sanduíches artesanais",
+    "description": "",
+    "comidas": [
+
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Delícias fit",
+    "description": "",
+    "comidas": [
+
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Milk Shakes",
+    "description": "",
+    "comidas": [
+
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Pizzas",
+    "description": "",
+    "comidas": [
+
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Bebidas",
+    "description": "",
+    "comidas": [
+
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Sobremesas",
+    "description": "",
+    "comidas": [
+
+    ],
+    "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+  }
+]
