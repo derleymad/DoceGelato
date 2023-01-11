@@ -10,9 +10,9 @@ import com.example.docegelato.model.Comida
 import com.example.docegelato.model.ComidaItem
 
 class ComidasAdapter: RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
-    private var comidasList = mutableListOf<ComidaItem>()
+    private var comidasList = ArrayList<ComidaItem>()
 
-    fun setComidasList(comidasList: MutableList<ComidaItem>){
+    fun setComidasList(comidasList: ArrayList<ComidaItem>){
         this.comidasList = comidasList
         notifyDataSetChanged()
     }

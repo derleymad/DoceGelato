@@ -11,17 +11,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply { value = "This is home Fragment" }
-    private val _comidas = MutableLiveData<List<Comida>>()
-
-    private var _movieLiveData = MutableLiveData<Comida>()
+    private var _comidaLiveData = MutableLiveData<Comida>()
+    private var _nomedaruaLiveData = MutableLiveData<String>()
 
     fun getComidas(){
         RetrofitInstance.api.getComidas().enqueue(object : Callback<Comida> {
             override fun onResponse(call: Call<Comida>, response: Response<Comida>) {
                 if(response.body()!=null){
-                    movieLiveData.value = response.body()
+                    comidaLiveData.value = response.body()
+                    Log.i("itsworking", response.body()!!.size.toString())
                 }else{
                     return
                 }
@@ -34,7 +32,8 @@ class HomeViewModel : ViewModel() {
         })
     }
 
-    val movieLiveData = _movieLiveData
+    val nomedaruaLiveData = _nomedaruaLiveData
+    val comidaLiveData = _comidaLiveData
 //
 //    fun observeMovieLiveData() : LiveData<Comida>{
 //        return movieLiveData

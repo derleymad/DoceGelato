@@ -1,4 +1,4 @@
-package com.example.docegelato.ui.dashboard
+package com.example.docegelato.ui.pedidos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.docegelato.databinding.FragmentDashboardBinding
+import com.example.docegelato.databinding.FragmentPedidosBinding
 
-class DashboardFragment : Fragment() {
+class PedidosFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentPedidosBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,17 +22,17 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        val pedidosViewModel =
+            ViewModelProvider(this).get(PedidosViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            binding.textDashboard.text = it
+        _binding = FragmentPedidosBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        val textView: TextView = binding.textNotifications
+        pedidosViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
         }
-
-//        binding.rvDashboard.adapter =
-
-        dashboardViewModel.outro
-        return binding.root
+        return root
     }
 
     override fun onDestroyView() {
