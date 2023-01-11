@@ -12,10 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textStyle="bold"
-        android:text="Rua Donizete Sobreira"
+        android:text="Carregando..."
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+<!--&lt;!&ndash;    -    android:fontFamily="@font/sulsans"->-->
 
     <ImageButton
         android:id="@+id/btn_expandmore"
@@ -29,125 +31,38 @@
         app:layout_constraintStart_toEndOf="@id/tv_nomedarua"
         app:layout_constraintTop_toTopOf="@id/tv_nomedarua" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/img_banner_docegelato"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:backgroundTint="@color/black"-->
-<!--        android:background="@color/black"-->
-<!--        android:src="@drawable/banner"-->
-<!--        android:scaleType="matrix"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        />-->
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/cardView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="-32dp"-->
-<!--        android:background="@null"-->
-<!--        app:cardBackgroundColor="@null"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        app:cardCornerRadius="12dp"-->
-<!--        app:cardElevation="12dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/img_banner_docegelato">-->
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
-<!--            <ImageView-->
-<!--                android:id="@+id/img_cardview_banner_docegelato"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:src="@drawable/banner"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"/>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="32dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="Doce Gelato"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textSize="15sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/img_cardview_banner_docegelato"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="32dp"-->
-<!--                android:text="Pizzaria e Sorveteria"-->
-<!--                android:textSize="10sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/img_cardview_banner_docegelato"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textView" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:text="Pedido mínimo R$ 15,00"-->
-<!--                android:textSize="10sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="1"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/img_cardview_banner_docegelato"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/tv_status"-->
-<!--                app:layout_constraintVertical_bias="1.0" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_status"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:background="@color/red"-->
-<!--                android:text="Fechado"-->
-<!--                android:textColor="@color/white"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/img_cardview_banner_docegelato"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/img_cardview_banner_docegelato"-->
-<!--                app:layout_constraintVertical_bias="0.0" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </androidx.cardview.widget.CardView>-->
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_banner_main"
         app:layout_constraintTop_toBottomOf="@id/tv_nomedarua"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="12dp"
         android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp"/>
+        android:layout_height="150dp">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview_banner_cupons"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/img_banner_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:id="@+id/view_line"
+        android:background="@color/gray_light"
+        app:layout_constraintTop_toBottomOf="@id/cardview_banner_main"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardview_banner_main" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_home"
@@ -156,7 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardview_banner_cupons"
-        tools:listitem="@layout/comida_item" />
+        app:layout_constraintTop_toBottomOf="@+id/view_line"
+        tools:listitem="@layout/categoria_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
