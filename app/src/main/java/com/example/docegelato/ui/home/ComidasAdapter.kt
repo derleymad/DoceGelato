@@ -3,11 +3,13 @@ package com.example.docegelato.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.Comida
 import com.example.docegelato.model.ComidaItem
+import com.squareup.picasso.Picasso
 
 class ComidasAdapter: RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
     private var comidasList = ArrayList<ComidaItem>()
@@ -35,6 +37,7 @@ class ComidasAdapter: RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
         fun bind(comida : ComidaItem){
             val nome = itemView.findViewById<TextView>(R.id.nome)
             val preco = itemView.findViewById<TextView>(R.id.preco)
+            Picasso.get().load(comida.image).into(itemView.findViewById<ImageView>(R.id.foto));
             nome.text = comida.title
             preco.text = comida.preco
         }
