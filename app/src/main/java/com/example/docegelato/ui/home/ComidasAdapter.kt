@@ -40,7 +40,7 @@ class ComidasAdapter(
 
             Picasso
                 .get()
-                .load("https://raw.githubusercontent.com/derleymad/DoceGelato/api/${comida.image}")
+                .load("${comida.image}")
                 .error(R.drawable.banner)
                 .placeholder(R.drawable.banner)
                 .into(imageView);

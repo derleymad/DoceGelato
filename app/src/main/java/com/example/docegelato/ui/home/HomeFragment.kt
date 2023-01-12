@@ -58,6 +58,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadBanners(){
-        Picasso.get().load("https://derleymad.github.io/DoceGelato/images/banner1.png").into(binding.imgBannerMain)
+//        Picasso.get().load("https://derleymad.github.io/DoceGelato/images/banner1.png").into(binding.imgBannerMain)
     }
 }
