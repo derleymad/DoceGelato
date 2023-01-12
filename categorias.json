@@ -9,56 +9,56 @@
         "comida_title": "Escondidinho de Carne de Sol",
         "comida_desc":"Com arroz, Porção individual",
         "comida_preco":"11,00",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/EscondidinhodeCarnedeSol.png"
       },
       {
         "comida_id": 2,
         "comida_title": "Panqueca de Frango Catupiry",
         "comida_desc":"Arroz opcional",
         "comida_preco":"7,00",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeFrangoCatupiry.JPG"
       },
       {
         "comida_id": 3,
         "comida_title": "Panqueca de Calabresa e Bacon",
         "comida_desc":"Arroz opcional",
         "comida_preco":"8,00",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeCalabresaeBacon.jpg"
       },
       {
         "comida_id": 4,
         "comida_title": "Panqueca de Frango e Calabresa",
         "comida_desc":"Arroz opcional",
         "comida_preco":"8,00",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeFrangoeCalabresa.png"
       },
       {
         "comida_id": 5,
         "comida_title": "Panqueca de Carne de Sol",
         "comida_desc":"Arroz opcional",
         "comida_preco":"9,00",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeCarnedeSol.jpg"
       },
       {
         "comida_id": 6,
         "comida_title": "Panqueca Mista",
         "comida_desc":"Arroz opcional",
         "comida_preco":"9",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/PanquecaMista.jpg"
       },
       {
         "comida_id": 7,
         "comida_title": "Batata Frita",
         "comida_desc":"Sem recheio",
         "comida_preco":"9,00",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/BatataFrita.png"
       },
       {
         "comida_id": 8,
         "comida_title": "Batata Frita Recheada",
         "comida_desc":"Com bacon e queijo",
         "comida_preco":"13,00",
-        "image":""
+        "image":"https://derleymad.github.io/DoceGelato/images/BatataFritaRecheada.jpg"
       }
     ],
     "image": "https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
