@@ -4,27 +4,27 @@
        "comida_title": "Pastel",
        "comida_desc":"Arroz opcional",
        "comida_preco":"8,00",
-       "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeCalabresaeBacon.jpg"
+       "image":"https://derleymad.github.io/DoceGelato/images/EscondidinhodeCarnedeSol.png"
    },
    {
       "comida_id":2,
       "comida_title":"Hambúrguer",
       "comida_preco":"10,50",
       "comida_description":"",
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/2.jpg"
+      "image":"https://derleymad.github.io/DoceGelato/images/EscondidinhodeCarnedeSol.png"
    },
    {
       "comida_id":3,
       "comida_title":"Pastel",
       "comida_preco":"9,20",
       "comida_description":"",
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/3.jpg"
+      "image":"https://derleymad.github.io/DoceGelato/images/EscondidinhodeCarnedeSol.png"
    },
    {
       "comida_id":4,
       "comida_title":"Sorvete",
       "comida_preco":"15,50",
       "comida_description":"",
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/4.jpg"
+      "image":"https://derleymad.github.io/DoceGelato/images/EscondidinhodeCarnedeSol.png"
    }
 ]
