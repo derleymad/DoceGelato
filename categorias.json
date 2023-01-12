@@ -1,5 +1,45 @@
 [
   {
+    "id":0,
+    "title": "Destaques",
+    "description: "",
+    "comidas" :[
+   {
+      "id":1,
+      "title":"Coxinha",
+      "preco":"12,70",
+      "preco_old":"14,00",
+      "description":"",
+      "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+   },
+   {
+      "id":2,
+      "title":"Hambúrguer",
+      "preco":"10,50",
+      "preco_old":"14,00",
+      "description":"",
+      "image":"https://derleymad.github.io/female-soccer-news-api/images/2.jpg"
+   },
+   {
+      "id":3,
+      "title":"Pastel",
+      "preco":"9,20",
+      "preco_old":"14,00",
+      "description":"",
+      "image":"https://derleymad.github.io/female-soccer-news-api/images/3.jpg"
+   },
+   {
+      "id":4,
+      "title":"Sorvete",
+      "preco":"15,50",
+      "preco_old":"16,00",
+      "description":"",
+      "image":"https://derleymad.github.io/female-soccer-news-api/images/4.jpg"
+   }
+],
+"image" : "https://teste.com/jpg.jpg"
+  },
+  {
     "id": 1,
     "title": "Entradas",
     "description": "",
