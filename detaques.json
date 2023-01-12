@@ -1,29 +1,33 @@
 [
    {
       "id":1,
-      "title":"Bolo",
+      "title":"Coxinha",
       "preco":"12,70",
+      "preco_old":"14,00",
       "description":"",
       "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
    },
    {
       "id":2,
-      "title":"Pizza",
+      "title":"Hambúrguer",
       "preco":"10,50",
+      "preco_old":"14,00",
       "description":"",
       "image":"https://derleymad.github.io/female-soccer-news-api/images/2.jpg"
    },
    {
       "id":3,
-      "title":"Sorvete",
+      "title":"Pastel",
       "preco":"9,20",
+      "preco_old":"14,00",
       "description":"",
       "image":"https://derleymad.github.io/female-soccer-news-api/images/3.jpg"
    },
    {
       "id":4,
-      "title":"Chocolate",
+      "title":"Sorvete",
       "preco":"15,50",
+      "preco_old":"16,00",
       "description":"",
       "image":"https://derleymad.github.io/female-soccer-news-api/images/4.jpg"
    }
