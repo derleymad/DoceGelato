@@ -11,6 +11,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -60,7 +61,16 @@ class MainActivity : AppCompatActivity() {
                         val geocoder = Geocoder(this, Locale.getDefault())
                         val list: List<Address> =
                             geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                        homeViewModel.nomedaruaLiveData.value = list[0].thoroughfare.toString()
+
+//                        val cidade = list[0].subAdminArea.toString()
+//                        val estado = list[0].adminArea.toString()
+//                        val rua = list[0].thoroughfare.toString()
+                        val adress = list[0].getAddressLine(0)
+                        val cidade = list[0].subAdminArea.toString()
+                        val estado = list[0].adminArea.toString()
+
+                        homeViewModel.nomedaruaLiveData.value = "$cidade - $estado"
+
                         //locale PTBR
                         //adminarea CEARA
                         //Subadminarea CRATO
