@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="Bife A Cavalo"
         android:textColor="@color/black"
+        android:fontFamily="@font/newrepublic"
         android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/newrepublic"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="Bife de carne, Ovo, Arroz, Branco, Farofa, Puré de batatas, Feijão Mulatino, e tudo o que há de melhor"
@@ -40,6 +42,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/newrepublic"
         android:text="R$ 30,95"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"

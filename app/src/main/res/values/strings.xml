@@ -5,4 +5,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_search">Busca</string>
     <string name="title_pedidos">Pedidos</string>
+    <string name="comida_destaque_preco">25,00 <del>26,00</del></string>
 </resources>

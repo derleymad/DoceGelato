@@ -1,6 +1,7 @@
 package com.example.docegelato.ui.pedidos
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,14 +30,16 @@ class PedidosFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        pedidosViewModel.text.observe(viewLifecycleOwner) {
+        pedidosViewModel.text.observe(requireParentFragment().viewLifecycleOwner) {
             textView.text = it
+            Log.i("itsworking",it)
         }
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.i("itsworking","pedidos,destruido")
         _binding = null
     }
 }

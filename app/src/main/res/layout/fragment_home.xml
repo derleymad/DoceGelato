@@ -9,13 +9,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/tv_nomedarua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textStyle="bold"
             android:text="Carregando..."
+            android:fontFamily="@font/newrepublic"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,52 +35,114 @@
             app:layout_constraintStart_toEndOf="@id/tv_nomedarua"
             app:layout_constraintTop_toTopOf="@id/tv_nomedarua" />
 
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/rv_destaques"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            tools:listitem="@layout/comida_destaque_item"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+        <!--            />-->
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardview_banner_main"
-            app:layout_constraintTop_toBottomOf="@id/tv_nomedarua"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:cardCornerRadius="12dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nomedarua">
 
             <ImageView
                 android:id="@+id/img_banner_main"
                 android:layout_width="match_parent"
+                android:src="@drawable/placeholder"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop" />
-
         </com.google.android.material.card.MaterialCardView>
-
         <View
-            android:id="@+id/view_line"
+            android:id="@+id/view_line_top"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
             android:background="@color/gray_light_more"
             app:layout_constraintTop_toBottomOf="@id/cardview_banner_main"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_destaques_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/newrepublic"
+            android:text="Destaques"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_line_top"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_destaques"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_destaques_title"
+            tools:itemCount="2"
+            tools:listitem="@layout/comida_destaque_item" />
+
+        <ImageView
+            android:id="@+id/img_banner_cupom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_destaques" />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"/>
+            android:background="@color/gray_light_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_banner_cupom" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:itemCount="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_line"
             tools:listitem="@layout/categoria_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.core.widget.NestedScrollView>

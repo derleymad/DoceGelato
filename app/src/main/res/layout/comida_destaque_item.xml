@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview_main_destaque"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+        android:layout_width="150dp"
+        android:layout_height="200dp">
+
+        <LinearLayout
+            android:id="@+id/ln_main_destaque"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_comida_destaque"
+                android:layout_width="match_parent"
+                android:src="@mipmap/ic_launcher"
+                android:layout_weight="0.6"
+                android:layout_height="50dp"/>
+            <TextView
+                android:id="@+id/tv_title_comida_destaque"
+                android:layout_width="match_parent"
+                android:ellipsize="end"
+                android:fontFamily="@font/newrepublic"
+                android:text="Coxinhas de Cuz Cuz"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:maxLines="2"
+                android:layout_weight="0.2"
+                android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_preco_destaque"
+                    android:layout_width="match_parent"
+                    android:text="@string/comida_destaque_preco"
+                    android:maxLines="1"
+                    android:fontFamily="@font/newrepublic"
+                    android:ellipsize="end"
+                    android:textAlignment="center"
+                    android:textColor="@color/green"
+                    android:layout_weight="0.2"
+                    android:layout_height="wrap_content"/>
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textColor="25,00"-->
+<!--                    android:text="25,00"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:layout_height="wrap_content"/>-->
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>

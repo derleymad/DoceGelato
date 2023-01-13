@@ -11,17 +11,12 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.docegelato.databinding.ActivityMainBinding
 import com.example.docegelato.ui.home.HomeViewModel
@@ -46,6 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        navController.restoreState(navController.saveState())
+
         navView.setupWithNavController(navController)
 
         getLocation()
@@ -68,7 +66,6 @@ class MainActivity : AppCompatActivity() {
                         //Subadminarea CRATO
                         //maxAdressLineIdex 0
                         //thoroughfare Rua Radialista Donizete Sobreira
-
                     }
                 }
             } else {
