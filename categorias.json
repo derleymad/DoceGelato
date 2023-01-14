@@ -353,42 +353,36 @@
          }
          
       ],
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+      "image":""
    },
    {
-      "id":5,
-      "title":"Milk Shakes",
+      "id":,
+      "title":"Monte o Seu",
       "description":"",
       "comidas":[
-         
+         {
+            "comida_id":1,
+            "comida_title":"Monte Sua Massa",
+            "comida_desc":"Monte sua Massa, escolhendo entre os ingredientes como molho, Tempero, Tipo de Recheio",
+            "comida_preco":"",
+            "image":"https://derleymad.github.io/DoceGelato/images/motar/MonteSuaMassa"
+         },
+{
+            "comida_id":2,
+            "comida_title":"Monte Sua Refeição",
+            "comida_desc":"Escolha sua Refeição, Cuzcuz ou Tapioca, Adicionando o Que Quiser Como Caldo, Carne Moída Cremosa, Misto e outros",
+            "comida_preco":"",
+            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSuaRefeiçao"
+         },
+{
+            "comida_id":3,
+            "comida_title":"Monte Seu Pastel",
+            "comida_desc":"Escolha entre 9 ingredientes, como Catupiry, Queijo Fatiado, Presunto, Milho, Azeitona, Cheddar entre Outros",
+            "comida_preco":"",
+            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSeuPastel"
+         }
       ],
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
-   },
-   {
-      "id":6,
-      "title":"Pizzas",
-      "description":"",
-      "comidas":[
-         
-      ],
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
-   },
-   {
-      "id":7,
-      "title":"Bebidas",
-      "description":"",
-      "comidas":[
-         
-      ],
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
-   },
-   {
-      "id":8,
-      "title":"Sobremesas",
-      "description":"",
-      "comidas":[
-         
-      ],
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+      "image":""
    }
+
 ]
