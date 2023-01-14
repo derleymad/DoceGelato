@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val navView: BottomNavigationView = binding.navView

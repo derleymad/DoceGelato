@@ -1,14 +1,12 @@
-package com.example.docegelato.ui.home
+package com.example.docegelato.ui.home.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
-import com.example.docegelato.model.categorias.CategoriasItem
 import com.example.docegelato.model.categorias.Comida
 import com.squareup.picasso.Picasso
 

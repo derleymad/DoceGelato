@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.categorias.lanches.LanchesFragment">
+    tools:context=".ui.home.categorias.base.BaseFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_lanches"
+        tools:listitem="@layout/comida_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_marginBottom="?attr/actionBarSize"
+        />
 
 </FrameLayout>

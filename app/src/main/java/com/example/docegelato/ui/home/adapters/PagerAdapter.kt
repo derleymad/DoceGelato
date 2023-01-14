@@ -1,15 +1,11 @@
-package com.example.docegelato.ui.home
+package com.example.docegelato.ui.home.adapters
 
 import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.docegelato.ui.home.categorias.bebidas.BebidasFragment
 import com.example.docegelato.ui.home.categorias.destaques.DestaquesFragment
-import com.example.docegelato.ui.home.categorias.entradas.EntradasFragment
-import com.example.docegelato.ui.home.categorias.lanches.LanchesFragment
-import com.example.docegelato.ui.home.categorias.montar.MontarFragment
-import com.example.docegelato.ui.home.categorias.sobremesas.SobremesasFragment
+import com.example.docegelato.ui.home.categorias.base.BaseFragment
 
 class PagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
@@ -20,19 +16,23 @@ class PagerAdapter(fragmentActivity: FragmentActivity) :
                 DestaquesFragment()
             }
             1 -> {
-                EntradasFragment()
+//                EntradasFragment()
+                BaseFragment(0)
             }
             2 -> {
-                LanchesFragment()
+                BaseFragment(1)
             }
             3 -> {
-                SobremesasFragment()
+//                SobremesasFragment()
+                BaseFragment(2)
             }
             4 -> {
-                BebidasFragment()
+//                BebidasFragment()
+                BaseFragment(3)
             }
             5 -> {
-                MontarFragment()
+//                MontarFragment()
+                BaseFragment(4)
             }
             else -> {
                 throw Resources.NotFoundException("Posição nao foi achada!")

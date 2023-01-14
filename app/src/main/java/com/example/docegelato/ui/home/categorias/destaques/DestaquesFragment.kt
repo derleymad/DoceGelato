@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.databinding.FragmentDestaquesBinding
-import com.example.docegelato.ui.home.DestaqueAdapter
+import com.example.docegelato.ui.home.adapters.DestaqueAdapter
 import com.squareup.picasso.Picasso
 
 class DestaquesFragment : Fragment() {

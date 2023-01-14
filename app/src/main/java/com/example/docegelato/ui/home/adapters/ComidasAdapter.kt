@@ -1,21 +1,27 @@
-package com.example.docegelato.ui.home
+package com.example.docegelato.ui.home.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Comida
 import com.squareup.picasso.Picasso
 
 class ComidasAdapter(
-    private val comidasList: List<Comida>,
-    @LayoutRes private var layoutItem: Int,
-    private var movieOnClickListener: ((Int) -> Unit)? = null
+//    private val comidasList: List<Comida>,
+//    @LayoutRes private var layoutItem: Int,
+    private var comidaOnClickListener: ((Int) -> Unit)? = null
 ): RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
+
+    private var comidasList = ArrayList<Comida>()
+
+    fun setComidasList(comidasList: ArrayList<Comida>){
+        this.comidasList= comidasList
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidasViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.comida_item,parent,false)
@@ -47,7 +53,7 @@ class ComidasAdapter(
 
             nome.text = comida.comida_title
             desc.text = comida.comida_desc
-            preco.text = comida.comida_preco
+            preco.text = "R$ ${comida.comida_preco}"
 
         }
     }
