@@ -299,9 +299,58 @@
    },
    {
       "id":4,
-      "title":"Delícias fit",
+      "title":"Bebibdas",
       "description":"",
       "comidas":[
+          {
+            "comida_id":1,
+            "comida_title":"Pepsi 1 Litro",
+            "comida_desc":"",
+            "comida_preco":"6,50",
+            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Pepsi1Litro"
+         },
+          {
+            "comida_id":2,
+            "comida_title":"Guaraná 1 Litro",
+            "comida_desc":"",
+            "comida_preco":"6,50",
+            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Guaraná1Litro"
+         },
+          {
+            "comida_id":3,
+            "comida_title":"Cajuína 1 Litro",
+            "comida_desc":"",
+            "comida_preco":"7,00",
+            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Cajuina1Litro"
+         },
+          {
+            "comida_id":4,
+            "comida_title":"Guaraná Lata",
+            "comida_desc":"",
+            "comida_preco":"4,00",
+            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/GuaranaLata"
+         }
+         {
+            "comida_id":5,
+            "comida_title":"Fanta Laranja Lata",
+            "comida_desc":"",
+            "comida_preco":"4,00",
+            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/FantaLranjaLata"
+         },
+         {
+            "comida_id":6,
+            "comida_title":"Água Sem Gás",
+            "comida_desc":"",
+            "comida_preco":"2,50",
+            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/AguaSemGas"
+         },
+          {
+            "comida_id":7,
+            "comida_title":"Água Com Gás",
+            "comida_desc":"",
+            "comida_preco":"2,00",
+            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/AguaComGas"
+         }
          
       ],
       "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
