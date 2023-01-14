@@ -248,12 +248,54 @@
    },
    {
       "id":3,
-      "title":"Sanduíches artesanais",
+      "title":"Sobremesas",
       "description":"",
       "comidas":[
+          {
+            "comida_id":1,
+            "comida_title":"Pudim no Pote",
+            "comida_desc":"Pudim Caseiro no Pote",
+            "comida_preco":"3,50",
+            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/PudimNoPote"
+         },
+          {
+            "comida_id":2,
+            "comida_title":"Brownie",
+            "comida_desc":"Com 2 (Duas) Bolas de Sorvete",
+            "comida_preco":"10,00",
+            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/Brownie"
+         },
+         {
+            "comida_id":3,
+            "comida_title":"Brownie",
+            "comida_desc":"Brownie Rechado",
+            "comida_preco":"4,50",
+            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/BrownieRecheado"
+         },
+         {
+            "comida_id":4,
+            "comida_title":"Taça Doce Gelato",
+            "comida_desc":"1 Taça Coberta Com Chocolate, Recheio Brownie, Sorvete",
+            "comida_preco":"15,00",
+            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/TacaDoceGelato"
+         },
+         {
+            "comida_id":5,
+            "comida_title":"Mouse de Maracujá",
+            "comida_desc":"",
+            "comida_preco":"3,00",
+            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/MousseDeMaracuja"
+         },
+         {
+            "comida_id":6,
+            "comida_title":"Sorvete e Açaí",
+            "comida_desc":"Vários tipos de sabores",
+            "comida_preco":"",
+            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/SorveteEacai"
+         }
          
       ],
-      "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
+      "image":""
    },
    {
       "id":4,
