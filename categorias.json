@@ -251,14 +251,14 @@
       "title":"Sobremesas",
       "description":"",
       "comidas":[
-          {
+         {
             "comida_id":1,
             "comida_title":"Pudim no Pote",
             "comida_desc":"Pudim Caseiro no Pote",
             "comida_preco":"3,50",
             "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/PudimNoPote"
          },
-          {
+         {
             "comida_id":2,
             "comida_title":"Brownie",
             "comida_desc":"Com 2 (Duas) Bolas de Sorvete",
@@ -293,7 +293,6 @@
             "comida_preco":"",
             "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/SorveteEacai"
          }
-         
       ],
       "image":""
    },
@@ -302,28 +301,28 @@
       "title":"Bebibdas",
       "description":"",
       "comidas":[
-          {
+         {
             "comida_id":1,
             "comida_title":"Pepsi 1 Litro",
             "comida_desc":"",
             "comida_preco":"6,50",
             "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Pepsi1Litro"
          },
-          {
+         {
             "comida_id":2,
             "comida_title":"Guaraná 1 Litro",
             "comida_desc":"",
             "comida_preco":"6,50",
             "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Guaraná1Litro"
          },
-          {
+         {
             "comida_id":3,
             "comida_title":"Cajuína 1 Litro",
             "comida_desc":"",
             "comida_preco":"7,00",
             "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Cajuina1Litro"
          },
-          {
+         {
             "comida_id":4,
             "comida_title":"Guaraná Lata",
             "comida_desc":"",
@@ -344,14 +343,13 @@
             "comida_preco":"2,50",
             "image":"https://derleymad.github.io/DoceGelato/images/bebidas/AguaSemGas"
          },
-          {
+         {
             "comida_id":7,
             "comida_title":"Água Com Gás",
             "comida_desc":"",
             "comida_preco":"2,00",
             "image":"https://derleymad.github.io/DoceGelato/images/bebidas/AguaComGas"
          }
-         
       ],
       "image":""
    },
@@ -367,14 +365,14 @@
             "comida_preco":"",
             "image":"https://derleymad.github.io/DoceGelato/images/motar/MonteSuaMassa"
          },
-{
+         {
             "comida_id":2,
             "comida_title":"Monte Sua Refeição",
             "comida_desc":"Escolha sua Refeição, Cuzcuz ou Tapioca, Adicionando o Que Quiser Como Caldo, Carne Moída Cremosa, Misto e outros",
             "comida_preco":"",
             "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSuaRefeiçao"
          },
-{
+         {
             "comida_id":3,
             "comida_title":"Monte Seu Pastel",
             "comida_desc":"Escolha entre 9 ingredientes, como Catupiry, Queijo Fatiado, Presunto, Milho, Azeitona, Cheddar entre Outros",
@@ -384,5 +382,4 @@
       ],
       "image":""
    }
-
 ]
