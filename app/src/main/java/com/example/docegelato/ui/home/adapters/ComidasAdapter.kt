@@ -1,5 +1,6 @@
 package com.example.docegelato.ui.home.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,6 @@ import com.example.docegelato.model.categorias.Comida
 import com.squareup.picasso.Picasso
 
 class ComidasAdapter(
-//    private val comidasList: List<Comida>,
-//    @LayoutRes private var layoutItem: Int,
     private var comidaOnClickListener: ((Int) -> Unit)? = null
 ): RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
 
@@ -37,7 +36,7 @@ class ComidasAdapter(
         return comidasList.size
     }
 
-    class ComidasViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ComidasViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(comida : Comida){
             val nome = itemView.findViewById<TextView>(R.id.nome)
             val preco = itemView.findViewById<TextView>(R.id.preco)
@@ -54,6 +53,11 @@ class ComidasAdapter(
             nome.text = comida.comida_title
             desc.text = comida.comida_desc
             preco.text = "R$ ${comida.comida_preco}"
+
+            itemView.setOnClickListener {
+                comidaOnClickListener?.invoke(comida.comida_id)
+            }
+
 
         }
     }

@@ -25,7 +25,6 @@ class HomeViewModel : ViewModel() {
                     return
                 }
             }
-
             override fun onFailure(call: Call<Categorias>, t: Throwable) {
                 Log.e("TAG",t.message.toString())
             }
@@ -45,14 +44,11 @@ class HomeViewModel : ViewModel() {
                     return
                 }
             }
-
             override fun onFailure(call: Call<ArrayList<Comida>>, t: Throwable) {
             }
         })
     }
-
         val nomedaruaLiveData = _nomedaruaLiveData
         val categoriaLiveData = _categoriaLiveData
         val destaquesLiveData = _destaquesLiveData
-
 }

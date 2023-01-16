@@ -19,7 +19,6 @@ class HomeFragment : Fragment() {
     private val homeViewModel : HomeViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-//        homeViewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,13 +30,7 @@ class HomeFragment : Fragment() {
         homeViewModel.nomedaruaLiveData.observe(viewLifecycleOwner, Observer {
             binding.btnExpandmore.text = it
         })
-//        homeViewModel.categoriaLiveData.observe(viewLifecycleOwner, Observer {
-//            categoriasAdapter.setCategoriasList(it)
-//        })
-//
-//        homeViewModel.destaquesLiveData.observe(viewLifecycleOwner){
-//            destaquesAdapter.setDestaquesList(it)
-//        }
+
         super.onViewCreated(view, savedInstanceState)
     }
 

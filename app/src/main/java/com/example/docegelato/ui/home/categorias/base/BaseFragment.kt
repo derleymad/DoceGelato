@@ -1,6 +1,7 @@
 package com.example.docegelato.ui.home.categorias.base
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +38,7 @@ class BaseFragment(private val tabNumber : Int) : Fragment() {
     }
 
     private fun prepareRecyclerView(){
-        adapter = ComidasAdapter()
+        adapter = ComidasAdapter({ Log.i("clickou","clickou $it")})
         binding.rvLanches.adapter = adapter
         binding.rvLanches.layoutManager = LinearLayoutManager(requireContext())
     }
