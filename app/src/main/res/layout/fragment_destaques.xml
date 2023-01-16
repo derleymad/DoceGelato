@@ -70,7 +70,7 @@
     <ImageView
         android:id="@+id/img_banner_cupom"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"

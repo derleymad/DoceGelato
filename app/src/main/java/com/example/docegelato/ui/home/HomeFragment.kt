@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
         homeViewModel.getCategorias()
         //Obsevers
         homeViewModel.nomedaruaLiveData.observe(viewLifecycleOwner, Observer {
-            binding.tvNomedarua.text = it
+            binding.btnExpandmore.text = it
         })
 //        homeViewModel.categoriaLiveData.observe(viewLifecycleOwner, Observer {
 //            categoriasAdapter.setCategoriasList(it)

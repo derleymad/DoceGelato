@@ -48,7 +48,8 @@ class DestaqueAdapter(
                 .into(imageView);
 
             nome.text = comida.comida_title
-            preco.text = comida.comida_preco
+//            preco.text = comida.comida_preco
+            preco.text = itemView.context.getString(R.string.comida_destaque_preco,comida.comida_preco)
 
         }
     }

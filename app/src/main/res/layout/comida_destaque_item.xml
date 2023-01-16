@@ -32,18 +32,32 @@
                 android:maxLines="2"
                 android:layout_weight="0.2"
                 android:layout_height="wrap_content"/>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:orientation="horizontal"
+                >
                 <TextView
                     android:id="@+id/tv_preco_destaque"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:text="@string/comida_destaque_preco"
                     android:maxLines="1"
                     android:fontFamily="@font/newrepublic"
                     android:ellipsize="end"
+                    android:layout_weight="0.5"
                     android:textAlignment="center"
                     android:textColor="@color/green"
-                    android:layout_weight="0.2"
                     android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/newrepublic"
+                    android:text="@string/preco_riscado"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
 
 <!--                    android:layout_width="wrap_content"-->
 <!--                    android:textColor="25,00"-->

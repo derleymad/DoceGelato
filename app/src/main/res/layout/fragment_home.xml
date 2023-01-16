@@ -2,32 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
-    <TextView
-        android:id="@+id/tv_nomedarua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Carregando..."
-        android:fontFamily="@font/newrepublic"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_expandmore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:src="@drawable/ic_baseline_expand_more_24"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_nomedarua"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/tv_nomedarua"
-        app:layout_constraintTop_toTopOf="@id/tv_nomedarua" />
+        android:backgroundTint="@color/white"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="Sem localização"
+        android:textColor="@color/black"
+        android:drawableEnd="@drawable/ic_baseline_expand_more_24"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
@@ -36,7 +28,7 @@
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nomedarua"
+        app:layout_constraintTop_toBottomOf="@+id/btn_expandmore"
         app:tabBackground="@color/white"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/red"
