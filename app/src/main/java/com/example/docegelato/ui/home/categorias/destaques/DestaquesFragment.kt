@@ -52,7 +52,7 @@ class DestaquesFragment : Fragment() {
         binding.imageSlider.setImageList(imageList)
         Picasso
             .get()
-            .load("https://derleymad.github.io/DoceGelato/images/cupom.webp")
+            .load("https://derleymad.github.io/DoceGelato/images/banner2.png")
             .into(binding.imgBannerCupom)
     }
 
