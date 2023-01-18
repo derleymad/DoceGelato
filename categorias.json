@@ -248,7 +248,7 @@
             "comida_id":222,
             "comida_title":"Pizza Mista",
             "comida_desc":"Molho da Casa, Frango, Presunto, Mussarela, Milho Verde, Azeitona e Orégano",
-            "comida_preco":"20.00|26.00|30.00",
+            "comida_preco":20.00,
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzaMista"
          },
