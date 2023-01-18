@@ -97,7 +97,7 @@
             "comida_title":"Delícia 2",
             "comida_desc":"Pão, Hambúrguer Artesanal de Frango, Presunto Peito de Peru, Queijo Coalho, Alface, Tomate, Milho Verde e Molho Especial",
             "comida_preco":8.00,
-            "comida_desconto"0.00,
+            "comida_desconto":0.00,
             "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia2"
          },
          {
