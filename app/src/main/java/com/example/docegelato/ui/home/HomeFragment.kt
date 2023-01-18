@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -30,7 +33,6 @@ class HomeFragment : Fragment() {
         homeViewModel.nomedaruaLiveData.observe(viewLifecycleOwner, Observer {
             binding.btnExpandmore.text = it
         })
-
         super.onViewCreated(view, savedInstanceState)
     }
 

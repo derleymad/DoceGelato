@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.example.docegelato.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_sacolaFragment"
+            app:destination="@id/sacolaFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
@@ -22,4 +26,13 @@
         android:name="com.example.docegelato.ui.pedidos.PedidosFragment"
         android:label="@string/title_pedidos"
         tools:layout="@layout/fragment_pedidos" />
+    <fragment
+        android:id="@+id/sacolaFragment"
+        android:name="com.example.docegelato.ui.sacola.SacolaFragment"
+        android:label="fragment_sacola"
+        tools:layout="@layout/fragment_sacola" >
+        <action
+            android:id="@+id/action_sacolaFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

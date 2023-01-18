@@ -7,19 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+
+
     <Button
         android:id="@+id/btn_expandmore"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/white"
         style="?android:attr/borderlessButtonStyle"
-        android:text="Sem localização"
-        android:textColor="@color/black"
-        android:drawableEnd="@drawable/ic_baseline_expand_more_24"
-        android:textAllCaps="false"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_baseline_expand_more_24"
+        android:text="Sem localização"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_rounded"
+        android:backgroundTint="@color/gray_light_even_more"
+        android:drawableEnd="@drawable/search_edit"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="50dp"
+        android:hint="O que você procura?"
+        android:paddingStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_expandmore" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
@@ -28,15 +46,15 @@
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_expandmore"
+        app:layout_constraintTop_toBottomOf="@+id/search"
         app:tabBackground="@color/white"
         app:tabGravity="fill"
-        app:tabIndicatorColor="@color/red"
+        app:tabIndicatorColor="@color/green_shopper"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="1dp"
         app:tabInlineLabel="true"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/red"
+        app:tabSelectedTextColor="@color/green_shopper"
         app:tabTextAppearance="@style/CustomTabStyle"
         app:tabTextColor="@color/black" />
 

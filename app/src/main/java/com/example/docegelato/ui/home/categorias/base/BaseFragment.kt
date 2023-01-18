@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentLanchesBinding
 import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.ui.home.adapters.ComidasAdapter
@@ -38,7 +40,11 @@ class BaseFragment(private val tabNumber : Int) : Fragment() {
     }
 
     private fun prepareRecyclerView(){
-        adapter = ComidasAdapter({ Log.i("clickou","clickou $it")})
+        adapter = ComidasAdapter {
+            findNavController().navigate(R.id.action_navigation_home_to_sacolaFragment)
+            homeViewModel.idLiveData.value = it
+            Log.i("clickou", "clickou $it")
+        }
         binding.rvLanches.adapter = adapter
         binding.rvLanches.layoutManager = LinearLayoutManager(requireContext())
     }

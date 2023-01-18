@@ -19,6 +19,7 @@
                 android:id="@+id/img_comida_destaque"
                 android:layout_width="match_parent"
                 android:src="@mipmap/ic_launcher"
+                android:scaleType="centerCrop"
                 android:layout_weight="0.6"
                 android:layout_height="50dp"/>
             <TextView

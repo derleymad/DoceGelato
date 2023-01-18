@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="?attr/actionBarSize"
+    tools:context=".ui.sacola.SacolaFragment">
+
+    <ImageView
+        android:id="@+id/img_sacola"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
+    <TextView
+        android:id="@+id/tv_sacola_title"
+        app:layout_constraintTop_toBottomOf="@id/img_sacola"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Açaí P"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/newrepublic"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_sacola_descricao"
+        app:layout_constraintTop_toBottomOf="@id/tv_sacola_title"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="5 acompanhamentos + 1 cobretura."
+        android:fontFamily="@font/newrepublic"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_sacola_preco"
+        app:layout_constraintTop_toBottomOf="@id/tv_sacola_descricao"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="R$ 12,00"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_adicionar"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:weightSum="1"
+        android:layout_height="100dp">
+
+        <ImageButton
+            android:id="@+id/btn_minor"
+            android:src="@drawable/ic_baseline_remove_circle_24"
+            android:background="?attr/actionBarItemBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/edit_bottom_quantity"
+                android:layout_width="50dp"
+                android:layout_marginStart="8dp"
+                android:text="1"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/input_rounded"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"/>
+        <ImageButton
+            android:id="@+id/btn_plus"
+            android:src="@drawable/ic_baseline_add_circle_outline_24"
+            android:background="?attr/actionBarItemBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_bottom_adicionar"
+            android:layout_weight="0.6"
+            android:text="Adicionar"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/green_shopper"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

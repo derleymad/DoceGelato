@@ -5,26 +5,27 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.categorias.destaques.DestaquesFragment">
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview_banner_main"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
 
-        <ImageView
-            android:id="@+id/img_banner_main"
-            android:layout_width="match_parent"
-            android:src="@drawable/placeholder"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
-    </com.google.android.material.card.MaterialCardView>
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:iss_corner_radius="16"
+                app:layout_constraintTop_toTopOf="parent"
+                app:iss_error_image="@drawable/banner"
+                app:iss_placeholder="@drawable/banner"
+                app:iss_delay="0"
+                app:iss_period="3000"
+                app:iss_auto_cycle="true"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_banner_main"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:src="@drawable/placeholder"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="centerCrop" />-->
     <View
         android:id="@+id/view_line_top"
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@color/gray_light_more"
-        app:layout_constraintTop_toBottomOf="@id/cardview_banner_main"
+        app:layout_constraintTop_toBottomOf="@id/image_slider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />

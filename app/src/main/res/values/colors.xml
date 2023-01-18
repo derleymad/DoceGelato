@@ -11,7 +11,9 @@
     <color name="gray_dark">#5A5A5A</color>
     <color name="gray_light">#D3D3D3</color>
     <color name="gray_light_more">#e0e0e0</color>
+    <color name="gray_light_even_more">#f5f5f5</color>
     <color name="red">#F44336</color>
     <color name="light_red">#FF7C72</color>
     <color name="green">#4CAF50</color>
+    <color name="green_shopper">#2da679</color>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.docegelato.ui.home.categorias.destaques
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.docegelato.databinding.FragmentDestaquesBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.DestaqueAdapter
@@ -20,6 +20,7 @@ class DestaquesFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var destaqueAdapter : DestaqueAdapter
     private val homeViewModel : HomeViewModel by activityViewModels ()
+    private val imageList = ArrayList<SlideModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,10 +46,10 @@ class DestaquesFragment : Fragment() {
         }
     }
     fun loadBanners(){
-        Picasso
-            .get()
-            .load("https://derleymad.github.io/DoceGelato/images/banner1.png")
-            .into(binding.imgBannerMain)
+        imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner1.png"))
+        imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner2.png"))
+        imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner3.png"))
+        binding.imageSlider.setImageList(imageList)
         Picasso
             .get()
             .load("https://derleymad.github.io/DoceGelato/images/cupom.webp")

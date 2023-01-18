@@ -14,6 +14,11 @@ class HomeViewModel : ViewModel() {
     private var _categoriaLiveData = MutableLiveData<Categorias>()
     private var _nomedaruaLiveData = MutableLiveData<String>()
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()
+    private var _idLiveData = MutableLiveData<Int>()
+    private var _quantityLiveData = MutableLiveData<Int>(0)
+    private var _priceLiveData = MutableLiveData<Float>()
+    private var _actualComidaLiveData = MutableLiveData<Comida>()
+
 
     fun getCategorias(){
         RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias>{
@@ -51,4 +56,9 @@ class HomeViewModel : ViewModel() {
         val nomedaruaLiveData = _nomedaruaLiveData
         val categoriaLiveData = _categoriaLiveData
         val destaquesLiveData = _destaquesLiveData
+        val idLiveData = _idLiveData
+        val quantityLiveData = _quantityLiveData
+        val priceLiveData = _priceLiveData
+        val actualComidaLiveData = _actualComidaLiveData
+
 }
