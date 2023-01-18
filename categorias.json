@@ -328,7 +328,7 @@
             "comida_id":306,
             "comida_title":"Sorvete e Açaí",
             "comida_desc":"Vários tipos de sabores",
-            "comida_preco":,
+            "comida_preco":null,
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/SorveteEacai"
          }
@@ -408,7 +408,7 @@
             "comida_id":501,
             "comida_title":"Monte Sua Massa",
             "comida_desc":"Monte sua Massa, escolhendo entre os ingredientes como molho, Tempero, Tipo de Recheio",
-            "comida_preco":,
+            "comida_preco":null,
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/DoceGelato/images/motar/MonteSuaMassa"
          },
@@ -416,7 +416,7 @@
             "comida_id":502,
             "comida_title":"Monte Sua Refeição",
             "comida_desc":"Escolha sua Refeição, Cuzcuz ou Tapioca, Adicionando o Que Quiser Como Caldo, Carne Moída Cremosa, Misto e outros",
-            "comida_preco":,
+            "comida_preco":null,
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSuaRefeiçao"
          },
@@ -424,7 +424,7 @@
             "comida_id":503,
             "comida_title":"Monte Seu Pastel",
             "comida_desc":"Escolha entre 9 ingredientes, como Catupiry, Queijo Fatiado, Presunto, Milho, Azeitona, Cheddar entre Outros",
-            "comida_preco":,
+            "comida_preco":null,
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSeuPastel"
          }
