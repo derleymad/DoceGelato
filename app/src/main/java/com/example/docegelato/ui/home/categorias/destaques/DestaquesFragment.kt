@@ -3,11 +3,14 @@ package com.example.docegelato.ui.home.categorias.destaques
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.docegelato.databinding.FragmentDestaquesBinding
 import com.example.docegelato.ui.home.HomeViewModel
@@ -43,6 +46,17 @@ class DestaquesFragment : Fragment() {
         binding.rvDestaques.apply {
             adapter = destaqueAdapter
             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            addOnItemTouchListener(object : OnItemTouchListener{
+                override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                    when (e.action){
+                        MotionEvent.ACTION_MOVE -> rv.parent.requestDisallowInterceptTouchEvent(true)
+                    }
+                    return false
+                }
+                override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+                override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+
+            })
         }
     }
     fun loadBanners(){

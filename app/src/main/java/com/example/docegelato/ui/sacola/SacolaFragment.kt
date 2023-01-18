@@ -37,13 +37,13 @@ class SacolaFragment : Fragment() {
                         binding.apply {
                             tvSacolaTitle.text = j.comida_title
                             tvSacolaDescricao.text = j.comida_desc
-                            tvSacolaPreco.text = j.comida_preco
+                            tvSacolaPreco.text = j.comida_preco.toString()
                             Picasso.get().load(j.image).error(R.drawable.banner).placeholder(R.drawable.banner).into(imgSacola)
                         }
                         homeViewModel.quantityLiveData.observe(viewLifecycleOwner){
                             Log.i("addorminor",it.toString())
                             binding.editBottomQuantity.text = homeViewModel.quantityLiveData.value.toString()
-                            binding.btnBottomAdicionar.text = "Adicionar R$ ${it.toInt()*j.comida_preco.toFloat()}"
+                            binding.btnBottomAdicionar.text = "Adicionar R$ ${it.times(j.comida_preco!!)}"
                         }
                     }else{}
                 }

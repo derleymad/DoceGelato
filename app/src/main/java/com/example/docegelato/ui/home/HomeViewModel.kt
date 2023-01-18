@@ -25,7 +25,7 @@ class HomeViewModel : ViewModel() {
             override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
                 if(response.body()!=null){
                     categoriaLiveData.value = response.body()
-                    Log.i("itsworking", response.body()!!.toString())
+                    Log.i("categoriesworking", response.body()!!.toString())
                 }else{
                     return
                 }

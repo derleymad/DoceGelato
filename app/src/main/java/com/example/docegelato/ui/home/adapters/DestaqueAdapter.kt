@@ -9,6 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Comida
 import com.squareup.picasso.Picasso
+import java.text.Format
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 class DestaqueAdapter(
 //    @LayoutRes private var layoutItem: Int,
@@ -38,7 +44,15 @@ class DestaqueAdapter(
         fun bind(comida : Comida){
             val nome = itemView.findViewById<TextView>(R.id.tv_title_comida_destaque)
             val preco = itemView.findViewById<TextView>(R.id.tv_preco_destaque)
+            val precoAntigo = itemView.findViewById<TextView>(R.id.tv_preco_antigo)
             val imageView = itemView.findViewById<ImageView>(R.id.img_comida_destaque)
+            val desconto = itemView.findViewById<TextView>(R.id.tv_desconto)
+
+
+            val format = NumberFormat.getCurrencyInstance(Locale("pt-br", "br"))
+
+            val precoDescontado  = (comida.comida_preco)?.minus((comida.comida_desconto* comida.comida_preco!!))
+            format.format(precoDescontado)
 
             Picasso
                 .get()
@@ -48,8 +62,10 @@ class DestaqueAdapter(
                 .into(imageView);
 
             nome.text = comida.comida_title
-//            preco.text = comida.comida_preco
-            preco.text = itemView.context.getString(R.string.comida_destaque_preco,comida.comida_preco)
+            desconto.text = "${(comida.comida_desconto*100).toInt()}%"
+            precoAntigo.text = itemView.context.getString(R.string.preco_riscado,format.format(comida.comida_preco))
+            preco.text = itemView.context.getString(R.string.comida_destaque_preco,format.format(precoDescontado))
+
 
         }
     }

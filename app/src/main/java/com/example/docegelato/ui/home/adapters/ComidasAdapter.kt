@@ -1,6 +1,5 @@
 package com.example.docegelato.ui.home.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Comida
 import com.squareup.picasso.Picasso
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ComidasAdapter(
     private var comidaOnClickListener: ((Int) -> Unit)? = null
@@ -43,6 +45,7 @@ class ComidasAdapter(
             val desc = itemView.findViewById<TextView>(R.id.descricao)
             val imageView = itemView.findViewById<ImageView>(R.id.foto)
 
+            val format = NumberFormat.getCurrencyInstance(Locale("pt-br", "br"))
             Picasso
                 .get()
                 .load("${comida.image}")
@@ -52,12 +55,11 @@ class ComidasAdapter(
 
             nome.text = comida.comida_title
             desc.text = comida.comida_desc
-            preco.text = "R$ ${comida.comida_preco}"
+            preco.text =  if(comida.comida_preco!=null) format.format(comida.comida_preco ) else "Preço por tamanho ou porção"
 
             itemView.setOnClickListener {
                 comidaOnClickListener?.invoke(comida.comida_id)
             }
-
 
         }
     }

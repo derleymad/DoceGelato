@@ -8,7 +8,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         android:layout_width="150dp"
-        android:layout_height="200dp">
+        android:layout_height="220dp">
 
         <LinearLayout
             android:id="@+id/ln_main_destaque"
@@ -49,6 +49,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/tv_desconto"
                             android:text="50%"
                             android:textSize="16sp"
                             android:textAlignment="center"
@@ -68,6 +69,7 @@
                 android:text="Coxinhas de Cuz Cuz"
                 android:textColor="@color/black"
                 android:textAlignment="center"
+                android:gravity="center"
                 android:maxLines="2"
                 android:layout_weight="0.2"
                 android:layout_height="wrap_content"/>
@@ -89,22 +91,12 @@
                     android:textColor="@color/green"
                     android:layout_height="wrap_content"/>
                 <TextView
+                    android:id="@+id/tv_preco_antigo"
                     android:layout_width="wrap_content"
                     android:fontFamily="@font/newrepublic"
                     android:text="@string/preco_riscado"
                     android:layout_weight="0.5"
                     android:layout_height="wrap_content"/>
-
             </LinearLayout>
-
-
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:textColor="25,00"-->
-<!--                    android:text="25,00"-->
-<!--                    android:layout_weight="0.5"-->
-<!--                    android:layout_height="wrap_content"/>-->
-
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>

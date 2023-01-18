@@ -36,6 +36,7 @@ class BaseFragment(private val tabNumber : Int) : Fragment() {
         prepareRecyclerView()
         homeViewModel.categoriaLiveData.observe(viewLifecycleOwner){
             adapter.setComidasList(it[tabNumber].comidas as ArrayList<Comida>)
+            Log.i("comidaslist",it[tabNumber].comidas.toString())
         }
     }
 
