@@ -60,7 +60,6 @@ class MainActivity : AppCompatActivity() {
                         val geocoder = Geocoder(this, Locale.getDefault())
                         val list: List<Address> =
                             geocoder.getFromLocation(location.latitude, location.longitude, 1)
-
 //                        val cidade = list[0].subAdminArea.toString()
 //                        val estado = list[0].adminArea.toString()
 //                        val rua = list[0].thoroughfare.toString()

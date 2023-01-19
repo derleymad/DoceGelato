@@ -48,7 +48,6 @@ class DestaqueAdapter(
             val imageView = itemView.findViewById<ImageView>(R.id.img_comida_destaque)
             val desconto = itemView.findViewById<TextView>(R.id.tv_desconto)
 
-
             val format = NumberFormat.getCurrencyInstance(Locale("pt-br", "br"))
 
             val precoDescontado  = (comida.comida_preco)?.minus((comida.comida_desconto* comida.comida_preco!!))
@@ -65,7 +64,6 @@ class DestaqueAdapter(
             desconto.text = "${(comida.comida_desconto*100).toInt()}%"
             precoAntigo.text = itemView.context.getString(R.string.preco_riscado,format.format(comida.comida_preco))
             preco.text = itemView.context.getString(R.string.comida_destaque_preco,format.format(precoDescontado))
-
 
         }
     }
