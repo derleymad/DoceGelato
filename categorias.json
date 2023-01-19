@@ -90,7 +90,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal Bovino, Queijo Coalho, Cebola, Alface, Tomate e Molho Especial",
             "comida_preco":8.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia1"
+            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia1.jpeg"
          },
          {
             "comida_id":203,
@@ -98,7 +98,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal de Frango, Presunto Peito de Peru, Queijo Coalho, Alface, Tomate, Milho Verde e Molho Especial",
             "comida_preco":8.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia2"
+            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia2.jpeg"
          },
          {
             "comida_id":204,
@@ -106,7 +106,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal Bovino, Calabresa, Cebola, Molho Especial, Presunto Peito de Peru, Queijo Coalho, Tomate e Alface",
             "comida_preco":10.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia3"
+            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia3.jpeg"
          },
          {
             "comida_id":205,
@@ -114,7 +114,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal Bovino, Bacon, Cebola, Molho Especial, Tomate, Presunto Peito de Peru, Queijo Coalho e Alface",
             "comida_preco":10.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia4"
+            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia4.jpeg"
          },
          {
             "comida_id":206,
@@ -122,7 +122,7 @@
             "comida_desc":"Pão, Hamburguer Artesanal Bovino, Bacon, Calabresa, Ovo, Presunto Peito de Peru, Queijo Coalho, Alface, Tomate, Cebola, Milho Verde, Azeitona e Molho Especial",
             "comida_preco":12.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia5"
+            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia5.jpeg"
          },
          {
             "comida_id":207,
@@ -410,7 +410,7 @@
             "comida_desc":"Monte sua Massa, escolhendo entre os ingredientes como molho, Tempero, Tipo de Recheio",
             "comida_preco":null,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/motar/MonteSuaMassa"
+            "image":"https://derleymad.github.io/DoceGelato/images/motar/MonteSuaMassa.jpeg"
          },
          {
             "comida_id":502,
@@ -418,7 +418,7 @@
             "comida_desc":"Escolha sua Refeição, Cuzcuz ou Tapioca, Adicionando o Que Quiser Como Caldo, Carne Moída Cremosa, Misto e outros",
             "comida_preco":null,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSuaRefeiçao"
+            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSuaRefeiçao.jpeg"
          },
          {
             "comida_id":503,
@@ -426,7 +426,7 @@
             "comida_desc":"Escolha entre 9 ingredientes, como Catupiry, Queijo Fatiado, Presunto, Milho, Azeitona, Cheddar entre Outros",
             "comida_preco":null,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSeuPastel"
+            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSeuPastel.jpeg"
          }
       ],
       "image":""
