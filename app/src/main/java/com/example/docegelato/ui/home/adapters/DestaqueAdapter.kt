@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Comida
+import com.example.docegelato.util.Utils
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
+import okhttp3.internal.Util
 import java.text.Format
 import java.text.NumberFormat
 import java.util.*
@@ -48,10 +50,8 @@ class DestaqueAdapter(
             val imageView = itemView.findViewById<ImageView>(R.id.img_comida_destaque)
             val desconto = itemView.findViewById<TextView>(R.id.tv_desconto)
 
-            val format = NumberFormat.getCurrencyInstance(Locale("pt-br", "br"))
-
             val precoDescontado  = (comida.comida_preco)?.minus((comida.comida_desconto* comida.comida_preco!!))
-            format.format(precoDescontado)
+            Utils().format(precoDescontado!!)
 
             Picasso
                 .get()
@@ -63,8 +63,8 @@ class DestaqueAdapter(
 
             nome.text = comida.comida_title
             desconto.text = "${(comida.comida_desconto*100).toInt()}%"
-            precoAntigo.text = itemView.context.getString(R.string.preco_riscado,format.format(comida.comida_preco))
-            preco.text = itemView.context.getString(R.string.comida_destaque_preco,format.format(precoDescontado))
+            precoAntigo.text = itemView.context.getString(R.string.preco_riscado,Utils().format(comida.comida_preco))
+            preco.text = itemView.context.getString(R.string.comida_destaque_preco,Utils().format(precoDescontado))
 
             itemView.setOnClickListener {
                 destaqueOnClickListener?.invoke(comida.comida_id)

@@ -32,6 +32,7 @@
         tools:listitem="@layout/pedido_item" />
     <LinearLayout
         android:id="@+id/ln_bottom_finalizar"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:padding="16dp"

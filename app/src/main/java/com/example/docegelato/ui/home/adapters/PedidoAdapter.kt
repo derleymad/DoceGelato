@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Pedido
+import com.example.docegelato.util.Utils
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
@@ -44,7 +45,6 @@ class PedidoAdapter(): RecyclerView.Adapter<PedidoAdapter.ComidasViewHolder>() {
             val obs = itemView.findViewById<TextView>(R.id.tv_obs)
             val price = itemView.findViewById<TextView>(R.id.preco)
 
-            val format = NumberFormat.getCurrencyInstance(Locale("pt-br", "br"))
 
             Picasso
                 .get()
@@ -57,7 +57,7 @@ class PedidoAdapter(): RecyclerView.Adapter<PedidoAdapter.ComidasViewHolder>() {
             nome.text = pedido.comida_title
             quantity.text = pedido.quantity.toString()
             obs.text = pedido.obs
-            price.text = format.format(pedido.comida_preco)
+            price.text = Utils().format(pedido.comida_preco!!)
 
         }
     }

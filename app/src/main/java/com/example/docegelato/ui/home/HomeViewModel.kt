@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.example.docegelato.model.categorias.Categorias
 import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.model.categorias.Pedido
+import com.example.docegelato.model.categorias.Pedidos
 import com.example.docegelato.network.RetrofitInstance
-import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,20 +19,19 @@ class HomeViewModel : ViewModel() {
     private var _idLiveData = MutableLiveData<Int>()
     private var _quantityLiveData = MutableLiveData(1)
     private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>()
-    private var _listPedidoFeitoLiveData = MutableLiveData<MutableList<Pedido>>()
+    private var _listPedidoFeitoLiveData = MutableLiveData<Pedidos>()
     private var _obsLiveData = MutableLiveData<String>()
     val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
 
     init {
-        listPedidoFeitoLiveData.value = mutableListOf<Pedido>()
-
+        listPedidoFeitoLiveData.value = Pedidos(mutableListOf(),0f)
     }
+
     fun getCategorias(){
         RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias>{
             override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
                 if(response.body()!=null){
                     categoriaLiveData.value = response.body()
-                    Log.i("categoriesworking", response.body()!!.toString())
                 }else{
                     return
                 }
@@ -43,7 +42,8 @@ class HomeViewModel : ViewModel() {
         })
     }
     fun setComidaToPedidos(comida: Comida){
-        listPedidoFeitoLiveData.value?.add(
+        listPedidoFeitoLiveData.value?.preco_total = listPedidoFeitoLiveData.value?.preco_total?.plus(comida.comida_preco!!*quantityLiveData.value!!)!!
+        listPedidoFeitoLiveData.value?.pedidos?.add(
             Pedido(
                 comida_desc = comida.comida_desc,
                 comida_id = comida.comida_id,
@@ -65,7 +65,6 @@ class HomeViewModel : ViewModel() {
             ) {
                 if(response.body()!=null){
                     destaquesLiveData.value = response.body()
-                    Log.i("itsworking", response.body()!!.toString())
                 }else{
                     return
                 }

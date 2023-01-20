@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.databinding.FragmentPedidosBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
+import com.example.docegelato.util.Utils
 
 class PedidosFragment : Fragment() {
 
@@ -43,7 +44,8 @@ class PedidosFragment : Fragment() {
 
     private fun startObservers(){
         homeViewModel.listPedidoFeitoLiveData.observe(viewLifecycleOwner){
-            adapterPedidos.addPedidoToRecyclerViewList(it)
+            adapterPedidos.addPedidoToRecyclerViewList(it.pedidos)
+            binding.tvTotalPedido.text = Utils().format(it.preco_total)
         }
 
         homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner){ it ->

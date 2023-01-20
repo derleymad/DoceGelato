@@ -10,14 +10,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
-import com.example.docegelato.databinding.FragmentLanchesBinding
+import com.example.docegelato.databinding.FragmentBaseBinding
 import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.ui.home.adapters.ComidasAdapter
 import com.example.docegelato.ui.home.HomeViewModel
 
 class BaseFragment(private val tabNumber : Int) : Fragment() {
 
-    private var _binding: FragmentLanchesBinding? = null
+    private var _binding: FragmentBaseBinding? = null
     private val binding get() = _binding!!
 
     private val homeViewModel: HomeViewModel by activityViewModels()
@@ -27,7 +27,7 @@ class BaseFragment(private val tabNumber : Int) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLanchesBinding.inflate(inflater, container, false)
+        _binding = FragmentBaseBinding.inflate(inflater, container, false)
         return binding.root
     }
 
