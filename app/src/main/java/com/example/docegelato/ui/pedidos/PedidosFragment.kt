@@ -5,17 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.databinding.FragmentPedidosBinding
 import com.example.docegelato.ui.home.HomeViewModel
+import com.example.docegelato.ui.home.adapters.PedidoAdapter
 
 class PedidosFragment : Fragment() {
 
     private var _binding: FragmentPedidosBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adapterPedidos : PedidoAdapter
 
     private val homeViewModel : HomeViewModel by activityViewModels()
 
@@ -24,17 +25,36 @@ class PedidosFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val pedidosViewModel =
-            ViewModelProvider(this).get(PedidosViewModel::class.java)
-
         _binding = FragmentPedidosBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-//        val textView: TextView = binding.textNotifications
-        pedidosViewModel.text.observe(requireParentFragment().viewLifecycleOwner) {
-//            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        prepareRecyclerView()
+        startObservers()
+    }
+
+    private fun prepareRecyclerView() {
+        adapterPedidos = PedidoAdapter()
+        binding.rvPedidoFeito.adapter = adapterPedidos
+        binding.rvPedidoFeito.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun startObservers(){
+        homeViewModel.listPedidoFeitoLiveData.observe(viewLifecycleOwner){
+            adapterPedidos.addPedidoToRecyclerViewList(it)
         }
-        return root
+
+        homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner){ it ->
+            if(it){
+                binding.lnImgCenter.visibility = View.INVISIBLE
+                binding.lnBottomFinalizar.visibility = View.VISIBLE
+            }else{
+                binding.lnImgCenter.visibility = View.VISIBLE
+                binding.lnBottomFinalizar.visibility = View.INVISIBLE
+            }
+        }
     }
 
     override fun onDestroyView() {

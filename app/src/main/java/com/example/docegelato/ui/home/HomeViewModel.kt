@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.docegelato.model.categorias.Categorias
 import com.example.docegelato.model.categorias.Comida
+import com.example.docegelato.model.categorias.Pedido
 import com.example.docegelato.network.RetrofitInstance
+import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,11 +17,16 @@ class HomeViewModel : ViewModel() {
     private var _nomedaruaLiveData = MutableLiveData<String>()
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()
     private var _idLiveData = MutableLiveData<Int>()
-    private var _quantityLiveData = MutableLiveData<Int>(0)
-    private var _priceLiveData = MutableLiveData<Float>()
-    private var _actualComidaLiveData = MutableLiveData<Comida>()
+    private var _quantityLiveData = MutableLiveData(1)
+    private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>()
+    private var _listPedidoFeitoLiveData = MutableLiveData<MutableList<Pedido>>()
+    private var _obsLiveData = MutableLiveData<String>()
+    val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
 
+    init {
+        listPedidoFeitoLiveData.value = mutableListOf<Pedido>()
 
+    }
     fun getCategorias(){
         RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias>{
             override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
@@ -34,6 +41,20 @@ class HomeViewModel : ViewModel() {
                 Log.e("TAG",t.message.toString())
             }
         })
+    }
+    fun setComidaToPedidos(comida: Comida){
+        listPedidoFeitoLiveData.value?.add(
+            Pedido(
+                comida_desc = comida.comida_desc,
+                comida_id = comida.comida_id,
+                comida_preco = comida.comida_preco,
+                comida_title = comida.comida_title,
+                comida_desconto = comida.comida_desconto,
+                image = comida.image,
+                quantity = quantityLiveData.value ?: 0,
+                obs = obsLiveData.value.toString()
+            )
+        )
     }
 
     fun getDestaques() {
@@ -58,7 +79,6 @@ class HomeViewModel : ViewModel() {
         val destaquesLiveData = _destaquesLiveData
         val idLiveData = _idLiveData
         val quantityLiveData = _quantityLiveData
-        val priceLiveData = _priceLiveData
-        val actualComidaLiveData = _actualComidaLiveData
-
+        val isPedidoFeitoLiveData = _isPedidoFeitoLiveData
+        val obsLiveData = _obsLiveData
 }

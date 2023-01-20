@@ -36,7 +36,6 @@ class BaseFragment(private val tabNumber : Int) : Fragment() {
         prepareRecyclerView()
         homeViewModel.categoriaLiveData.observe(viewLifecycleOwner){
             adapter.setComidasList(it[tabNumber].comidas as ArrayList<Comida>)
-            Log.i("comidaslist",it[tabNumber].comidas.toString())
         }
     }
 
@@ -44,7 +43,6 @@ class BaseFragment(private val tabNumber : Int) : Fragment() {
         adapter = ComidasAdapter {
             findNavController().navigate(R.id.action_navigation_home_to_sacolaFragment)
             homeViewModel.idLiveData.value = it
-            Log.i("clickou", "clickou $it")
         }
         binding.rvLanches.adapter = adapter
         binding.rvLanches.layoutManager = LinearLayoutManager(requireContext())

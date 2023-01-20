@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.denzcoskun.imageslider.models.SlideModel
+import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentDestaquesBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.DestaqueAdapter
@@ -42,7 +44,10 @@ class DestaquesFragment : Fragment() {
     }
 
     fun prepareRecyclerView(){
-        destaqueAdapter = DestaqueAdapter()
+        destaqueAdapter = DestaqueAdapter{
+            homeViewModel.idLiveData.value = it
+            findNavController().navigate(R.id.action_navigation_home_to_sacolaFragment)
+        }
         binding.rvDestaques.apply {
             adapter = destaqueAdapter
             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)

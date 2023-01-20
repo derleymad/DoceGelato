@@ -3,11 +3,13 @@ package com.example.docegelato.ui.pedidos
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.docegelato.model.categorias.Pedido
 
 class PedidosViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
+    private val _text = MutableLiveData<String>().apply {}
+    private val _listaDePedidos = MutableLiveData<MutableList<Pedido>>()
+
     val text: LiveData<String> = _text
+    val listaDePedidos : LiveData<MutableList<Pedido>> = _listaDePedidos
 }
