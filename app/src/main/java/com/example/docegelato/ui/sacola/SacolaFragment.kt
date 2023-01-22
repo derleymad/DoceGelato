@@ -1,7 +1,6 @@
 package com.example.docegelato.ui.sacola
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentSacolaBinding
 import com.example.docegelato.ui.home.HomeViewModel
+import com.example.docegelato.util.Utils
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
@@ -38,15 +39,20 @@ class SacolaFragment : Fragment() {
                                 homeViewModel.obsLiveData.value = editObservacao.text.toString()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                                 homeViewModel.setComidaToPedidos(j)
-                                var snack = Snackbar.make(binding.root, "${j.comida_title} Adicionado aos pedidos", Snackbar.ANIMATION_MODE_SLIDE)
-                                snack.setAnchorView(R.id.bottom_adicionar).show()
-
+//                                var snack = Snackbar.make(binding.root, "${j.comida_title} adicionado aos pedidos", Snackbar.ANIMATION_MODE_SLIDE)
+//                                snack.setAnchorView(R.id.btn_bottom_adicionar).show()
+                                val bottomNavigationView : BottomNavigationView = activity?.findViewById(R.id.nav_view)!!
+                                Snackbar.make(bottomNavigationView, "No data available", Snackbar.LENGTH_SHORT).apply {
+                                    anchorView = bottomNavigationView
+                                }.show()
+                                val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+                                navBar.getOrCreateBadge(R.id.navigation_pedidos).number++
                             }
                             Picasso.get().load(j.image).error(R.drawable.banner).placeholder(R.drawable.banner).into(imgSacola)
                         }
                         homeViewModel.quantityLiveData.observe(viewLifecycleOwner){
                             binding.editBottomQuantity.text = homeViewModel.quantityLiveData.value.toString()
-                            binding.btnBottomAdicionar.text = "Adicionar R$ ${it.times(j.comida_preco!!)}"
+                            binding.btnBottomAdicionar.text = getString(R.string.adicionar_pedido,Utils().format(it.times(j.comida_preco!!)))
                         }
                     }else{}
                 }
@@ -57,22 +63,21 @@ class SacolaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        startOnClickListeners()
+    }
+
+    private fun startOnClickListeners(){
         binding.btnMinor.setOnClickListener {
-            var liveData = homeViewModel.quantityLiveData.value
-            if (liveData!=1){
-                homeViewModel.quantityLiveData.value = homeViewModel.quantityLiveData.value?.minus(1)
+            if (homeViewModel.quantityLiveData.value!=1){
+                homeViewModel.diminuirQuantidade()
             }
         }
-        startObserver()
         binding.btnPlus.setOnClickListener {
-            homeViewModel.quantityLiveData.value = homeViewModel.quantityLiveData.value?.plus(1)
+            homeViewModel.aumentarQuantidade()
         }
         binding.btnBackToBaseFragment.setOnClickListener {
             findNavController().popBackStack()
         }
-    }
-
-    private fun startObserver(){
     }
 
     override fun onDestroyView() {

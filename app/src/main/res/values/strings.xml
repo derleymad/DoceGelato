@@ -8,4 +8,5 @@
     <string name="comida_destaque_preco">%s</string>
     <string name="preco_riscado"><strike>%s</strike></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="adicionar_pedido">Adicionar %s</string>
 </resources>

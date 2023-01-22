@@ -20,8 +20,11 @@ class HomeViewModel : ViewModel() {
     private var _quantityLiveData = MutableLiveData(1)
     private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>()
     private var _listPedidoFeitoLiveData = MutableLiveData<Pedidos>()
+    private var _pedidoAtualLiveData = MutableLiveData<Pedidos>()
     private var _obsLiveData = MutableLiveData<String>()
     val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
+    private var _precoTotalLiveData = MutableLiveData<Float>(0f)
+    val precoTotalLiveData = _precoTotalLiveData
 
     init {
         listPedidoFeitoLiveData.value = Pedidos(mutableListOf(),0f)
@@ -41,9 +44,29 @@ class HomeViewModel : ViewModel() {
             }
         })
     }
+
+    fun removeComidaDosPedidos(pedido: Pedido){
+        // ATUALIZA O PRECO TOTAL
+        precoTotalLiveData.value = precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
+        // REMOVE O PRODUTO DO LIVEDATA
+        listPedidoFeitoLiveData.value?.pedidos?.remove(pedido)
+        if(listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true){
+            isPedidoFeitoLiveData.value = false
+        }
+    }
+
+    fun diminuirQuantidade(){
+        quantityLiveData.value = quantityLiveData.value?.minus(1)
+    }
+    fun aumentarQuantidade(){
+        quantityLiveData.value = quantityLiveData.value?.plus(1)
+    }
+
     fun setComidaToPedidos(comida: Comida){
-        listPedidoFeitoLiveData.value?.preco_total = listPedidoFeitoLiveData.value?.preco_total?.plus(comida.comida_preco!!*quantityLiveData.value!!)!!
-        listPedidoFeitoLiveData.value?.pedidos?.add(
+        listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
+        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+
+            listPedidoFeitoLiveData.value?.pedidos?.add(
             Pedido(
                 comida_desc = comida.comida_desc,
                 comida_id = comida.comida_id,

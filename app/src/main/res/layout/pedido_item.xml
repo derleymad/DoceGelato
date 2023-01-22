@@ -8,6 +8,27 @@
     android:layout_marginEnd="16dp"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <View
+        android:id="@+id/line_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray_light_even_more"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preco" />
+
+    <ImageButton
+        android:id="@+id/btn_remove_pedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="?attr/actionBarItemBackground"
+        android:src="@drawable/ic_baseline_delete_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/img_pedido"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,22 +37,24 @@
         android:src="@drawable/banner"
         android:layout_width="80dp"
         android:layout_height="80dp"/>
+
     <TextView
         android:id="@+id/tv_pedido_title"
-        app:layout_constraintStart_toEndOf="@id/img_pedido"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Massa de pizza gostosa muito mesmo"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Massa de pizza gostosa muito mesmo"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/btn_remove_pedido"
+        app:layout_constraintStart_toEndOf="@id/img_pedido"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_pedido_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_obs" />
 
@@ -40,10 +63,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textSize="12sp"
         android:maxLines="3"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_remove_pedido"
         app:layout_constraintStart_toEndOf="@id/img_pedido"
         app:layout_constraintTop_toBottomOf="@+id/tv_pedido_title"
         tools:text="@tools:sample/lorem/random" />
@@ -56,8 +78,7 @@
         android:text="R$ 16,99"
         android:textColor="@color/black"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_pedido"
         app:layout_constraintStart_toStartOf="@+id/tv_obs"
         app:layout_constraintTop_toBottomOf="@id/tv_obs" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

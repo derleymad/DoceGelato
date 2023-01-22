@@ -1,17 +1,19 @@
 package com.example.docegelato.ui.pedidos
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentPedidosBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PedidosFragment : Fragment() {
 
@@ -27,6 +29,7 @@ class PedidosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPedidosBinding.inflate(inflater, container, false)
+//        findNavController().popBackStack(R.id.sacolaFragment, true)
         return binding.root
     }
 
@@ -34,18 +37,29 @@ class PedidosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         prepareRecyclerView()
         startObservers()
+        clearBadges()
+    }
+
+    private fun clearBadges() {
+        val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
+        navBar.removeBadge(R.id.navigation_pedidos)
     }
 
     private fun prepareRecyclerView() {
-        adapterPedidos = PedidoAdapter()
+        adapterPedidos = PedidoAdapter{
+            homeViewModel.removeComidaDosPedidos(it)
+            adapterPedidos.removePedidoAndUpdateRecyclerView(it)
+        }
         binding.rvPedidoFeito.adapter = adapterPedidos
         binding.rvPedidoFeito.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun startObservers(){
+        homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner){
+            binding.tvTotalPedido.text = Utils().format(it)
+        }
         homeViewModel.listPedidoFeitoLiveData.observe(viewLifecycleOwner){
             adapterPedidos.addPedidoToRecyclerViewList(it.pedidos)
-            binding.tvTotalPedido.text = Utils().format(it.preco_total)
         }
 
         homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner){ it ->
