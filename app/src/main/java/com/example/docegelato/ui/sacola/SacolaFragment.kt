@@ -35,20 +35,19 @@ class SacolaFragment : Fragment() {
                             tvSacolaTitle.text = j.comida_title
                             tvSacolaDescricao.text = j.comida_desc
                             tvSacolaPreco.text = j.comida_preco.toString()
+                            Picasso.get().load(j.image).error(R.drawable.banner).placeholder(R.drawable.banner).into(imgSacola)
                             btnBottomAdicionar.setOnClickListener {
                                 homeViewModel.obsLiveData.value = editObservacao.text.toString()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                                 homeViewModel.setComidaToPedidos(j)
-//                                var snack = Snackbar.make(binding.root, "${j.comida_title} adicionado aos pedidos", Snackbar.ANIMATION_MODE_SLIDE)
-//                                snack.setAnchorView(R.id.btn_bottom_adicionar).show()
                                 val bottomNavigationView : BottomNavigationView = activity?.findViewById(R.id.nav_view)!!
-                                Snackbar.make(bottomNavigationView, "No data available", Snackbar.LENGTH_SHORT).apply {
+                                Snackbar.make(bottomNavigationView, "${j.comida_title} adicionado aos pedidos", Snackbar.LENGTH_SHORT).apply {
                                     anchorView = bottomNavigationView
                                 }.show()
                                 val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
                                 navBar.getOrCreateBadge(R.id.navigation_pedidos).number++
                             }
-                            Picasso.get().load(j.image).error(R.drawable.banner).placeholder(R.drawable.banner).into(imgSacola)
+
                         }
                         homeViewModel.quantityLiveData.observe(viewLifecycleOwner){
                             binding.editBottomQuantity.text = homeViewModel.quantityLiveData.value.toString()

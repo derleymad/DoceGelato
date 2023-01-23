@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
+import com.example.docegelato.ui.home.adapters.PagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment() {
@@ -40,7 +41,7 @@ class HomeFragment : Fragment() {
     private fun setupTabLayout() {
         binding.apply {
             viewPager.adapter =
-                com.example.docegelato.ui.home.adapters.PagerAdapter(requireActivity())
+                PagerAdapter(requireActivity())
             viewPager.offscreenPageLimit = 6
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = when (position) {
