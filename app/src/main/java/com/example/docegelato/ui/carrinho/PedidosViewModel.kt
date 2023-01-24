@@ -1,4 +1,4 @@
-package com.example.docegelato.ui.pedidos
+package com.example.docegelato.ui.carrinho
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

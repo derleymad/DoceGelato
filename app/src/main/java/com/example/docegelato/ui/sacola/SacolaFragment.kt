@@ -47,9 +47,8 @@ class SacolaFragment : Fragment() {
                                 }.show()
                                 findNavController().popBackStack()
                                 val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
-                                navBar.getOrCreateBadge(R.id.navigation_pedidos).number++
+                                navBar.getOrCreateBadge(R.id.navigation_carrinho).number++
                             }
-
                         }
                         homeViewModel.quantityLiveData.observe(viewLifecycleOwner){
                             binding.editBottomQuantity.text = homeViewModel.quantityLiveData.value.toString()

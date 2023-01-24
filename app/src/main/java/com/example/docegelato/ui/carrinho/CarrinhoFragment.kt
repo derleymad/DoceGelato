@@ -1,4 +1,4 @@
-package com.example.docegelato.ui.pedidos
+package com.example.docegelato.ui.carrinho
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
-import com.example.docegelato.databinding.FragmentPedidosBinding
+import com.example.docegelato.databinding.FragmentCarrinhoBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils
@@ -16,9 +16,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class PedidosFragment : Fragment() {
+class CarrinhoFragment : Fragment() {
 
-    private var _binding: FragmentPedidosBinding? = null
+    private var _binding: FragmentCarrinhoBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapterPedidos : PedidoAdapter
 
@@ -29,7 +29,7 @@ class PedidosFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPedidosBinding.inflate(inflater, container, false)
+        _binding = FragmentCarrinhoBinding.inflate(inflater, container, false)
 //        findNavController().popBackStack(R.id.sacolaFragment, true)
         return binding.root
     }
@@ -51,7 +51,7 @@ class PedidosFragment : Fragment() {
 
     private fun clearBadges() {
         val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
-        navBar.removeBadge(R.id.navigation_pedidos)
+        navBar.removeBadge(R.id.navigation_carrinho)
     }
 
     private fun prepareRecyclerView() {
