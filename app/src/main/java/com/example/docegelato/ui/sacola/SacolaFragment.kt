@@ -1,5 +1,6 @@
 package com.example.docegelato.ui.sacola
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,11 +40,12 @@ class SacolaFragment : Fragment() {
                             btnBottomAdicionar.setOnClickListener {
                                 homeViewModel.obsLiveData.value = editObservacao.text.toString()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
-                                homeViewModel.setComidaToPedidos(j)
+                                homeViewModel.setComidaToPedidos(j, homeViewModel.user.value!!,homeViewModel.address.value!!)
                                 val bottomNavigationView : BottomNavigationView = activity?.findViewById(R.id.nav_view)!!
                                 Snackbar.make(bottomNavigationView, "${j.comida_title} adicionado aos pedidos", Snackbar.LENGTH_SHORT).apply {
                                     anchorView = bottomNavigationView
                                 }.show()
+                                findNavController().popBackStack()
                                 val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
                                 navBar.getOrCreateBadge(R.id.navigation_pedidos).number++
                             }
@@ -63,6 +65,7 @@ class SacolaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startOnClickListeners()
+//        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
     }
 
     private fun startOnClickListeners(){

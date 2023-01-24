@@ -11,7 +11,6 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +22,7 @@ import com.example.docegelato.databinding.ActivityMainBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,21 +32,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeViewModel : HomeViewModel
     private val permissionId = 2
 
+    //FIREBASE
+    private lateinit var auth : FirebaseAuth
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-
         navView.setupWithNavController(navController)
-
         getLocation()
+
+        //FIREBASE
+        auth = FirebaseAuth.getInstance()
 
     }
 
@@ -59,21 +62,15 @@ class MainActivity : AppCompatActivity() {
                     if (location != null) {
                         val geocoder = Geocoder(this, Locale.getDefault())
                         val list: List<Address> =
-                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
-//                        val cidade = list[0].subAdminArea.toString()
-//                        val estado = list[0].adminArea.toString()
-//                        val rua = list[0].thoroughfare.toString()
+                            geocoder.getFromLocation(location.latitude, location.longitude, 1) as List<Address>
+                        val rua = list[0].thoroughfare.toString()
                         val adress = list[0].getAddressLine(0)
                         val cidade = list[0].subAdminArea.toString()
                         val estado = list[0].adminArea.toString()
 
+                        homeViewModel.address.value = com.example.docegelato.model.categorias.Address(bairro = adress, rua = rua , cidade = cidade,"13", ponto_referencia = "")
                         homeViewModel.nomedaruaLiveData.value = "$cidade - $estado"
 
-                        //locale PTBR
-                        //adminarea CEARA
-                        //Subadminarea CRATO
-                        //maxAdressLineIdex 0
-                        //thoroughfare Rua Radialista Donizete Sobreira
                     }
                 }
             } else {

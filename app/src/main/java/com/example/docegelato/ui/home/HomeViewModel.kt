@@ -3,10 +3,7 @@ package com.example.docegelato.ui.home
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.docegelato.model.categorias.Categorias
-import com.example.docegelato.model.categorias.Comida
-import com.example.docegelato.model.categorias.Pedido
-import com.example.docegelato.model.categorias.Pedidos
+import com.example.docegelato.model.categorias.*
 import com.example.docegelato.network.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,14 +17,16 @@ class HomeViewModel : ViewModel() {
     private var _quantityLiveData = MutableLiveData(1)
     private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>()
     private var _listPedidoFeitoLiveData = MutableLiveData<Pedidos>()
-    private var _pedidoAtualLiveData = MutableLiveData<Pedidos>()
     private var _obsLiveData = MutableLiveData<String>()
-    val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
     private var _precoTotalLiveData = MutableLiveData<Float>(0f)
+    private var _userLiveData = MutableLiveData<User>()
+    private var _addressLiveData = MutableLiveData<Address>()
+
+    val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
     val precoTotalLiveData = _precoTotalLiveData
 
     init {
-        listPedidoFeitoLiveData.value = Pedidos(mutableListOf(),0f)
+        listPedidoFeitoLiveData.value = Pedidos(mutableListOf(),null,null,0f)
     }
 
     fun getCategorias(){
@@ -62,11 +61,12 @@ class HomeViewModel : ViewModel() {
         quantityLiveData.value = quantityLiveData.value?.plus(1)
     }
 
-    fun setComidaToPedidos(comida: Comida){
-        listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
-        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
-
-            listPedidoFeitoLiveData.value?.pedidos?.add(
+    fun setComidaToPedidos(comida: Comida, user: User, address: Address){
+       listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
+       listPedidoFeitoLiveData.value?.address  = address
+       listPedidoFeitoLiveData.value?.user = user
+       precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+       listPedidoFeitoLiveData.value?.pedidos?.add(
             Pedido(
                 comida_desc = comida.comida_desc,
                 comida_id = comida.comida_id,
@@ -96,11 +96,14 @@ class HomeViewModel : ViewModel() {
             }
         })
     }
-        val nomedaruaLiveData = _nomedaruaLiveData
-        val categoriaLiveData = _categoriaLiveData
-        val destaquesLiveData = _destaquesLiveData
-        val idLiveData = _idLiveData
-        val quantityLiveData = _quantityLiveData
-        val isPedidoFeitoLiveData = _isPedidoFeitoLiveData
-        val obsLiveData = _obsLiveData
+   val nomedaruaLiveData = _nomedaruaLiveData
+   val categoriaLiveData = _categoriaLiveData
+   val destaquesLiveData = _destaquesLiveData
+   val idLiveData = _idLiveData
+   val quantityLiveData = _quantityLiveData
+   val isPedidoFeitoLiveData = _isPedidoFeitoLiveData
+   val obsLiveData = _obsLiveData
+   val user = _userLiveData
+   val address= _addressLiveData
+
 }

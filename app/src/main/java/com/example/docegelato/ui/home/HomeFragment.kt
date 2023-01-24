@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
+import com.example.docegelato.model.categorias.User
 import com.example.docegelato.ui.home.adapters.PagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
@@ -22,6 +22,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val homeViewModel : HomeViewModel by activityViewModels()
 
+    private lateinit var auth : FirebaseAuth
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -30,6 +31,36 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupTabLayout()
         homeViewModel.getCategorias()
+
+        auth = FirebaseAuth.getInstance()
+        Log.i("firebaseimg",auth.currentUser?.photoUrl.toString())
+
+        homeViewModel.user.value = User(nome = auth.currentUser?.displayName.toString(),
+            imagemPerfil = auth.currentUser?.displayName.toString(),
+            uid =auth.currentUser?.uid.toString(),
+            numero_celular = auth.currentUser?.phoneNumber.toString()
+        )
+
+        Picasso
+            .get()
+            .load(auth.currentUser?.photoUrl)
+            .into(binding.imgPerfil)
+//        val teste = auth.currentUser?.providerData?.get(0).
+//        Log.i("datafirebase",teste.toString())
+//        val database= Firebase.database
+//        myRef.addValueEventListener(object : ValueEventListener {
+//
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val value = snapshot.value
+//                Log.d("TAGvalue",value.toString())
+//                Toast.makeText(requireContext(),value.toString(),Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Toast.makeText(requireContext(),error.toString(),Toast.LENGTH_LONG).show()
+//            }
+//
+//        })
 
         //Obsevers
         homeViewModel.nomedaruaLiveData.observe(viewLifecycleOwner, Observer {

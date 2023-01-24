@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "772908591323",
+    "project_id": "docegelato-1b8e9",
+    "storage_bucket": "docegelato-1b8e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772908591323:android:3475919f6be76f5eed84fe",
+        "android_client_info": {
+          "package_name": "com.example.docegelato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772908591323-lnqtddlp3a6dc4et09aul6vg2lgrrih3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSsQd-5r-PomX4p8PEYENGnBbUfYgSKVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772908591323-lnqtddlp3a6dc4et09aul6vg2lgrrih3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

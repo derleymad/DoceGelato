@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentPedidosBinding
@@ -14,6 +13,8 @@ import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class PedidosFragment : Fragment() {
 
@@ -38,6 +39,14 @@ class PedidosFragment : Fragment() {
         prepareRecyclerView()
         startObservers()
         clearBadges()
+
+        val database= Firebase.database
+
+        binding.btnFinalizarTudo.setOnClickListener {
+            val myRef = database.getReference("pedidos")
+            val empId = myRef.push().key!!
+            myRef.child(empId).setValue(homeViewModel.listPedidoFeitoLiveData.value)
+        }
     }
 
     private fun clearBadges() {
