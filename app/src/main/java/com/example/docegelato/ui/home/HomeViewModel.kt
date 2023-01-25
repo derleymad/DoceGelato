@@ -3,8 +3,11 @@ package com.example.docegelato.ui.home
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.docegelato.R
 import com.example.docegelato.model.categorias.*
 import com.example.docegelato.network.RetrofitInstance
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,20 +22,30 @@ class HomeViewModel : ViewModel() {
     private var _listPedidoFeitoLiveData = MutableLiveData<Pedidos>()
     private var _obsLiveData = MutableLiveData<String>()
     private var _precoTotalLiveData = MutableLiveData<Float>(0f)
-    private var _userLiveData = MutableLiveData<User>()
+    var user= MutableLiveData<User>()
     private var _addressLiveData = MutableLiveData<Address>()
+    var isLoadingContent = MutableLiveData(true)
 
+    var auth : FirebaseAuth
     val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
     val precoTotalLiveData = _precoTotalLiveData
 
     init {
         listPedidoFeitoLiveData.value = Pedidos(mutableListOf(),null,null,0f)
+        auth = FirebaseAuth.getInstance()
+        user.value=User(nome = auth.currentUser?.displayName.toString(),
+            imagemPerfil = auth.currentUser?.photoUrl.toString(),
+            uid = auth.currentUser?.uid.toString(),
+            numero_celular = auth.currentUser?.phoneNumber.toString()
+        )
+        Log.i("userauth",user.value.toString())
     }
 
     fun getCategorias(){
         RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias>{
             override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
                 if(response.body()!=null){
+                    isLoadingContent.value = false
                     categoriaLiveData.value = response.body()
                 }else{
                     return
@@ -88,6 +101,7 @@ class HomeViewModel : ViewModel() {
             ) {
                 if(response.body()!=null){
                     destaquesLiveData.value = response.body()
+                    isLoadingContent.value = false
                 }else{
                     return
                 }
@@ -96,6 +110,13 @@ class HomeViewModel : ViewModel() {
             }
         })
     }
+
+
+    fun clearPedidosAndPrices() {
+        listPedidoFeitoLiveData.value?.pedidos?.clear()
+        listPedidoFeitoLiveData.value?.preco_total = 0f
+    }
+
    val nomedaruaLiveData = _nomedaruaLiveData
    val categoriaLiveData = _categoriaLiveData
    val destaquesLiveData = _destaquesLiveData
@@ -103,7 +124,6 @@ class HomeViewModel : ViewModel() {
    val quantityLiveData = _quantityLiveData
    val isPedidoFeitoLiveData = _isPedidoFeitoLiveData
    val obsLiveData = _obsLiveData
-   val user = _userLiveData
    val address= _addressLiveData
 
 }

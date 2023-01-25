@@ -11,7 +11,9 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -20,6 +22,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.docegelato.databinding.ActivityMainBinding
 import com.example.docegelato.ui.home.HomeViewModel
+import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
@@ -31,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var homeViewModel : HomeViewModel
     private val permissionId = 2
-
+    val pedidoViewModel : PedidoViewModel by viewModels()
     //FIREBASE
     private lateinit var auth : FirebaseAuth
 
@@ -48,9 +51,22 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         getLocation()
 
+        pedidoViewModel.setListenerFirebaseEvent()
+        pedidoViewModel.criarBadge.observe(this){
+            Log.i("testandobad",it.toString())
+            createOrRemoveBadge(it)
+        }
         //FIREBASE
         auth = FirebaseAuth.getInstance()
 
+    }
+    fun createOrRemoveBadge(criar: Boolean){
+        val navBar: BottomNavigationView = findViewById(R.id.nav_view)
+        when(criar){
+            true -> navBar.getOrCreateBadge(R.id.navigation_pedido).number++
+            else->navBar.removeBadge(R.id.navigation_pedido)
+
+        }
     }
 
     @SuppressLint("MissingPermission", "SetTextI18n")

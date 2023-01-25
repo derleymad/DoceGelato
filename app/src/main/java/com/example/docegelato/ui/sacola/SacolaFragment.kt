@@ -42,8 +42,8 @@ class SacolaFragment : Fragment() {
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                                 homeViewModel.setComidaToPedidos(j, homeViewModel.user.value!!,homeViewModel.address.value!!)
                                 val bottomNavigationView : BottomNavigationView = activity?.findViewById(R.id.nav_view)!!
-                                Snackbar.make(bottomNavigationView, "${j.comida_title} adicionado aos pedidos", Snackbar.LENGTH_SHORT).apply {
-                                    anchorView = bottomNavigationView
+                                Snackbar.make(binding.root, "${j.comida_title} adicionado aos pedidos", Snackbar.LENGTH_SHORT).apply {
+                                    anchorView = binding.btnBottomAdicionar
                                 }.show()
                                 findNavController().popBackStack()
                                 val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)

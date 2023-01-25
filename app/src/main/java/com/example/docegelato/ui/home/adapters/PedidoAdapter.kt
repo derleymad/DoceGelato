@@ -22,6 +22,7 @@ class PedidoAdapter(
         this.pedidoList.addAll(pedidos)
         notifyDataSetChanged()
     }
+
     fun removePedidoAndUpdateRecyclerView(pedido: Pedido){
         val index = pedidoList.indexOf(pedido)
         pedidoList.remove(pedido)
@@ -60,7 +61,7 @@ class PedidoAdapter(
                 .into(imageView);
 
             nome.text = pedido.comida_title
-            quantity.text = pedido.quantity.toString()
+            quantity.text = itemView.context.getString(R.string.quantity_pedido_x,pedido.quantity)
             obs.text = pedido.obs
             price.text = Utils().format(pedido.comida_preco!!)
 

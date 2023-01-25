@@ -58,7 +58,6 @@ class DestaqueAdapter(
                 .load("${comida.image}")
                 .error(R.drawable.banner)
                 .placeholder(R.drawable.banner)
-                .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(imageView);
 
             nome.text = comida.comida_title

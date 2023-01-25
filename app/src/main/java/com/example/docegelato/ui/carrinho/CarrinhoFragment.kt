@@ -1,6 +1,7 @@
 package com.example.docegelato.ui.carrinho
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentCarrinhoBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
+import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.example.docegelato.util.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.ktx.database
@@ -22,6 +24,7 @@ class CarrinhoFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapterPedidos : PedidoAdapter
 
+    private val pedidoViewModel : PedidoViewModel by activityViewModels ()
     private val homeViewModel : HomeViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -46,7 +49,11 @@ class CarrinhoFragment : Fragment() {
             val myRef = database.getReference("pedidos")
             val empId = myRef.push().key!!
             myRef.child(empId).setValue(homeViewModel.listPedidoFeitoLiveData.value)
+            homeViewModel.isPedidoFeitoLiveData.value = false
+            homeViewModel.clearPedidosAndPrices()
         }
+
+
     }
 
     private fun clearBadges() {
@@ -68,16 +75,19 @@ class CarrinhoFragment : Fragment() {
             binding.tvTotalPedido.text = Utils().format(it)
         }
         homeViewModel.listPedidoFeitoLiveData.observe(viewLifecycleOwner){
-            adapterPedidos.addPedidoToRecyclerViewList(it.pedidos)
+            adapterPedidos.addPedidoToRecyclerViewList(it.pedidos!!)
         }
-
         homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner){ it ->
-            if(it){
-                binding.lnImgCenter.visibility = View.INVISIBLE
-                binding.lnBottomFinalizar.visibility = View.VISIBLE
-            }else{
-                binding.lnImgCenter.visibility = View.VISIBLE
-                binding.lnBottomFinalizar.visibility = View.INVISIBLE
+            binding.apply {
+                if (it){
+                    lnImgCenter.visibility = View.INVISIBLE
+                    lnBottomFinalizar.visibility = View.VISIBLE
+                    rvPedidoFeito.visibility = View.VISIBLE
+                }else{
+                    lnImgCenter.visibility = View.VISIBLE
+                    lnBottomFinalizar.visibility = View.INVISIBLE
+                    rvPedidoFeito.visibility = View.INVISIBLE
+                }
             }
         }
     }
