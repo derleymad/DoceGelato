@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Pedido
@@ -14,6 +15,8 @@ import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 class PedidoAdapter(
+//    @LayoutRes private var layoutItem: Int? = null,
+    private var esconderBtnRemover : Boolean = false,
     private var pedidoOnClickRemoveListener: ((Pedido) -> Unit)? = null
 ): RecyclerView.Adapter<PedidoAdapter.ComidasViewHolder>() {
     private var pedidoList = mutableListOf<Pedido>()
@@ -32,6 +35,7 @@ class PedidoAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidasViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.pedido_item,parent,false)
         return ComidasViewHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: ComidasViewHolder, position: Int) {
@@ -50,25 +54,29 @@ class PedidoAdapter(
             val imageView = itemView.findViewById<ImageView>(R.id.img_pedido)
             val obs = itemView.findViewById<TextView>(R.id.tv_obs)
             val price = itemView.findViewById<TextView>(R.id.preco)
-            val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
+
+            if(esconderBtnRemover){
+                val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
+                remove.visibility = View.INVISIBLE
+
+            }else{
+                val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
+                remove.setOnClickListener {
+                    pedidoOnClickRemoveListener?.invoke(pedido)
+                }
+            }
 
             Picasso
                 .get()
                 .load("${pedido.image}")
                 .error(R.drawable.banner)
                 .placeholder(R.drawable.banner)
-                .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(imageView);
 
             nome.text = pedido.comida_title
             quantity.text = itemView.context.getString(R.string.quantity_pedido_x,pedido.quantity)
             obs.text = pedido.obs
             price.text = Utils().format(pedido.comida_preco!!)
-
-            remove.setOnClickListener {
-                pedidoOnClickRemoveListener?.invoke(pedido)
-            }
-
         }
     }
 }

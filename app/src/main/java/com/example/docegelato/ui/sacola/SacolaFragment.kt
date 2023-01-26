@@ -1,6 +1,5 @@
 package com.example.docegelato.ui.sacola
 
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +25,7 @@ class SacolaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.INVISIBLE
         // Inflate the layout for this fragment
         _binding = FragmentSacolaBinding.inflate(inflater, container, false)
         homeViewModel.idLiveData.observe(viewLifecycleOwner){ id->
@@ -38,10 +38,13 @@ class SacolaFragment : Fragment() {
                             tvSacolaPreco.text = j.comida_preco.toString()
                             Picasso.get().load(j.image).error(R.drawable.banner).placeholder(R.drawable.banner).into(imgSacola)
                             btnBottomAdicionar.setOnClickListener {
+
+                                if(homeViewModel.address.value==null){
+                                }
+
                                 homeViewModel.obsLiveData.value = editObservacao.text.toString()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                                 homeViewModel.setComidaToPedidos(j, homeViewModel.user.value!!,homeViewModel.address.value!!)
-                                val bottomNavigationView : BottomNavigationView = activity?.findViewById(R.id.nav_view)!!
                                 Snackbar.make(binding.root, "${j.comida_title} adicionado aos pedidos", Snackbar.LENGTH_SHORT).apply {
                                     anchorView = binding.btnBottomAdicionar
                                 }.show()
@@ -84,6 +87,8 @@ class SacolaFragment : Fragment() {
     override fun onDestroyView() {
         homeViewModel.obsLiveData.value = ""
         homeViewModel.quantityLiveData.value = 1
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.VISIBLE
+
         super.onDestroyView()
     }
 }

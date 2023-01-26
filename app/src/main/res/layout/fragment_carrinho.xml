@@ -22,19 +22,20 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="16dp"
         android:id="@+id/rv_pedido_feito"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/ln_bottom_finalizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_top_fixed"
         tools:listitem="@layout/pedido_item" />
+
     <LinearLayout
         android:id="@+id/ln_bottom_finalizar"
-        android:visibility="gone"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,6 +43,58 @@
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ln_cupom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/ln_bottom_finalizar">
+
+            <ImageView
+                android:id="@+id/img_cupom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_outline_discount_24"
+                app:layout_constraintBottom_toTopOf="@+id/view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/static_cupom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cupom"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/edit_cupom"
+                app:layout_constraintEnd_toEndOf="@+id/edit_cupom"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/edit_cupom" />
+
+            <EditText
+                android:id="@+id/edit_cupom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:enabled="false"
+                android:hint="Digite um código"
+                app:layout_constraintBottom_toBottomOf="@+id/img_cupom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/img_cupom"
+                app:layout_constraintTop_toTopOf="@+id/img_cupom" />
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/gray_light_even_more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="1dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -52,29 +105,32 @@
                 android:text="Total com a entrega"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:layout_marginStart="16dp"
                 android:layout_weight="0.5"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tv_total_pedido"
                 android:layout_width="match_parent"
                 android:text="R$ 16,98"
+                android:layout_marginEnd="16dp"
                 android:textStyle="bold"
                 android:layout_weight="0.5"
                 android:textColor="@color/black"
                 android:gravity="end"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <Button
             android:id="@+id/btn_finalizar_tudo"
             android:backgroundTint="@color/green_shopper"
             android:text="Finalizar pedido"
+            android:textAllCaps="false"
             android:layout_marginTop="8dp"
             android:textColor="@color/white"
             android:layout_gravity="end"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -96,14 +152,14 @@
             android:id="@+id/img_dragon"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@drawable/comer" />
+            android:src="@drawable/carrinho" />
 
         <TextView
             android:id="@+id/fixed_nenhum_pedido"
             android:layout_width="wrap_content"
             android:fontFamily="@font/newrepublic"
             android:layout_height="wrap_content"
-            android:text="Nenhum pedido feito :("
+            android:text="Nada no carrinho"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -113,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Experimente pedir alguma comida, uma pizza, coxinha ou hambúrguer, que tal?"
+            android:text="Adicione as suas comidas no carrinho para vizualiza-las aqui!"
             android:textAlignment="center" />
     </LinearLayout>
 

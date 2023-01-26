@@ -38,7 +38,6 @@ class HomeViewModel : ViewModel() {
             uid = auth.currentUser?.uid.toString(),
             numero_celular = auth.currentUser?.phoneNumber.toString()
         )
-        Log.i("userauth",user.value.toString())
     }
 
     fun getCategorias(){

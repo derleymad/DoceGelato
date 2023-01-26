@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
     //FIREBASE
     private lateinit var auth : FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -138,7 +137,11 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == permissionId) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 getLocation()
+            }else{
+                Toast.makeText(this,"A localização é necessária para o uso do aplicativo!",Toast.LENGTH_LONG).show()
             }
+        }else{
+            Toast.makeText(this,"A localização é necessária para o uso do aplicativo!",Toast.LENGTH_LONG).show()
         }
     }
 }

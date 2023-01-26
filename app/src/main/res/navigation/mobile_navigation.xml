@@ -25,7 +25,11 @@
         android:id="@+id/navigation_carrinho"
         android:name="com.example.docegelato.ui.carrinho.CarrinhoFragment"
         android:label="@string/title_pedidos"
-        tools:layout="@layout/fragment_carrinho" />
+        tools:layout="@layout/fragment_carrinho" >
+        <action
+            android:id="@+id/action_navigation_carrinho_to_navigation_pedido"
+            app:destination="@id/navigation_pedido" />
+    </fragment>
     <fragment
         android:id="@+id/sacolaFragment"
         android:name="com.example.docegelato.ui.sacola.SacolaFragment"
@@ -42,5 +46,9 @@
         android:id="@+id/navigation_pedido"
         android:name="com.example.docegelato.ui.pedido.PedidoFragment"
         android:label="fragment_pedido"
-        tools:layout="@layout/fragment_pedido" />
+        tools:layout="@layout/fragment_pedido" >
+        <action
+            android:id="@+id/action_navigation_pedido_to_navigation_carrinho"
+            app:destination="@id/navigation_carrinho" />
+    </fragment>
 </navigation>

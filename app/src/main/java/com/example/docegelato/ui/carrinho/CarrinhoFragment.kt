@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentCarrinhoBinding
@@ -42,18 +43,15 @@ class CarrinhoFragment : Fragment() {
         prepareRecyclerView()
         startObservers()
         clearBadges()
-
         val database= Firebase.database
-
         binding.btnFinalizarTudo.setOnClickListener {
-            val myRef = database.getReference("pedidos")
-            val empId = myRef.push().key!!
-            myRef.child(empId).setValue(homeViewModel.listPedidoFeitoLiveData.value)
+            val myUid = homeViewModel.auth.currentUser?.uid!!.toString()
+            val myRefUsers = database.getReference("users")
+            val empId = myRefUsers.push().key!!
+            myRefUsers.child(myUid).child(empId).setValue(homeViewModel.listPedidoFeitoLiveData.value)
             homeViewModel.isPedidoFeitoLiveData.value = false
             homeViewModel.clearPedidosAndPrices()
         }
-
-
     }
 
     private fun clearBadges() {
@@ -94,6 +92,7 @@ class CarrinhoFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+
         _binding = null
     }
 }
