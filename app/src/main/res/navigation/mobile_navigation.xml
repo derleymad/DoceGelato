@@ -12,14 +12,31 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_sacolaFragment"
-            app:destination="@id/sacolaFragment" />
+            app:destination="@id/sacolaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_carrinho"
+            app:destination="@id/navigation_carrinho" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_search"
+            app:destination="@id/navigation_search" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.example.docegelato.ui.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_carrinho"
+            app:destination="@id/navigation_carrinho" />
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_carrinho"
@@ -30,6 +47,7 @@
             android:id="@+id/action_navigation_carrinho_to_navigation_pedido"
             app:destination="@id/navigation_pedido" />
     </fragment>
+
     <fragment
         android:id="@+id/sacolaFragment"
         android:name="com.example.docegelato.ui.sacola.SacolaFragment"
@@ -42,6 +60,7 @@
             android:id="@+id/action_sacolaFragment_to_navigation_pedidos2"
             app:destination="@id/navigation_carrinho" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_pedido"
         android:name="com.example.docegelato.ui.pedido.PedidoFragment"

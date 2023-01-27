@@ -1,10 +1,11 @@
 package com.example.docegelato.ui.carrinho
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -25,7 +26,6 @@ class CarrinhoFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapterPedidos : PedidoAdapter
 
-    private val pedidoViewModel : PedidoViewModel by activityViewModels ()
     private val homeViewModel : HomeViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -34,7 +34,8 @@ class CarrinhoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCarrinhoBinding.inflate(inflater, container, false)
-//        findNavController().popBackStack(R.id.sacolaFragment, true)
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.INVISIBLE
+        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = View.INVISIBLE
         return binding.root
     }
 
@@ -42,6 +43,7 @@ class CarrinhoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         prepareRecyclerView()
         startObservers()
+        startEventClickListeners()
         clearBadges()
         val database= Firebase.database
         binding.btnFinalizarTudo.setOnClickListener {
@@ -57,6 +59,12 @@ class CarrinhoFragment : Fragment() {
     private fun clearBadges() {
         val navBar  = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
         navBar.removeBadge(R.id.navigation_carrinho)
+    }
+
+    private fun startEventClickListeners(){
+        binding.btnBackToBaseFragment.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun prepareRecyclerView() {
@@ -92,7 +100,8 @@ class CarrinhoFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.VISIBLE
+        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = if(homeViewModel.isPedidoFeitoLiveData.value==true) View.VISIBLE else View.INVISIBLE
         _binding = null
     }
 }

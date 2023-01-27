@@ -12,17 +12,21 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.docegelato.databinding.ActivityMainBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
+import com.example.docegelato.util.Utils
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +39,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeViewModel : HomeViewModel
     private val permissionId = 2
     val pedidoViewModel : PedidoViewModel by viewModels()
+
+    private val navOptions = NavOptions.Builder()
+        .setEnterAnim(R.anim.push_up_in)
+        .setExitAnim(R.anim.push_up_out)
+        .setPopEnterAnim(R.anim.push_down_in)
+        .setPopExitAnim(R.anim.push_down_out)
+        .build()
+
     //FIREBASE
     private lateinit var auth : FirebaseAuth
 
@@ -49,22 +61,29 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
         getLocation()
-
         pedidoViewModel.setListenerFirebaseEvent()
-        pedidoViewModel.criarBadge.observe(this){
-            Log.i("testandobad",it.toString())
-            createOrRemoveBadge(it)
-        }
-        //FIREBASE
+        startObservers()
         auth = FirebaseAuth.getInstance()
-
+        binding.lnCarrinhoFlutuante.setOnClickListener {
+            navController.navigate(R.id.navigation_carrinho,null,navOptions)
+        }
     }
-    fun createOrRemoveBadge(criar: Boolean){
+    private fun createOrRemoveBadge(criar: Boolean){
         val navBar: BottomNavigationView = findViewById(R.id.nav_view)
         when(criar){
             true -> navBar.getOrCreateBadge(R.id.navigation_pedido).number++
             else->navBar.removeBadge(R.id.navigation_pedido)
+        }
+    }
 
+    private fun startObservers(){
+        homeViewModel.isPedidoFeitoLiveData.observe(this){
+        }
+        homeViewModel.precoTotalLiveData.observe(this){
+            binding.totalPriceCarrinhoFlutuante.text = Utils().format(it)
+        }
+        pedidoViewModel.criarBadge.observe(this){
+            createOrRemoveBadge(it)
         }
     }
 

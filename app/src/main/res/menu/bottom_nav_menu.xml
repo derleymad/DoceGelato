@@ -12,11 +12,11 @@
         android:icon="@drawable/ic_baseline_search_24"
         android:fontFamily="@font/newrepublic"
         android:title="@string/title_search" />
-    <item
-        android:id="@+id/navigation_carrinho"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:fontFamily="@font/newrepublic"
-        android:title="@string/title_carrinho" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_carrinho"-->
+<!--        android:icon="@drawable/ic_baseline_shopping_cart_24"-->
+<!--        android:fontFamily="@font/newrepublic"-->
+<!--        android:title="@string/title_carrinho" />-->
     <item
         android:id="@+id/navigation_pedido"
         android:icon="@drawable/ic_baseline_event_note_24"

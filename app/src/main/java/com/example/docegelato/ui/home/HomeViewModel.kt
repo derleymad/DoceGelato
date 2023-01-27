@@ -18,7 +18,7 @@ class HomeViewModel : ViewModel() {
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()
     private var _idLiveData = MutableLiveData<Int>()
     private var _quantityLiveData = MutableLiveData(1)
-    private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>()
+    private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>(false)
     private var _listPedidoFeitoLiveData = MutableLiveData<Pedidos>()
     private var _obsLiveData = MutableLiveData<String>()
     private var _precoTotalLiveData = MutableLiveData<Float>(0f)

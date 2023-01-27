@@ -34,9 +34,11 @@ class LoginActivity : AppCompatActivity() {
             .requestIdToken("772908591323-4t4sqne3bkd8h9pudf1uttgj944ga712.apps.googleusercontent.com")
             .requestEmail()
             .build()
+
         googleSignInClient = GoogleSignIn.getClient(this , gso)
         if(auth.currentUser?.email!=null){
             startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
         binding.btnGoogleEntrar.setOnClickListener{
             signInGoogle()

@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
 import com.example.docegelato.model.categorias.User
 import com.example.docegelato.ui.home.adapters.PagerAdapter
 import com.example.docegelato.ui.pedido.PedidoViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
@@ -35,6 +38,7 @@ class HomeFragment : Fragment() {
         homeViewModel.getCategorias()
         Picasso.get().load(homeViewModel.user.value?.imagemPerfil.toString()).placeholder(R.drawable.placeholder).into(binding.imgPerfil)
         startObservers()
+        startEventOnClickListeners()
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -64,6 +68,15 @@ class HomeFragment : Fragment() {
 
         homeViewModel.isLoadingContent.observe(viewLifecycleOwner){
             binding.homeProgressBar.visibility = if(it)View.VISIBLE else View.INVISIBLE
+        }
+    }
+    private fun startEventOnClickListeners(){
+        binding.editSearch.setOnClickListener {
+            val item = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).menu.findItem(R.id.navigation_search)
+            NavigationUI.onNavDestinationSelected(item, findNavController())
+
+            Log.i("teste","aaaa")
+
         }
     }
 
