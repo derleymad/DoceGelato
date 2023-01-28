@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.random.Random
 
 class HomeViewModel : ViewModel() {
     private var _categoriaLiveData = MutableLiveData<Categorias>()
@@ -28,8 +29,10 @@ class HomeViewModel : ViewModel() {
     val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
     val precoTotalLiveData = _precoTotalLiveData
 
+    val setOfids = mutableSetOf<Int>()
+
     init {
-        listPedidoFeitoLiveData.value = Pedidos(mutableListOf(),null,null,0f)
+        listPedidoFeitoLiveData.value = Pedidos(mutableListOf<Pedido>(),null,null,0f)
         auth = FirebaseAuth.getInstance()
         user.value=User(nome = auth.currentUser?.displayName.toString(),
             imagemPerfil = auth.currentUser?.photoUrl.toString(),
@@ -72,14 +75,17 @@ class HomeViewModel : ViewModel() {
     }
 
     fun setComidaToPedidos(comida: Comida, user: User, address: Address){
-
-
+        //GENERATE UNIQUE ID and ADD INTO SETS
+        setOfids.add((0..1000).random())
         listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
+        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
         listPedidoFeitoLiveData.value?.address  = address
         listPedidoFeitoLiveData.value?.user = user
+
         val pedido = Pedido(
             comida_desc = comida.comida_desc,
             comida_id = comida.comida_id,
+            comida_unique_id = setOfids.last(),
             comida_preco = comida.comida_preco,
             comida_title = comida.comida_title,
             comida_desconto = comida.comida_desconto,
@@ -88,25 +94,25 @@ class HomeViewModel : ViewModel() {
             obs = obsLiveData.value.toString()
         )
 
+        listPedidoFeitoLiveData.value?.pedidos?.add(pedido)
 
-        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
-        if (listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true){
-            listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
-            return
-        }
-        for (i in listPedidoFeitoLiveData.value?.pedidos!!){
-            if(i.comida_title==pedido.comida_title){
-                if(pedido.obs.isNotEmpty()){
-                    listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
-                    return
-                }else{
-                    i.quantity += pedido.quantity
-                    return
-                }
-            }else{
-                Log.i("mesmotitulo","sem titulo inngal")
-            }
-        }
+//        if (listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true){
+//            listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
+//            return
+//        }
+//        for (i in listPedidoFeitoLiveData.value?.pedidos!!){
+//            if(i.comida_title==pedido.comida_title){
+//                if(pedido.obs.isNotEmpty()){
+//                    listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
+//                    return
+//                }else{
+//                    i.quantity += pedido.quantity
+//                    return
+//                }
+//            }else{
+//                Log.i("mesmotitulo","sem titulo inngal")
+//            }
+//        }
 
 
 

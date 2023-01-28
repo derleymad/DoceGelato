@@ -14,12 +14,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
-import com.example.docegelato.model.categorias.User
 import com.example.docegelato.ui.home.adapters.PagerAdapter
-import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
@@ -36,15 +33,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupTabLayout()
-//        homeViewModel.getCategorias()
-        Picasso.get().load(homeViewModel.user.value?.imagemPerfil.toString()).placeholder(R.drawable.placeholder).into(binding.imgPerfil)
         startObservers()
+        loadImgPerfil()
         startEventOnClickListeners()
+
         if(homeViewModel.isPedidoFeitoLiveData.value == true) {
             requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility =
                 View.VISIBLE
         }
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun loadImgPerfil(){
+        Picasso.get().load(homeViewModel.user.value?.imagemPerfil.toString()).placeholder(R.drawable.placeholder).into(binding.imgPerfil)
     }
 
     private fun setupTabLayout() {
@@ -75,13 +76,11 @@ class HomeFragment : Fragment() {
             binding.homeProgressBar.visibility = if(it)View.VISIBLE else View.INVISIBLE
         }
     }
+
     private fun startEventOnClickListeners(){
         binding.editSearch.setOnClickListener {
             val item = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).menu.findItem(R.id.navigation_search)
             NavigationUI.onNavDestinationSelected(item, findNavController())
-
-            Log.i("teste","aaaa")
-
         }
     }
 

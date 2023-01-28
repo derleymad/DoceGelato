@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -17,6 +18,7 @@ import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.example.docegelato.util.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -46,14 +48,19 @@ class CarrinhoFragment : Fragment() {
         startEventClickListeners()
         clearBadges()
         val database= Firebase.database
+
         binding.btnFinalizarTudo.setOnClickListener {
-            val myUid = homeViewModel.auth.currentUser?.uid!!.toString()
-            val myRefUsers = database.getReference("users")
-            val empId = myRefUsers.push().key!!
-            myRefUsers.child(myUid).child(empId).setValue(homeViewModel.listPedidoFeitoLiveData.value)
-            homeViewModel.isPedidoFeitoLiveData.value = false
-            homeViewModel.precoTotalLiveData.value = 0f
-            homeViewModel.clearPedidosAndPrices()
+            if(homeViewModel.listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == false){
+                val myUid = homeViewModel.auth.currentUser?.uid!!.toString()
+                val myRefUsers = database.getReference("users")
+                val empId = myRefUsers.push().key!!
+                myRefUsers.child(myUid).child(empId).setValue(homeViewModel.listPedidoFeitoLiveData.value)
+                homeViewModel.isPedidoFeitoLiveData.value = false
+                homeViewModel.precoTotalLiveData.value = 0f
+                homeViewModel.clearPedidosAndPrices()
+            }else{
+                Snackbar.make(binding.root,"Sem nada no carrinho para o pedido ser feito.",Snackbar.LENGTH_LONG).show()
+            }
         }
     }
 
