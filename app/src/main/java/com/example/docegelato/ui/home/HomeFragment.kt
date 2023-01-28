@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupTabLayout()
-        homeViewModel.getCategorias()
+//        homeViewModel.getCategorias()
         Picasso.get().load(homeViewModel.user.value?.imagemPerfil.toString()).placeholder(R.drawable.placeholder).into(binding.imgPerfil)
         startObservers()
         startEventOnClickListeners()

@@ -22,6 +22,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.docegelato.databinding.ActivityMainBinding
+import com.example.docegelato.extensions.navHomeToCarrinho
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.example.docegelato.util.Utils
@@ -38,15 +39,9 @@ class MainActivity : AppCompatActivity() {
     private val permissionId = 2
     val pedidoViewModel : PedidoViewModel by viewModels()
 
-    private val navOptions = NavOptions.Builder()
-        .setEnterAnim(R.anim.push_up_in)
-        .setExitAnim(R.anim.push_up_out)
-        .setPopEnterAnim(R.anim.push_down_in)
-        .setPopExitAnim(R.anim.push_down_out)
-        .build()
+
 
     //FIREBASE
-    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +56,12 @@ class MainActivity : AppCompatActivity() {
         getLocation()
         pedidoViewModel.setListenerFirebaseEvent()
         startObservers()
-        auth = FirebaseAuth.getInstance()
+
+        homeViewModel.getDestaques()
+        homeViewModel.getCategorias()
 
         binding.lnCarrinhoFlutuante.setOnClickListener {
-            navController.navigate(R.id.navigation_carrinho,null,navOptions)
+            navController.navHomeToCarrinho()
             binding.lnCarrinhoFlutuante.visibility = View.GONE
         }
 

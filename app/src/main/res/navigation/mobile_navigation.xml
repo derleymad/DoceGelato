@@ -12,11 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_sacolaFragment"
-            app:destination="@id/sacolaFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/sacolaFragment" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_carrinho"
             app:destination="@id/navigation_carrinho" />
