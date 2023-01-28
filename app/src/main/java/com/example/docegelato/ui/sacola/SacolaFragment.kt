@@ -25,9 +25,9 @@ class SacolaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         this.requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
-        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = View.GONE
+            requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility =
+                View.GONE
         // Inflate the layout for this fragment
         _binding = FragmentSacolaBinding.inflate(inflater, container, false)
         homeViewModel.idLiveData.observe(viewLifecycleOwner){ id->
@@ -44,7 +44,7 @@ class SacolaFragment : Fragment() {
                                 }
                                 homeViewModel.obsLiveData.value = editObservacao.text.toString()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
-                                requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = if(homeViewModel.isPedidoFeitoLiveData.value==true) View.VISIBLE else View.GONE
+
                                 homeViewModel.setComidaToPedidos(j, homeViewModel.user.value!!,homeViewModel.address.value!!)
                                 findNavController().popBackStack()
                             }
@@ -63,6 +63,7 @@ class SacolaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startOnClickListeners()
+//        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = View.GONE
 //        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
     }
 
@@ -86,6 +87,7 @@ class SacolaFragment : Fragment() {
         requireActivity()
             .findViewById<BottomNavigationView>(R.id.nav_view)
             .visibility = View.VISIBLE
+
         super.onDestroyView()
     }
 }

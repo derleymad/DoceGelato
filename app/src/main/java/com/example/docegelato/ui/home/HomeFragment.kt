@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -39,6 +40,10 @@ class HomeFragment : Fragment() {
         Picasso.get().load(homeViewModel.user.value?.imagemPerfil.toString()).placeholder(R.drawable.placeholder).into(binding.imgPerfil)
         startObservers()
         startEventOnClickListeners()
+        if(homeViewModel.isPedidoFeitoLiveData.value == true) {
+            requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility =
+                View.VISIBLE
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 

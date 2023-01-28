@@ -7,6 +7,6 @@ data class Pedido (
     val comida_title: String = "",
     val comida_desconto: Float = 0f,
     val image: String = "",
-    val quantity: Int = 0,
+    var quantity: Int = 0,
     val obs : String = "Nehuma observação"
 )

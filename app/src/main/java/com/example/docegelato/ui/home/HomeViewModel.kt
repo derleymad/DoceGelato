@@ -3,10 +3,8 @@ package com.example.docegelato.ui.home
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.docegelato.R
 import com.example.docegelato.model.categorias.*
 import com.example.docegelato.network.RetrofitInstance
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
@@ -58,9 +56,9 @@ class HomeViewModel : ViewModel() {
 
     fun removeComidaDosPedidos(pedido: Pedido){
         // ATUALIZA O PRECO TOTAL
-        precoTotalLiveData.value = precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
         // REMOVE O PRODUTO DO LIVEDATA
         listPedidoFeitoLiveData.value?.pedidos?.remove(pedido)
+        precoTotalLiveData.value = precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
         if(listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true){
             isPedidoFeitoLiveData.value = false
         }
@@ -74,22 +72,44 @@ class HomeViewModel : ViewModel() {
     }
 
     fun setComidaToPedidos(comida: Comida, user: User, address: Address){
-       listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
-       listPedidoFeitoLiveData.value?.address  = address
-       listPedidoFeitoLiveData.value?.user = user
-       precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
-       listPedidoFeitoLiveData.value?.pedidos?.add(
-            Pedido(
-                comida_desc = comida.comida_desc,
-                comida_id = comida.comida_id,
-                comida_preco = comida.comida_preco,
-                comida_title = comida.comida_title,
-                comida_desconto = comida.comida_desconto,
-                image = comida.image,
-                quantity = quantityLiveData.value ?: 0,
-                obs = obsLiveData.value.toString()
-            )
+
+
+        listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
+        listPedidoFeitoLiveData.value?.address  = address
+        listPedidoFeitoLiveData.value?.user = user
+        val pedido = Pedido(
+            comida_desc = comida.comida_desc,
+            comida_id = comida.comida_id,
+            comida_preco = comida.comida_preco,
+            comida_title = comida.comida_title,
+            comida_desconto = comida.comida_desconto,
+            image = comida.image,
+            quantity = quantityLiveData.value ?: 0,
+            obs = obsLiveData.value.toString()
         )
+
+
+        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+        if (listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true){
+            listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
+            return
+        }
+        for (i in listPedidoFeitoLiveData.value?.pedidos!!){
+            if(i.comida_title==pedido.comida_title){
+                if(pedido.obs.isNotEmpty()){
+                    listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
+                    return
+                }else{
+                    i.quantity += pedido.quantity
+                    return
+                }
+            }else{
+                Log.i("mesmotitulo","sem titulo inngal")
+            }
+        }
+
+
+
     }
 
     fun getDestaques() {

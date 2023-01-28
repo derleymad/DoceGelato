@@ -11,13 +11,11 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
@@ -64,8 +62,18 @@ class MainActivity : AppCompatActivity() {
         pedidoViewModel.setListenerFirebaseEvent()
         startObservers()
         auth = FirebaseAuth.getInstance()
+
         binding.lnCarrinhoFlutuante.setOnClickListener {
             navController.navigate(R.id.navigation_carrinho,null,navOptions)
+            binding.lnCarrinhoFlutuante.visibility = View.GONE
+        }
+
+        homeViewModel.isPedidoFeitoLiveData.observe(this){
+            if (it){
+                binding.lnCarrinhoFlutuante.visibility = View.VISIBLE
+            }else{
+                binding.lnCarrinhoFlutuante.visibility = View.GONE
+            }
         }
     }
     private fun createOrRemoveBadge(criar: Boolean){

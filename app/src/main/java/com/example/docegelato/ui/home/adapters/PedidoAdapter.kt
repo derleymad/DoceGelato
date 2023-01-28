@@ -62,6 +62,7 @@ class PedidoAdapter(
             }else{
                 val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
                 remove.setOnClickListener {
+                    it.isEnabled =false
                     pedidoOnClickRemoveListener?.invoke(pedido)
                 }
             }

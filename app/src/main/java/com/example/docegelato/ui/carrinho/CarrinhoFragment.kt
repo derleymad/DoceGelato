@@ -34,8 +34,8 @@ class CarrinhoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCarrinhoBinding.inflate(inflater, container, false)
-        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.INVISIBLE
-        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = View.INVISIBLE
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+//        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = View.GONE
         return binding.root
     }
 
@@ -52,6 +52,7 @@ class CarrinhoFragment : Fragment() {
             val empId = myRefUsers.push().key!!
             myRefUsers.child(myUid).child(empId).setValue(homeViewModel.listPedidoFeitoLiveData.value)
             homeViewModel.isPedidoFeitoLiveData.value = false
+            homeViewModel.precoTotalLiveData.value = 0f
             homeViewModel.clearPedidosAndPrices()
         }
     }
@@ -69,8 +70,8 @@ class CarrinhoFragment : Fragment() {
 
     private fun prepareRecyclerView() {
         adapterPedidos = PedidoAdapter{
-            homeViewModel.removeComidaDosPedidos(it)
             adapterPedidos.removePedidoAndUpdateRecyclerView(it)
+            homeViewModel.removeComidaDosPedidos(it)
         }
         binding.rvPedidoFeito.adapter = adapterPedidos
         binding.rvPedidoFeito.layoutManager = LinearLayoutManager(requireContext())
@@ -101,7 +102,7 @@ class CarrinhoFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.VISIBLE
-        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = if(homeViewModel.isPedidoFeitoLiveData.value==true) View.VISIBLE else View.INVISIBLE
+//        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = if(homeViewModel.isPedidoFeitoLiveData.value==true) View.VISIBLE else View.GONE
         _binding = null
     }
 }

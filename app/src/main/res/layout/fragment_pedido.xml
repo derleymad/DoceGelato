@@ -35,7 +35,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/pedido_feito_item"
         app:layout_constraintTop_toBottomOf="@id/tv_static_pedidos"
-        android:layout_marginBottom="?attr/actionBarSize"
         android:layout_height="0dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
