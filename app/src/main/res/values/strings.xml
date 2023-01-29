@@ -21,4 +21,25 @@
     <string name="title_carrinho">Carrinho</string>
     <string name="quantity_pedido_x">x %d</string>
     <string name="admin"><b>Admin</b>\nSessão para administradores</string>
+    <string name="digite_um_c_digo">Digite um código</string>
+    <string name="cupom">Cupom</string>
+    <string name="total_com_a_entrega">Total com a entrega</string>
+    <string name="finalizar_pedido">Finalizar pedido</string>
+    <string name="nada_no_carrinho">Nada no carrinho</string>
+    <string name="adicione_as_suas_comidas_no_carrinho_para_vizualiza_las_aqui">Adicione as suas comidas no carrinho para vizualiza-las aqui!</string>
+    <string name="economia">economia:</string>
+    <string name="_50">50%</string>
+    <string name="coxinhas_de_cuz_cuz">Coxinhas de Cuz Cuz</string>
+    <string name="uma_imagem_da_comida_destaque">Uma imagem da comida destaque</string>
+    <string name="um_banner_de_comida">Um banner de comida</string>
+    <string name="destaques">Destaques</string>
+    <string name="massa_de_pizza_gostosa_muito_mesmo">Massa de pizza gostosa muito mesmo</string>
+    <string name="r_16_99">R$ 16,99</string>
+    <string name="imagem_da_comida">Imagem da comida</string>
+    <string name="alguma_observa_o">Alguma observação?</string>
+    <string name="_1">1</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc">Ex: tirar a cebola... mais maionese, sem catupiry, etc...</string>
+    <string name="bife_de_carne_ovo_arroz_branco_farofa_pur_de_batatas_feij_o_mulatino_e_tudo_o_que_h_de_melhor">Bife de carne, Ovo, Arroz, Branco, Farofa, Puré de batatas, Feijão Mulatino, e tudo o que há de melhor</string>
+    <string name="bife_a_cavalo">Bife A Cavalo</string>
 </resources>

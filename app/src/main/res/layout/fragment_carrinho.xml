@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/nunito"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="16sp"
@@ -81,8 +82,9 @@
                 android:id="@+id/static_cupom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cupom"
+                android:text="@string/cupom"
                 android:textColor="@color/black"
+                android:fontFamily="@font/nunito"
                 app:layout_constraintBottom_toTopOf="@+id/edit_cupom"
                 app:layout_constraintEnd_toEndOf="@+id/edit_cupom"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -95,7 +97,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:enabled="false"
-                android:hint="Digite um código"
+                android:hint="@string/digite_um_c_digo"
+                android:fontFamily="@font/nunito"
                 app:layout_constraintBottom_toBottomOf="@+id/img_cupom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -118,10 +121,11 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="match_parent"
-                android:text="Total com a entrega"
+                android:text="@string/total_com_a_entrega"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginStart="16dp"
+                android:fontFamily="@font/nunito"
                 android:layout_weight="0.5"
                 android:textSize="13sp"
                 android:layout_height="wrap_content"/>
@@ -133,6 +137,7 @@
                 android:textStyle="bold"
                 android:layout_weight="0.5"
                 android:textColor="@color/black"
+                android:fontFamily="@font/nunito"
                 android:gravity="end"
                 android:textSize="13sp"
                 android:layout_height="wrap_content"/>
@@ -140,11 +145,12 @@
         <Button
             android:id="@+id/btn_finalizar_tudo"
             android:backgroundTint="@color/green_shopper"
-            android:text="Finalizar pedido"
+            android:text="@string/finalizar_pedido"
             android:textAllCaps="false"
             android:layout_marginTop="8dp"
             android:textColor="@color/white"
             android:layout_gravity="end"
+            android:fontFamily="@font/nunito"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_width="match_parent"
@@ -173,9 +179,9 @@
         <TextView
             android:id="@+id/fixed_nenhum_pedido"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/newrepublic"
+            android:fontFamily="@font/nunito"
             android:layout_height="wrap_content"
-            android:text="Nada no carrinho"
+            android:text="@string/nada_no_carrinho"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -184,8 +190,9 @@
             android:id="@+id/fixed_bottom_pedidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="8dp"
-            android:text="Adicione as suas comidas no carrinho para vizualiza-las aqui!"
+            android:text="@string/adicione_as_suas_comidas_no_carrinho_para_vizualiza_las_aqui"
             android:textAlignment="center" />
     </LinearLayout>
 

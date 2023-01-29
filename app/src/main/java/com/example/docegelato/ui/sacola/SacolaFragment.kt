@@ -25,7 +25,8 @@ class SacolaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        this.requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+//        this.requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+        homeViewModel.hideNavBar.value = true
             requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility =
                 View.GONE
         // Inflate the layout for this fragment
@@ -37,7 +38,7 @@ class SacolaFragment : Fragment() {
                         binding.apply {
                             tvSacolaTitle.text = j.comida_title
                             tvSacolaDescricao.text = j.comida_desc
-                            tvSacolaPreco.text = j.comida_preco.toString()
+                            tvSacolaPreco.text = Utils().format(j.comida_preco!!)
                             Picasso.get().load(j.image).error(R.drawable.banner).placeholder(R.drawable.banner).into(imgSacola)
                             btnBottomAdicionar.setOnClickListener {
                                 if(homeViewModel.address.value==null){
@@ -84,10 +85,7 @@ class SacolaFragment : Fragment() {
     override fun onDestroyView() {
         homeViewModel.obsLiveData.value = ""
         homeViewModel.quantityLiveData.value = 1
-        requireActivity()
-            .findViewById<BottomNavigationView>(R.id.nav_view)
-            .visibility = View.VISIBLE
-
+        homeViewModel.hideNavBar.value = false
         super.onDestroyView()
     }
 }

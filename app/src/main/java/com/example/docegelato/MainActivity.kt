@@ -11,16 +11,19 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.transition.Fade
+import androidx.transition.Slide
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
 import com.example.docegelato.databinding.ActivityMainBinding
 import com.example.docegelato.extensions.navHomeToCarrinho
 import com.example.docegelato.ui.home.HomeViewModel
@@ -28,8 +31,9 @@ import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.example.docegelato.util.Utils
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.firebase.auth.FirebaseAuth
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,13 +49,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
         navView.setupWithNavController(navController)
         getLocation()
         pedidoViewModel.setListenerFirebaseEvent()
@@ -66,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         homeViewModel.isPedidoFeitoLiveData.observe(this){
+            toggleCarrinhoFlutuante(it)
             if (it){
                 binding.lnCarrinhoFlutuante.visibility = View.VISIBLE
             }else{
@@ -83,7 +88,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun startObservers(){
         homeViewModel.hideNavBar.observe(this){
-            binding.navView.visibility = if(it) View.GONE else View.VISIBLE
+//            binding.navView.visibility = if(it) View.GONE else View.VISIBLE
+            toggle(it)
         }
 
         homeViewModel.precoTotalLiveData.observe(this){
@@ -130,6 +136,26 @@ class MainActivity : AppCompatActivity() {
             LocationManager.NETWORK_PROVIDER
         )
     }
+
+
+    private fun toggle(it:Boolean) {
+        val transition: Transition = Slide(Gravity.BOTTOM)
+        transition.setDuration(600)
+        transition.addTarget(binding.navView)
+        TransitionManager.beginDelayedTransition(binding.root, transition)
+        binding.navView.setVisibility(if (it) View.GONE else View.VISIBLE)
+    }
+    private fun toggleCarrinhoFlutuante(it:Boolean) {
+        val transition: Transition = Slide(Gravity.BOTTOM)
+        transition.setDuration(600)
+        transition.addTarget(binding.navView)
+        TransitionManager.beginDelayedTransition(binding.root, transition)
+        binding.lnCarrinhoFlutuante.setVisibility(if (it) View.GONE else View.VISIBLE)
+    }
+
+
+
+
     private fun checkPermissions(): Boolean {
         if (ActivityCompat.checkSelfPermission(
                 this,

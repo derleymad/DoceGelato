@@ -3,10 +3,12 @@ package com.example.docegelato
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.fragment.app.activityViewModels
 import com.example.docegelato.databinding.ActivityLoginBinding
 import com.example.docegelato.ui.home.HomeViewModel
@@ -28,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var btnText = binding.btnGoogleEntrar.getChildAt(0) as TextView
+        btnText.text = "Fazer login com a conta do google"
 
         auth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

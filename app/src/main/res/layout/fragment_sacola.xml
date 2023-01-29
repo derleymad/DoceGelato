@@ -39,8 +39,9 @@
             app:layout_constraintTop_toBottomOf="@id/img_sacola"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Açaí P"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_marginTop="24dp"
+            android:fontFamily="@font/nunito"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
@@ -52,8 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/newrepublic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +65,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_sacola_descricao"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="R$ 12,00"
+            android:fontFamily="@font/nunito"
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
@@ -85,13 +87,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:drawableStart="@drawable/ic_baseline_textsms_24"
+            android:fontFamily="@font/nunito"
             android:textSize="16sp"
             android:drawablePadding="8dp"
-            android:text="Alguma observação?"
-            android:textStyle="bold"
+            android:text="@string/alguma_observa_o"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:drawableStartCompat="@drawable/ic_baseline_textsms_24" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -116,11 +118,13 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="-16dp"
                 android:paddingTop="16dp"
+
                 android:background="@drawable/input_rounded"
+                android:fontFamily="@font/nunito"
                 android:paddingBottom="16dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:hint="Ex: tirar a cebola... mais maionese, sem catupiry, etc..."
+                android:hint="@string/ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc"
                 android:textSize="16sp"
                 android:maxLines="4"
                 android:maxLength="150"
@@ -151,7 +155,8 @@
                 android:id="@+id/edit_bottom_quantity"
                 android:layout_width="50dp"
                 android:layout_marginStart="8dp"
-                android:text="1"
+                android:text="@string/_1"
+                android:fontFamily="@font/nunito"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/input_rounded"
                 android:textAlignment="center"
@@ -166,12 +171,13 @@
             <Button
                 android:id="@+id/btn_bottom_adicionar"
                 android:layout_weight="0.6"
-                android:text="Adicionar"
+                android:text="@string/adicionar"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/green_shopper"
+                android:fontFamily="@font/nunito"
                 android:textAllCaps="false"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,7 +36,7 @@ class CarrinhoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCarrinhoBinding.inflate(inflater, container, false)
-        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+        homeViewModel.hideNavBar.value = true
 //        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = View.GONE
         return binding.root
     }
@@ -108,7 +108,7 @@ class CarrinhoFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.VISIBLE
+        homeViewModel.hideNavBar.value = false
 //        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = if(homeViewModel.isPedidoFeitoLiveData.value==true) View.VISIBLE else View.GONE
         _binding = null
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/cardview_main_destaque"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +24,7 @@
                     android:id="@+id/img_comida_destaque"
                     android:layout_width="match_parent"
                     android:src="@mipmap/ic_launcher"
+                    android:contentDescription="@string/uma_imagem_da_comida_destaque"
                     android:scaleType="centerCrop"
                     android:layout_height="match_parent"/>
                 <androidx.cardview.widget.CardView
@@ -44,14 +46,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@null"
-                            android:text="economia:"
-                            android:textSize="8sp"
+                            android:fontFamily="@font/nunito"
+                            android:text="@string/economia"
+                            android:textSize="12sp"
                             android:textColor="@color/white" />
 
                         <TextView
                             android:id="@+id/tv_desconto"
-                            android:text="50%"
+                            android:text="@string/_50"
                             android:textSize="16sp"
+                            android:fontFamily="@font/nunito"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
@@ -65,8 +69,8 @@
                 android:id="@+id/tv_title_comida_destaque"
                 android:layout_width="match_parent"
                 android:ellipsize="end"
-                android:fontFamily="@font/newrepublic"
-                android:text="Coxinhas de Cuz Cuz"
+                android:fontFamily="@font/nunito"
+                android:text="@string/coxinhas_de_cuz_cuz"
                 android:textColor="@color/black"
                 android:textAlignment="center"
                 android:gravity="center"
@@ -84,16 +88,17 @@
                     android:layout_width="wrap_content"
                     android:text="@string/comida_destaque_preco"
                     android:maxLines="1"
-                    android:fontFamily="@font/newrepublic"
+                    android:fontFamily="@font/nunito"
                     android:ellipsize="end"
                     android:layout_weight="0.5"
                     android:textAlignment="center"
                     android:textColor="@color/green"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    tools:ignore="NestedWeights" />
                 <TextView
                     android:id="@+id/tv_preco_antigo"
                     android:layout_width="wrap_content"
-                    android:fontFamily="@font/newrepublic"
+                    android:fontFamily="@font/nunito"
                     android:text="@string/preco_riscado"
                     android:layout_weight="0.5"
                     android:layout_height="wrap_content"/>
