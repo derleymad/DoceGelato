@@ -12,6 +12,7 @@ import retrofit2.Response
 import kotlin.random.Random
 
 class HomeViewModel : ViewModel() {
+    val hideNavBar = MutableLiveData<Boolean>(false)
     private var _categoriaLiveData = MutableLiveData<Categorias>()
     private var _nomedaruaLiveData = MutableLiveData<String>()
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()

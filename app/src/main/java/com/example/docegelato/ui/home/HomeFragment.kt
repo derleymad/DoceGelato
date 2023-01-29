@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
+import com.example.docegelato.extensions.navHomeToPerfil
 import com.example.docegelato.ui.home.adapters.PagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
@@ -36,6 +37,12 @@ class HomeFragment : Fragment() {
         startObservers()
         loadImgPerfil()
         startEventOnClickListeners()
+
+
+        binding.imgPerfil.setOnClickListener{
+            it.isEnabled = false
+            findNavController().navHomeToPerfil()
+        }
 
         if(homeViewModel.isPedidoFeitoLiveData.value == true) {
             requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility =

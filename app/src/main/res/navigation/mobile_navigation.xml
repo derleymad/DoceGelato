@@ -66,4 +66,9 @@
             android:id="@+id/action_navigation_pedido_to_navigation_carrinho"
             app:destination="@id/navigation_carrinho" />
     </fragment>
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.docegelato.ui.perfil.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>

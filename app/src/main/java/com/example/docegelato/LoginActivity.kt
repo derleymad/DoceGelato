@@ -39,6 +39,8 @@ class LoginActivity : AppCompatActivity() {
         if(auth.currentUser?.email!=null){
             startActivity(Intent(this,MainActivity::class.java))
             finish()
+        }else{
+            googleSignInClient.signOut()
         }
         binding.btnGoogleEntrar.setOnClickListener{
             signInGoogle()

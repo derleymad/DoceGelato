@@ -82,8 +82,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startObservers(){
-        homeViewModel.isPedidoFeitoLiveData.observe(this){
+        homeViewModel.hideNavBar.observe(this){
+            binding.navView.visibility = if(it) View.GONE else View.VISIBLE
         }
+
         homeViewModel.precoTotalLiveData.observe(this){
             binding.totalPriceCarrinhoFlutuante.text = Utils().format(it)
         }

@@ -20,4 +20,5 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_carrinho">Carrinho</string>
     <string name="quantity_pedido_x">x %d</string>
+    <string name="admin"><b>Admin</b>\nSessão para administradores</string>
 </resources>
