@@ -37,7 +37,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/banner"
         android:layout_width="80dp"
-        android:layout_height="80dp"/>
+        android:layout_height="80dp" />
 
     <TextView
         android:id="@+id/tv_pedido_title"

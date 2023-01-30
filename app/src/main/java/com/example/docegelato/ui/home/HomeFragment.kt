@@ -2,7 +2,6 @@ package com.example.docegelato.ui.home
 
 import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,10 +23,14 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val homeViewModel : HomeViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,20 +42,21 @@ class HomeFragment : Fragment() {
         startEventOnClickListeners()
 
 
-        binding.imgPerfil.setOnClickListener{
+        binding.imgPerfil.setOnClickListener {
             it.isEnabled = false
             findNavController().navHomeToPerfil()
         }
 
-        if(homeViewModel.isPedidoFeitoLiveData.value == true) {
+        if (homeViewModel.isPedidoFeitoLiveData.value == true) {
             requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility =
                 View.VISIBLE
         }
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun loadImgPerfil(){
-        Picasso.get().load(homeViewModel.user.value?.imagemPerfil.toString()).placeholder(R.drawable.placeholder).into(binding.imgPerfil)
+    private fun loadImgPerfil() {
+        Picasso.get().load(homeViewModel.user.value?.imagemPerfil.toString())
+            .placeholder(R.drawable.placeholder).into(binding.imgPerfil)
     }
 
     private fun setupTabLayout() {
@@ -74,19 +78,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun startObservers(){
+    private fun startObservers() {
         homeViewModel.nomedaruaLiveData.observe(viewLifecycleOwner, Observer {
             binding.btnExpandmore.text = it
         })
 
-        homeViewModel.isLoadingContent.observe(viewLifecycleOwner){
-            binding.homeProgressBar.visibility = if(it)View.VISIBLE else View.INVISIBLE
+        homeViewModel.isLoadingContent.observe(viewLifecycleOwner) {
+            binding.homeProgressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE
         }
     }
 
-    private fun startEventOnClickListeners(){
+    private fun startEventOnClickListeners() {
         binding.editSearch.setOnClickListener {
-            val item = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).menu.findItem(R.id.navigation_search)
+            val item =
+                requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).menu.findItem(R.id.navigation_search)
             NavigationUI.onNavDestinationSelected(item, findNavController())
         }
     }

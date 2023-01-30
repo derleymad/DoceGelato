@@ -11,21 +11,20 @@ import com.example.docegelato.model.categorias.Comida
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ComidasAdapter(
     private var comidaOnClickListener: ((Int) -> Unit)? = null
-): RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
+) : RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
 
     private var comidasList = ArrayList<Comida>()
 
-    fun setComidasList(comidasList: ArrayList<Comida>){
-        this.comidasList= comidasList
+    fun setComidasList(comidasList: ArrayList<Comida>) {
+        this.comidasList = comidasList
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidasViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.comida_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.comida_item, parent, false)
         return ComidasViewHolder(view)
     }
 
@@ -38,8 +37,8 @@ class ComidasAdapter(
         return comidasList.size
     }
 
-    inner class ComidasViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bind(comida : Comida){
+    inner class ComidasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(comida: Comida) {
             val nome = itemView.findViewById<TextView>(R.id.nome)
             val preco = itemView.findViewById<TextView>(R.id.preco)
             val desc = itemView.findViewById<TextView>(R.id.descricao)
@@ -55,7 +54,8 @@ class ComidasAdapter(
 
             nome.text = comida.comida_title
             desc.text = comida.comida_desc
-            preco.text =  if(comida.comida_preco!=null) format.format(comida.comida_preco ) else "Preço por tamanho ou porção"
+            preco.text =
+                if (comida.comida_preco != null) format.format(comida.comida_preco) else "Preço por tamanho ou porção"
 
             itemView.setOnClickListener {
                 comidaOnClickListener?.invoke(comida.comida_id)

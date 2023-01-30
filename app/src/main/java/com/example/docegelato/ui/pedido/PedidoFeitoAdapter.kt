@@ -1,31 +1,29 @@
 package com.example.docegelato.ui.pedido
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Pedidos
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
-import kotlin.collections.ArrayList
 
 class PedidoFeitoAdapter(
     private var comidaOnClickListener: ((Int) -> Unit)? = null
-): RecyclerView.Adapter<PedidoFeitoAdapter.PedidoFeitoViewHolder>() {
+) : RecyclerView.Adapter<PedidoFeitoAdapter.PedidoFeitoViewHolder>() {
 
     private var pedidoFeitoList = ArrayList<Pedidos>()
 
-    fun setPedidoFeitoList(pedidoFeitoList: ArrayList<Pedidos>){
-        this.pedidoFeitoList=pedidoFeitoList
+    fun setPedidoFeitoList(pedidoFeitoList: ArrayList<Pedidos>) {
+        this.pedidoFeitoList = pedidoFeitoList
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidoFeitoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.pedido_feito_item_cliente,parent,false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.pedido_feito_item_cliente, parent, false)
         return PedidoFeitoViewHolder(view)
     }
 
@@ -38,8 +36,8 @@ class PedidoFeitoAdapter(
         return pedidoFeitoList.size
     }
 
-    inner class PedidoFeitoViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bind(pedidos: Pedidos){
+    inner class PedidoFeitoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(pedidos: Pedidos) {
 //            val nomePessoa = itemView.findViewById<TextView>(R.id.tv_pedido_feito_nome_pessoa)
             val precoTotal = itemView.findViewById<TextView>(R.id.tv_total_pedido)
             val addressRua = itemView.findViewById<TextView>(R.id.tv_address_rua)

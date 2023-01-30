@@ -11,5 +11,5 @@ class PedidosViewModel : ViewModel() {
     private val _listaDePedidos = MutableLiveData<MutableList<Pedido>>()
 
     val text: LiveData<String> = _text
-    val listaDePedidos : LiveData<MutableList<Pedido>> = _listaDePedidos
+    val listaDePedidos: LiveData<MutableList<Pedido>> = _listaDePedidos
 }

@@ -13,5 +13,5 @@ class SearchViewModel : ViewModel() {
         value = "Outro"
     }
     val text: LiveData<String> = _text
-    val outro: LiveData<String> =  _outro
+    val outro: LiveData<String> = _outro
 }

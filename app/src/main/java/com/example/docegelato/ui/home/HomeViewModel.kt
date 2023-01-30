@@ -9,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.random.Random
 
 class HomeViewModel : ViewModel() {
     val hideNavBar = MutableLiveData<Boolean>(false)
@@ -23,65 +22,76 @@ class HomeViewModel : ViewModel() {
     private var _listPedidoFeitoLiveData = MutableLiveData<Pedidos>()
     private var _obsLiveData = MutableLiveData<String>()
     private var _precoTotalLiveData = MutableLiveData<Float>(0f)
-    var user= MutableLiveData<User>()
+    var user = MutableLiveData<User>()
     private var _addressLiveData = MutableLiveData<Address>()
     var isLoadingContent = MutableLiveData(true)
 
-    var auth : FirebaseAuth
+    var auth: FirebaseAuth
     val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
     val precoTotalLiveData = _precoTotalLiveData
 
     val setOfids = mutableSetOf<Int>()
 
     init {
-        listPedidoFeitoLiveData.value = Pedidos(mutableListOf<Pedido>(),null,null,0f)
+        listPedidoFeitoLiveData.value = Pedidos(mutableListOf<Pedido>(), null, null, 0f)
         auth = FirebaseAuth.getInstance()
-        user.value=User(nome = auth.currentUser?.displayName.toString(),
+        user.value = User(
+            nome = auth.currentUser?.displayName.toString(),
             imagemPerfil = auth.currentUser?.photoUrl.toString(),
             uid = auth.currentUser?.uid.toString(),
             numero_celular = auth.currentUser?.phoneNumber.toString()
         )
     }
 
-    fun getCategorias(){
-        RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias>{
+    fun checkSeTemPedidoParaEsconderOuMostarCarrinhoFlutuante() {
+        hideCarrinhoFlutuante.value = !isPedidoFeitoLiveData.value!!
+    }
+
+
+    fun getCategorias() {
+        RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias> {
             override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
-                if(response.body()!=null){
+                if (response.body() != null) {
                     isLoadingContent.value = false
                     categoriaLiveData.value = response.body()
-                }else{
+                } else {
                     return
                 }
             }
+
             override fun onFailure(call: Call<Categorias>, t: Throwable) {
-                Log.e("TAG",t.message.toString())
+                Log.e("TAG", t.message.toString())
             }
         })
     }
 
-    fun removeComidaDosPedidos(pedido: Pedido){
+    fun removeComidaDosPedidos(pedido: Pedido) {
         // ATUALIZA O PRECO TOTAL
         // REMOVE O PRODUTO DO LIVEDATA
         listPedidoFeitoLiveData.value?.pedidos?.remove(pedido)
-        precoTotalLiveData.value = precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
-        if(listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true){
+        precoTotalLiveData.value =
+            precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
+        if (listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true) {
             isPedidoFeitoLiveData.value = false
         }
     }
 
-    fun diminuirQuantidade(){
+    fun diminuirQuantidade() {
         quantityLiveData.value = quantityLiveData.value?.minus(1)
     }
-    fun aumentarQuantidade(){
+
+    fun aumentarQuantidade() {
         quantityLiveData.value = quantityLiveData.value?.plus(1)
     }
 
-    fun setComidaToPedidos(comida: Comida, user: User, address: Address){
+    fun setComidaToPedidos(comida: Comida, user: User, address: Address) {
         //GENERATE UNIQUE ID and ADD INTO SETS
         setOfids.add((0..1000).random())
-        listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
-        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
-        listPedidoFeitoLiveData.value?.address  = address
+        listPedidoFeitoLiveData.value?.preco_total =
+            quantityLiveData.value?.times(comida.comida_preco!!)!!
+        precoTotalLiveData.value =
+            precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+        listPedidoFeitoLiveData.value?.address = address
         listPedidoFeitoLiveData.value?.user = user
 
         val pedido = Pedido(
@@ -117,7 +127,6 @@ class HomeViewModel : ViewModel() {
 //        }
 
 
-
     }
 
     fun getDestaques() {
@@ -126,13 +135,14 @@ class HomeViewModel : ViewModel() {
                 call: Call<ArrayList<Comida>>,
                 response: Response<ArrayList<Comida>>
             ) {
-                if(response.body()!=null){
+                if (response.body() != null) {
                     destaquesLiveData.value = response.body()
                     isLoadingContent.value = false
-                }else{
+                } else {
                     return
                 }
             }
+
             override fun onFailure(call: Call<ArrayList<Comida>>, t: Throwable) {
             }
         })
@@ -144,13 +154,13 @@ class HomeViewModel : ViewModel() {
         listPedidoFeitoLiveData.value?.preco_total = 0f
     }
 
-   val nomedaruaLiveData = _nomedaruaLiveData
-   val categoriaLiveData = _categoriaLiveData
-   val destaquesLiveData = _destaquesLiveData
-   val idLiveData = _idLiveData
-   val quantityLiveData = _quantityLiveData
-   val isPedidoFeitoLiveData = _isPedidoFeitoLiveData
-   val obsLiveData = _obsLiveData
-   val address= _addressLiveData
+    val nomedaruaLiveData = _nomedaruaLiveData
+    val categoriaLiveData = _categoriaLiveData
+    val destaquesLiveData = _destaquesLiveData
+    val idLiveData = _idLiveData
+    val quantityLiveData = _quantityLiveData
+    val isPedidoFeitoLiveData = _isPedidoFeitoLiveData
+    val obsLiveData = _obsLiveData
+    val address = _addressLiveData
 
 }

@@ -20,7 +20,6 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.transition.Fade
 import androidx.transition.Slide
 import androidx.transition.Transition
 import androidx.transition.TransitionManager
@@ -39,11 +38,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
-    private lateinit var homeViewModel : HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
     private val permissionId = 2
-    val pedidoViewModel : PedidoViewModel by viewModels()
-
-
+    val pedidoViewModel: PedidoViewModel by viewModels()
 
     //FIREBASE
 
@@ -56,10 +53,10 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
+        startObservers()
         navView.setupWithNavController(navController)
         getLocation()
         pedidoViewModel.setListenerFirebaseEvent()
-        startObservers()
 
         homeViewModel.getDestaques()
         homeViewModel.getCategorias()
@@ -68,35 +65,28 @@ class MainActivity : AppCompatActivity() {
             navController.navHomeToCarrinho()
             binding.lnCarrinhoFlutuante.visibility = View.GONE
         }
-
-        homeViewModel.isPedidoFeitoLiveData.observe(this){
-            toggleCarrinhoFlutuante(it)
-            if (it){
-                binding.lnCarrinhoFlutuante.visibility = View.VISIBLE
-            }else{
-                binding.lnCarrinhoFlutuante.visibility = View.GONE
-            }
-        }
     }
-    private fun createOrRemoveBadge(criar: Boolean){
+
+    private fun createOrRemoveBadge(criar: Boolean) {
         val navBar: BottomNavigationView = findViewById(R.id.nav_view)
-        when(criar){
+        when (criar) {
             true -> navBar.getOrCreateBadge(R.id.navigation_pedido).number++
-            else->navBar.removeBadge(R.id.navigation_pedido)
+            else -> navBar.removeBadge(R.id.navigation_pedido)
         }
     }
 
-    private fun startObservers(){
-        homeViewModel.hideNavBar.observe(this){
-//            binding.navView.visibility = if(it) View.GONE else View.VISIBLE
+    private fun startObservers() {
+        homeViewModel.hideNavBar.observe(this) {
             toggle(it)
         }
-
-        homeViewModel.precoTotalLiveData.observe(this){
+        homeViewModel.precoTotalLiveData.observe(this) {
             binding.totalPriceCarrinhoFlutuante.text = Utils().format(it)
         }
-        pedidoViewModel.criarBadge.observe(this){
+        pedidoViewModel.criarBadge.observe(this) {
             createOrRemoveBadge(it)
+        }
+        homeViewModel.hideCarrinhoFlutuante.observe(this) {
+            binding.lnCarrinhoFlutuante.visibility = if (it) View.GONE else View.VISIBLE
         }
     }
 
@@ -109,13 +99,24 @@ class MainActivity : AppCompatActivity() {
                     if (location != null) {
                         val geocoder = Geocoder(this, Locale.getDefault())
                         val list: List<Address> =
-                            geocoder.getFromLocation(location.latitude, location.longitude, 1) as List<Address>
+                            geocoder.getFromLocation(
+                                location.latitude,
+                                location.longitude,
+                                1
+                            ) as List<Address>
                         val rua = list[0].thoroughfare.toString()
                         val adress = list[0].getAddressLine(0)
                         val cidade = list[0].subAdminArea.toString()
                         val estado = list[0].adminArea.toString()
 
-                        homeViewModel.address.value = com.example.docegelato.model.categorias.Address(bairro = adress, rua = rua , cidade = cidade,"13", ponto_referencia = "")
+                        homeViewModel.address.value =
+                            com.example.docegelato.model.categorias.Address(
+                                bairro = adress,
+                                rua = rua,
+                                cidade = cidade,
+                                "13",
+                                ponto_referencia = ""
+                            )
                         homeViewModel.nomedaruaLiveData.value = "$cidade - $estado"
 
                     }
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity() {
             requestPermissions()
         }
     }
+
     private fun isLocationEnabled(): Boolean {
         val locationManager: LocationManager =
             getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -138,23 +140,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun toggle(it:Boolean) {
+    private fun toggle(it: Boolean) {
         val transition: Transition = Slide(Gravity.BOTTOM)
-        transition.setDuration(600)
+        transition.setDuration(300)
         transition.addTarget(binding.navView)
         TransitionManager.beginDelayedTransition(binding.root, transition)
         binding.navView.setVisibility(if (it) View.GONE else View.VISIBLE)
     }
-    private fun toggleCarrinhoFlutuante(it:Boolean) {
-        val transition: Transition = Slide(Gravity.BOTTOM)
-        transition.setDuration(600)
-        transition.addTarget(binding.navView)
-        TransitionManager.beginDelayedTransition(binding.root, transition)
-        binding.lnCarrinhoFlutuante.setVisibility(if (it) View.GONE else View.VISIBLE)
-    }
-
-
-
 
     private fun checkPermissions(): Boolean {
         if (ActivityCompat.checkSelfPermission(
@@ -170,6 +162,7 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
+
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             this,
@@ -180,6 +173,7 @@ class MainActivity : AppCompatActivity() {
             permissionId
         )
     }
+
     @SuppressLint("MissingSuperCall")
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -189,11 +183,19 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == permissionId) {
             if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 getLocation()
-            }else{
-                Toast.makeText(this,"A localização é necessária para o uso do aplicativo!",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "A localização é necessária para o uso do aplicativo!",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-        }else{
-            Toast.makeText(this,"A localização é necessária para o uso do aplicativo!",Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(
+                this,
+                "A localização é necessária para o uso do aplicativo!",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 }

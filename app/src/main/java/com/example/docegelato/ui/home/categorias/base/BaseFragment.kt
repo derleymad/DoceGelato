@@ -1,10 +1,10 @@
 package com.example.docegelato.ui.home.categorias.base
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,10 +12,10 @@ import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentBaseBinding
 import com.example.docegelato.extensions.navComidaToSacola
 import com.example.docegelato.model.categorias.Comida
-import com.example.docegelato.ui.home.adapters.ComidasAdapter
 import com.example.docegelato.ui.home.HomeViewModel
+import com.example.docegelato.ui.home.adapters.ComidasAdapter
 
-class BaseFragment(private val tabNumber : Int) : Fragment() {
+class BaseFragment(private val tabNumber: Int) : Fragment() {
 
     private var _binding: FragmentBaseBinding? = null
     private val binding get() = _binding!!
@@ -34,12 +34,12 @@ class BaseFragment(private val tabNumber : Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prepareRecyclerView()
-        homeViewModel.categoriaLiveData.observe(viewLifecycleOwner){
+        homeViewModel.categoriaLiveData.observe(viewLifecycleOwner) {
             adapter.setComidasList(it[tabNumber].comidas as ArrayList<Comida>)
         }
     }
 
-    private fun prepareRecyclerView(){
+    private fun prepareRecyclerView() {
         adapter = ComidasAdapter {
             findNavController().navComidaToSacola(R.id.action_navigation_home_to_sacolaFragment)
             homeViewModel.idLiveData.value = it

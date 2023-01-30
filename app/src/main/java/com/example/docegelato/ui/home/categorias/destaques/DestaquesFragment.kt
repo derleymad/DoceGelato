@@ -1,11 +1,11 @@
 package com.example.docegelato.ui.home.categorias.destaques
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentDestaquesBinding
 import com.example.docegelato.extensions.navComidaToSacola
 import com.example.docegelato.ui.home.HomeViewModel
@@ -24,8 +23,8 @@ class DestaquesFragment : Fragment() {
 
     private var _binding: FragmentDestaquesBinding? = null
     private val binding get() = _binding!!
-    private lateinit var destaqueAdapter : DestaqueAdapter
-    private val homeViewModel : HomeViewModel by activityViewModels ()
+    private lateinit var destaqueAdapter: DestaqueAdapter
+    private val homeViewModel: HomeViewModel by activityViewModels()
     private val imageList = ArrayList<SlideModel>()
 
     override fun onCreateView(
@@ -43,28 +42,31 @@ class DestaquesFragment : Fragment() {
         startObservers()
     }
 
-    fun prepareRecyclerView(){
-        destaqueAdapter = DestaqueAdapter{
+    fun prepareRecyclerView() {
+        destaqueAdapter = DestaqueAdapter {
             homeViewModel.idLiveData.value = it
             findNavController().navComidaToSacola()
         }
         binding.rvDestaques.apply {
             adapter = destaqueAdapter
-            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-            addOnItemTouchListener(object : OnItemTouchListener{
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            addOnItemTouchListener(object : OnItemTouchListener {
                 override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                    when (e.action){
+                    when (e.action) {
                         MotionEvent.ACTION_MOVE -> rv.parent.requestDisallowInterceptTouchEvent(true)
                     }
                     return false
                 }
+
                 override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
                 override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
 
             })
         }
     }
-    fun loadBanners(){
+
+    fun loadBanners() {
         imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner1.png"))
         imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner2.png"))
         imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner3.png"))
@@ -75,7 +77,7 @@ class DestaquesFragment : Fragment() {
             .into(binding.imgBannerCupom)
     }
 
-    fun startObservers(){
+    fun startObservers() {
         homeViewModel.destaquesLiveData.observe(viewLifecycleOwner, Observer {
             destaqueAdapter.setDestaquesList(it)
         })
@@ -85,21 +87,6 @@ class DestaquesFragment : Fragment() {
         _binding = null
         super.onDestroyView()
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

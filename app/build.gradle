@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.example.docegelato"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -31,7 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    viewBinding{
+    viewBinding {
         enabled = true
     }
     buildToolsVersion '33.0.1'

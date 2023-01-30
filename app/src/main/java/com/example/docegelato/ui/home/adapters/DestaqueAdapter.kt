@@ -9,27 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.util.Utils
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
-import okhttp3.internal.Util
-import java.text.Format
-import java.text.NumberFormat
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 class DestaqueAdapter(
     private var destaqueOnClickListener: ((Int) -> Unit)? = null
-): RecyclerView.Adapter<DestaqueAdapter.ComidasViewHolder>() {
+) : RecyclerView.Adapter<DestaqueAdapter.ComidasViewHolder>() {
     private var comidasList = ArrayList<Comida>()
 
-    fun setDestaquesList(comidasList: ArrayList<Comida>){
-        this.comidasList= comidasList
+    fun setDestaquesList(comidasList: ArrayList<Comida>) {
+        this.comidasList = comidasList
         notifyDataSetChanged()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidasViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.comida_destaque_item,parent,false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.comida_destaque_item, parent, false)
         return ComidasViewHolder(view)
     }
 
@@ -42,15 +36,16 @@ class DestaqueAdapter(
         return comidasList.size
     }
 
-    inner class ComidasViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bind(comida : Comida){
+    inner class ComidasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(comida: Comida) {
             val nome = itemView.findViewById<TextView>(R.id.tv_title_comida_destaque)
             val preco = itemView.findViewById<TextView>(R.id.tv_preco_destaque)
             val precoAntigo = itemView.findViewById<TextView>(R.id.tv_preco_antigo)
             val imageView = itemView.findViewById<ImageView>(R.id.img_comida_destaque)
             val desconto = itemView.findViewById<TextView>(R.id.tv_desconto)
 
-            val precoDescontado  = (comida.comida_preco)?.minus((comida.comida_desconto* comida.comida_preco!!))
+            val precoDescontado =
+                (comida.comida_preco)?.minus((comida.comida_desconto * comida.comida_preco!!))
             Utils().format(precoDescontado!!)
 
             Picasso
@@ -61,9 +56,15 @@ class DestaqueAdapter(
                 .into(imageView);
 
             nome.text = comida.comida_title
-            desconto.text = "${(comida.comida_desconto*100).toInt()}%"
-            precoAntigo.text = itemView.context.getString(R.string.preco_riscado,Utils().format(comida.comida_preco))
-            preco.text = itemView.context.getString(R.string.comida_destaque_preco,Utils().format(precoDescontado))
+            desconto.text = "${(comida.comida_desconto * 100).toInt()}%"
+            precoAntigo.text = itemView.context.getString(
+                R.string.preco_riscado,
+                Utils().format(comida.comida_preco)
+            )
+            preco.text = itemView.context.getString(
+                R.string.comida_destaque_preco,
+                Utils().format(precoDescontado)
+            )
 
             itemView.setOnClickListener {
                 destaqueOnClickListener?.invoke(comida.comida_id)

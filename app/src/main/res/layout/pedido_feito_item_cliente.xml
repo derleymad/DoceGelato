@@ -11,64 +11,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tv_status"
-                android:text="Para ser enviado"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_pedido_feito_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="16/02/2021"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_status"
+            android:text="Para ser enviado"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/tv_pedido_feito_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="R$ 15,00"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_address_rua"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_address_rua" />
+        <TextView
+            android:id="@+id/tv_pedido_feito_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="16/02/2021"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_address_rua"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Rua donizete Sobreira"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_pedido_feito_total"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/scroll"
-                app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/tv_pedido_feito_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$ 15,00"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_address_rua"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_address_rua" />
 
-            <ScrollView
-                android:id="@+id/scroll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_status">
+        <TextView
+            android:id="@+id/tv_address_rua"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Rua donizete Sobreira"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_pedido_feito_total"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scroll"
+            app:layout_constraintVertical_bias="0.0" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_dentro_pedido_feito"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/pedido_item" />
-            </ScrollView>
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_status">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_dentro_pedido_feito"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="3"
+                tools:listitem="@layout/pedido_item" />
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

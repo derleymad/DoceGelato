@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/navigation_home"
@@ -12,16 +11,15 @@
         android:icon="@drawable/ic_baseline_search_24"
         android:fontFamily="@font/nunito"
         android:title="@string/title_search" />
-<!--    <item-->
-<!--        android:id="@+id/navigation_carrinho"-->
-<!--        android:icon="@drawable/ic_baseline_shopping_cart_24"-->
-<!--        android:fontFamily="@font/newrepublic"-->
-<!--        android:title="@string/title_carrinho" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/navigation_carrinho"-->
+    <!--        android:icon="@drawable/ic_baseline_shopping_cart_24"-->
+    <!--        android:fontFamily="@font/newrepublic"-->
+    <!--        android:title="@string/title_carrinho" />-->
     <item
         android:id="@+id/navigation_pedido"
         android:icon="@drawable/ic_baseline_event_note_24"
         android:fontFamily="@font/nunito"
-        android:title="@string/title_pedidos"
-        />
+        android:title="@string/title_pedidos" />
 
 </menu>

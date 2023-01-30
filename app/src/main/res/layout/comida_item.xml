@@ -9,50 +9,51 @@
     android:paddingTop="2dp"
     android:layout_marginTop="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="100dp">
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
 
-    <TextView
-        android:id="@+id/nome"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/bife_a_cavalo"
-        android:textColor="@color/black"
-        android:fontFamily="@font/nunito"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/nome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/bife_a_cavalo"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito"
+            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/descricao"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/nunito"
-        android:textColor="@color/gray_dark"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:text="@string/bife_de_carne_ovo_arroz_branco_farofa_pur_de_batatas_feij_o_mulatino_e_tudo_o_que_h_de_melhor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/foto"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nome"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/descricao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/gray_dark"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/bife_de_carne_ovo_arroz_branco_farofa_pur_de_batatas_feij_o_mulatino_e_tudo_o_que_h_de_melhor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/foto"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nome"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/preco"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/nunito"
-        android:text="R$ 30,95"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descricao" />
+        <TextView
+            android:id="@+id/preco"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/nunito"
+            android:text="R$ 30,95"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descricao" />
 
         <ImageView
             android:id="@+id/foto"
@@ -70,11 +71,12 @@
             app:layout_constraintVertical_bias="0.0"
             tools:src="@mipmap/ic_launcher" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:background="@color/gray_light_more"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp" />
 </LinearLayout>

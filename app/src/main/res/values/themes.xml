@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.DoceGelato" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.DoceGelato.Splash" parent="Theme.DoceGelato">
         <item name="android:statusBarColor">@color/green_shopper</item>
     </style>

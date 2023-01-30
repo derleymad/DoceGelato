@@ -1,10 +1,10 @@
 package com.example.docegelato
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.appcompat.app.AppCompatActivity
 import com.example.docegelato.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         splashToOtherActivity()
     }
 
-    private fun splashToOtherActivity(){
+    private fun splashToOtherActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             Intent(this, LoginActivity::class.java).apply {
                 startActivity(this)

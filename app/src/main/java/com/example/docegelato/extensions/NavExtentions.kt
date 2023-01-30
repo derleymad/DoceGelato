@@ -5,11 +5,11 @@ import androidx.navigation.NavOptions
 import com.example.docegelato.R
 
 private val navOptionsPushs = NavOptions.Builder()
-        .setEnterAnim(R.anim.push_up_in)
-        .setExitAnim(R.anim.push_up_out)
-        .setPopEnterAnim(R.anim.push_down_in)
-        .setPopExitAnim(R.anim.push_down_out)
-        .build()
+    .setEnterAnim(R.anim.push_up_in)
+    .setExitAnim(R.anim.push_up_out)
+    .setPopEnterAnim(R.anim.push_down_in)
+    .setPopExitAnim(R.anim.push_down_out)
+    .build()
 
 private val navOptionsPushsPerfil = NavOptions.Builder()
     .setEnterAnim(R.anim.push_up_in)
@@ -25,12 +25,14 @@ private val navOptionsSlide = NavOptions.Builder()
     .setPopExitAnim(R.anim.slide_out_right)
     .build()
 
-fun NavController.navHomeToCarrinho(destinationId : Int=0){
-    this.navigate(R.id.navigation_carrinho,null, navOptionsPushs)
+fun NavController.navHomeToCarrinho(destinationId: Int = 0) {
+    this.navigate(R.id.navigation_carrinho, null, navOptionsPushs)
 }
-fun NavController.navComidaToSacola(destinationId : Int=0){
-    this.navigate(R.id.action_navigation_home_to_sacolaFragment,null, navOptionsSlide)
+
+fun NavController.navComidaToSacola(destinationId: Int = 0) {
+    this.navigate(R.id.action_navigation_home_to_sacolaFragment, null, navOptionsSlide)
 }
-fun NavController.navHomeToPerfil(destinationId : Int=0){
-    this.navigate(R.id.perfilFragment,null, navOptionsPushsPerfil)
+
+fun NavController.navHomeToPerfil(destinationId: Int = 0) {
+    this.navigate(R.id.perfilFragment, null, navOptionsPushsPerfil)
 }

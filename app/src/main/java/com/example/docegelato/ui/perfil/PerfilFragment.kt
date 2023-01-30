@@ -2,10 +2,10 @@ package com.example.docegelato.ui.perfil
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
@@ -17,11 +17,19 @@ import com.squareup.picasso.Picasso
 class PerfilFragment : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
-    private val homeViewModel : HomeViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("criou", homeViewModel.hideCarrinhoFlutuante.value.toString())
+
+    }
+
+    override fun onResume() {
         homeViewModel.hideNavBar.value = true
+        homeViewModel.hideCarrinhoFlutuante.value = true
+        Log.i("enviando", "onresume")
+        super.onResume()
     }
 
     override fun onCreateView(
@@ -30,20 +38,21 @@ class PerfilFragment : Fragment() {
     ): View? {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
 
-        var database : FirebaseDatabase = FirebaseDatabase.getInstance()
-        var myRef : DatabaseReference = database.getReference("admins")
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        var myRef: DatabaseReference = database.getReference("admins")
 
-        myRef.addValueEventListener(object : ValueEventListener{
+        myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children){
-                    Log.i("foi?",i.key.toString())
-                    Log.i("foi?",homeViewModel.auth.currentUser?.uid.toString())
-                    if(i.key?.equals(homeViewModel.auth.currentUser?.uid.toString()) == true){
+                for (i in snapshot.children) {
+                    Log.i("foi?", i.key.toString())
+                    Log.i("foi?", homeViewModel.auth.currentUser?.uid.toString())
+                    if (i.key?.equals(homeViewModel.auth.currentUser?.uid.toString()) == true) {
                         binding.admin.visibility = View.VISIBLE
                         return
                     }
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
             }
         })
@@ -51,13 +60,14 @@ class PerfilFragment : Fragment() {
         binding.closePerfilBtn.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.sair.setOnClickListener{
+        binding.sair.setOnClickListener {
             homeViewModel.auth.signOut()
             findNavController().popBackStack()
             requireActivity().finish()
         }
 
-        Picasso.get().load(homeViewModel.auth.currentUser?.photoUrl).placeholder(R.drawable.placeholder).into(binding.imgPerfilPhoto)
+        Picasso.get().load(homeViewModel.auth.currentUser?.photoUrl)
+            .placeholder(R.drawable.placeholder).into(binding.imgPerfilPhoto)
         binding.perfilName.text = homeViewModel.auth.currentUser?.displayName
         binding.localizacao.text = homeViewModel.address.value.toString()
 
@@ -67,5 +77,6 @@ class PerfilFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         homeViewModel.hideNavBar.value = false
+        homeViewModel.checkSeTemPedidoParaEsconderOuMostarCarrinhoFlutuante()
     }
 }

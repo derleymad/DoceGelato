@@ -6,34 +6,32 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Pedido
 import com.example.docegelato.util.Utils
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 class PedidoAdapter(
 //    @LayoutRes private var layoutItem: Int? = null,
-    private var esconderBtnRemover : Boolean = false,
+    private var esconderBtnRemover: Boolean = false,
     private var pedidoOnClickRemoveListener: ((Pedido) -> Unit)? = null
-): RecyclerView.Adapter<PedidoAdapter.ComidasViewHolder>() {
+) : RecyclerView.Adapter<PedidoAdapter.ComidasViewHolder>() {
     private var pedidoList = mutableListOf<Pedido>()
 
-    fun addPedidoToRecyclerViewList(pedidos: MutableList<Pedido>){
+    fun addPedidoToRecyclerViewList(pedidos: MutableList<Pedido>) {
         this.pedidoList.addAll(pedidos)
         notifyDataSetChanged()
     }
 
-    fun removePedidoAndUpdateRecyclerView(pedido: Pedido){
+    fun removePedidoAndUpdateRecyclerView(pedido: Pedido) {
         val index = pedidoList.indexOf(pedido)
         pedidoList.remove(pedido)
         notifyItemRemoved(index)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComidasViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.pedido_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.pedido_item, parent, false)
         return ComidasViewHolder(view)
 
     }
@@ -47,22 +45,22 @@ class PedidoAdapter(
         return pedidoList.size
     }
 
-    inner class ComidasViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bind(pedido : Pedido){
+    inner class ComidasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(pedido: Pedido) {
             val nome = itemView.findViewById<TextView>(R.id.tv_pedido_title)
             val quantity = itemView.findViewById<TextView>(R.id.tv_pedido_quantity)
             val imageView = itemView.findViewById<ImageView>(R.id.img_pedido)
             val obs = itemView.findViewById<TextView>(R.id.tv_obs)
             val price = itemView.findViewById<TextView>(R.id.preco)
 
-            if(esconderBtnRemover){
+            if (esconderBtnRemover) {
                 val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
                 remove.visibility = View.INVISIBLE
 
-            }else{
+            } else {
                 val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
                 remove.setOnClickListener {
-                    it.isEnabled =false
+                    it.isEnabled = false
                     pedidoOnClickRemoveListener?.invoke(pedido)
                 }
             }
@@ -75,7 +73,7 @@ class PedidoAdapter(
                 .into(imageView);
 
             nome.text = pedido.comida_title
-            quantity.text = itemView.context.getString(R.string.quantity_pedido_x,pedido.quantity)
+            quantity.text = itemView.context.getString(R.string.quantity_pedido_x, pedido.quantity)
             obs.text = pedido.obs
             price.text = Utils().format(pedido.comida_preco!!)
         }

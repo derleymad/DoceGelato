@@ -9,15 +9,15 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class PedidoViewModel : ViewModel() {
-    var criarBadge= MutableLiveData(false)
+    var criarBadge = MutableLiveData(false)
     private var _dataRequest = MutableLiveData<ArrayList<Pedidos>>()
     private var firebaseAuth = Firebase.auth.currentUser
-    private var database : FirebaseDatabase = Firebase.database
-    private var myRef : DatabaseReference = database.getReference("users")
+    private var database: FirebaseDatabase = Firebase.database
+    private var myRef: DatabaseReference = database.getReference("users")
     var loadingProgressBar = MutableLiveData(true)
-    var dataRequest=  _dataRequest
+    var dataRequest = _dataRequest
 
-    fun setListenerFirebaseEvent(){
+    fun setListenerFirebaseEvent() {
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 loadingProgressBar.postValue(false)
@@ -25,9 +25,9 @@ class PedidoViewModel : ViewModel() {
                 dataRequest.value = ArrayList()
                 dataRequest.value?.clear()
 
-                snapshot.children.forEach {user->
-                    if(user.key==firebaseAuth?.uid.toString()){
-                        user.children.forEach {pedido->
+                snapshot.children.forEach { user ->
+                    if (user.key == firebaseAuth?.uid.toString()) {
+                        user.children.forEach { pedido ->
                             dataRequest.value?.add(pedido.getValue(Pedidos::class.java)!!)
                         }
                     }
@@ -47,6 +47,7 @@ class PedidoViewModel : ViewModel() {
 //                    Log.i("fala","entrou no else")
 //                }
             }
+
             override fun onCancelled(error: DatabaseError) {
             }
         })
