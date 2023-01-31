@@ -2,6 +2,7 @@ package com.example.docegelato.ui.pedido
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -12,6 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.example.docegelato.databinding.FragmentPedidoBinding
+import com.example.docegelato.model.categorias.Pedidos
+import com.example.docegelato.util.FirebaseUtils
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class PedidoFragment : Fragment() {
 
@@ -19,6 +25,9 @@ class PedidoFragment : Fragment() {
     private val binding get() = _binding!!
     private val pedidoViewModel: PedidoViewModel by activityViewModels()
     private lateinit var adapter: PedidoFeitoAdapter
+    private var db = Firebase.firestore
+    private var auth = FirebaseAuth.getInstance()
+    private var data = ArrayList<Pedidos>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,9 +56,11 @@ class PedidoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pedidoViewModel.dataRequest.observe(viewLifecycleOwner) {
-            adapter.setPedidoFeitoList(it)
-        }
+        Log.i("testing2",FirebaseUtils.getFirebaseLocation().toString())
+        adapter.setPedidoFeitoList(FirebaseUtils.getFirebaseLocation())
+
+        pedidoViewModel.loadingProgressBar.value = false
+
         pedidoViewModel.loadingProgressBar.observe(viewLifecycleOwner) {
             binding.pedidosProgressBar.visibility = if (it) {
                 View.VISIBLE

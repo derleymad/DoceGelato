@@ -94,6 +94,9 @@ class HomeFragment : Fragment() {
                 requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).menu.findItem(R.id.navigation_search)
             NavigationUI.onNavDestinationSelected(item, findNavController())
         }
+        binding.btnExpandmore.setOnClickListener {
+//            findNavController().navigate()
+        }
     }
 
     override fun onDestroyView() {

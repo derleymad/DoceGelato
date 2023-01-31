@@ -10,6 +10,7 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/red</item>
         <item name="colorSecondaryVariant">@color/light_red</item>
+        <item name="colorAccent">@color/green_shopper</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>

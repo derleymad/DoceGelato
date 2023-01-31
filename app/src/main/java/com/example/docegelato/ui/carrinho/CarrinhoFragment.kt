@@ -1,6 +1,7 @@
 package com.example.docegelato.ui.carrinho
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,9 @@ import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class CarrinhoFragment : Fragment() {
@@ -23,6 +26,8 @@ class CarrinhoFragment : Fragment() {
     private var _binding: FragmentCarrinhoBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapterPedidos: PedidoAdapter
+    var auth = FirebaseAuth.getInstance()
+    var db = Firebase.firestore
 
     private val homeViewModel: HomeViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,10 +101,25 @@ class CarrinhoFragment : Fragment() {
 
     private fun startObservers() {
         homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner) {
-            binding.tvTotalPedido.text = Utils().format(it)
+            binding.tvTotalPedido.text = Utils.format(it)
         }
         homeViewModel.listPedidoFeitoLiveData.observe(viewLifecycleOwner) {
             adapterPedidos.addPedidoToRecyclerViewList(it.pedidos!!)
+
+            db.collection("users")
+                .document("clientes")
+                .collection(auth.currentUser?.uid.toString())
+                .document("pedidos")
+                .collection("recente")
+                .add(it)
+                .addOnSuccessListener{
+                    Log.i("teste","Sucesso")
+                }
+                .addOnFailureListener {
+                    Log.i("teste","Falha")
+                }
+
+
         }
         homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner) { it ->
             binding.apply {

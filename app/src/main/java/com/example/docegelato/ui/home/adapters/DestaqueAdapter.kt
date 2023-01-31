@@ -46,7 +46,7 @@ class DestaqueAdapter(
 
             val precoDescontado =
                 (comida.comida_preco)?.minus((comida.comida_desconto * comida.comida_preco!!))
-            Utils().format(precoDescontado!!)
+            Utils.format(precoDescontado!!)
 
             Picasso
                 .get()
@@ -59,11 +59,11 @@ class DestaqueAdapter(
             desconto.text = "${(comida.comida_desconto * 100).toInt()}%"
             precoAntigo.text = itemView.context.getString(
                 R.string.preco_riscado,
-                Utils().format(comida.comida_preco)
+                Utils.format(comida.comida_preco)
             )
             preco.text = itemView.context.getString(
                 R.string.comida_destaque_preco,
-                Utils().format(precoDescontado)
+                Utils.format(precoDescontado)
             )
 
             itemView.setOnClickListener {

@@ -75,7 +75,7 @@ class PedidoAdapter(
             nome.text = pedido.comida_title
             quantity.text = itemView.context.getString(R.string.quantity_pedido_x, pedido.quantity)
             obs.text = pedido.obs
-            price.text = Utils().format(pedido.comida_preco!!)
+            price.text = Utils.format(pedido.comida_preco!!)
         }
     }
 }

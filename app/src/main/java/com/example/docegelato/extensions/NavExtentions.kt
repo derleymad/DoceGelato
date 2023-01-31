@@ -1,7 +1,12 @@
 package com.example.docegelato.extensions
 
+import android.os.Build
+import android.text.Html
+import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 
 private val navOptionsPushs = NavOptions.Builder()
@@ -24,8 +29,8 @@ private val navOptionsSlide = NavOptions.Builder()
     .setPopEnterAnim(R.anim.slide_in_left)
     .setPopExitAnim(R.anim.slide_out_right)
     .build()
-
 fun NavController.navHomeToCarrinho(destinationId: Int = 0) {
+
     this.navigate(R.id.navigation_carrinho, null, navOptionsPushs)
 }
 
@@ -35,4 +40,16 @@ fun NavController.navComidaToSacola(destinationId: Int = 0) {
 
 fun NavController.navHomeToPerfil(destinationId: Int = 0) {
     this.navigate(R.id.perfilFragment, null, navOptionsPushsPerfil)
+}
+
+fun NavController.navNewUserToNewLocation(){
+    this.navigate(R.id.action_newUserLoginFragment_to_mapsFragment,null, navOptionsSlide)
+}
+
+fun Fragment.getFormattedString(myString : String) :  String{
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(getString(R.string.usar_localiza_o_atual,myString),Html.FROM_HTML_MODE_LEGACY).toString()
+    } else {
+        return myString
+    }
 }

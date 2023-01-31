@@ -37,7 +37,7 @@ class SacolaFragment : Fragment() {
                         binding.apply {
                             tvSacolaTitle.text = j.comida_title
                             tvSacolaDescricao.text = j.comida_desc
-                            tvSacolaPreco.text = Utils().format(j.comida_preco!!)
+                            tvSacolaPreco.text = Utils.format(j.comida_preco!!)
                             Picasso.get().load(j.image).error(R.drawable.banner)
                                 .placeholder(R.drawable.banner).into(imgSacola)
                             btnBottomAdicionar.setOnClickListener {
@@ -63,7 +63,7 @@ class SacolaFragment : Fragment() {
                                 homeViewModel.quantityLiveData.value.toString()
                             binding.btnBottomAdicionar.text = getString(
                                 R.string.adicionar_pedido,
-                                Utils().format(it.times(j.comida_preco!!))
+                                Utils.format(it.times(j.comida_preco!!))
                             )
                         }
                     } else {

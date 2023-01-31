@@ -119,7 +119,6 @@
             android:textColor="@color/black"
             android:layout_marginTop="-16dp"
             android:paddingTop="16dp"
-
             android:background="@drawable/input_rounded"
             android:fontFamily="@font/nunito"
             android:paddingBottom="16dp"

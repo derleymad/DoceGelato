@@ -24,6 +24,7 @@ class HomeViewModel : ViewModel() {
     private var _precoTotalLiveData = MutableLiveData<Float>(0f)
     var user = MutableLiveData<User>()
     private var _addressLiveData = MutableLiveData<Address>()
+    private var addressLiveData = _addressLiveData
     var isLoadingContent = MutableLiveData(true)
 
     var auth: FirebaseAuth
@@ -35,6 +36,7 @@ class HomeViewModel : ViewModel() {
     init {
         listPedidoFeitoLiveData.value = Pedidos(mutableListOf<Pedido>(), null, null, 0f)
         auth = FirebaseAuth.getInstance()
+        addressLiveData.value = Address()
         user.value = User(
             nome = auth.currentUser?.displayName.toString(),
             imagemPerfil = auth.currentUser?.photoUrl.toString(),
@@ -107,26 +109,6 @@ class HomeViewModel : ViewModel() {
         )
 
         listPedidoFeitoLiveData.value?.pedidos?.add(pedido)
-
-//        if (listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true){
-//            listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
-//            return
-//        }
-//        for (i in listPedidoFeitoLiveData.value?.pedidos!!){
-//            if(i.comida_title==pedido.comida_title){
-//                if(pedido.obs.isNotEmpty()){
-//                    listPedidoFeitoLiveData.value?.pedidos!!.add(pedido)
-//                    return
-//                }else{
-//                    i.quantity += pedido.quantity
-//                    return
-//                }
-//            }else{
-//                Log.i("mesmotitulo","sem titulo inngal")
-//            }
-//        }
-
-
     }
 
     fun getDestaques() {

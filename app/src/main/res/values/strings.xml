@@ -42,4 +42,6 @@
     <string name="ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc">Ex: tirar a cebola... mais maionese, sem catupiry, etc...</string>
     <string name="bife_de_carne_ovo_arroz_branco_farofa_pur_de_batatas_feij_o_mulatino_e_tudo_o_que_h_de_melhor">Bife de carne, Ovo, Arroz, Branco, Farofa, Puré de batatas, Feijão Mulatino, e tudo o que há de melhor</string>
     <string name="bife_a_cavalo">Bife A Cavalo</string>
+    <string name="usar_localiza_o_atual"><b>Usar localização atual</b>\n%s</string>
+    <string name="criar_nova_localizacao">Crie um novo endereço</string>
 </resources>
