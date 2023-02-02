@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentMapsBinding
 import com.example.docegelato.model.categorias.Address
 import com.google.android.material.snackbar.Snackbar
@@ -32,6 +34,19 @@ class MapsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initSetOnClickListeners()
+        checkIfValueFromViewModelIsNull()
+    }
+
+    private fun checkIfValueFromViewModelIsNull() {
+    }
+
+    private fun initSetOnClickListeners() {
+
+        binding.btnBack.setOnClickListener {
+            requireActivity().findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
+        }
+
         binding.btnSave.setOnClickListener {
             if (binding.editBairro.text?.isEmpty() == true ||
                 binding.editCasa.text?.isEmpty() == true ||

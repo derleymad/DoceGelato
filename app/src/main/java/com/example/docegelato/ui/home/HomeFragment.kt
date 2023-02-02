@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
+import com.example.docegelato.extensions.navMainToLocation
 import com.example.docegelato.extensions.navMainToPerfil
+import com.example.docegelato.extensions.navMainToSacola
 import com.example.docegelato.ui.home.adapters.PagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,10 +28,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
 
-    override fun onGetLayoutInflater(savedInstanceState: Bundle?): LayoutInflater {
-        requireContext().setTheme(R.style.WithoutStatus)
-        return super.onGetLayoutInflater(savedInstanceState)
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,21 +40,11 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupTabLayout()
         startObservers()
         loadImgPerfil()
         startEventOnClickListeners()
-
-        binding.imgPerfil.setOnClickListener {
-            it.isEnabled = false
-            findNavController().navMainToPerfil()
-        }
-
-        if (homeViewModel.isPedidoFeitoLiveData.value == true) {
-            requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility =
-                View.VISIBLE
-        }
-        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun loadImgPerfil() {
@@ -86,8 +77,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-
     private fun startEventOnClickListeners() {
         binding.editSearch.setOnClickListener {
             val item =
@@ -95,7 +84,10 @@ class HomeFragment : Fragment() {
             NavigationUI.onNavDestinationSelected(item, findNavController())
         }
         binding.btnExpandmore.setOnClickListener {
-//            findNavController().navigate()
+            requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navMainToLocation()
+        }
+        binding.imgPerfil.setOnClickListener {
+            requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navMainToPerfil()
         }
     }
 

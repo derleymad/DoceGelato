@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_mainFragment_to_carrinhoFragment"
             app:destination="@id/carrinhoFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mapsFragment2"
+            app:destination="@id/mapsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/carrinhoFragment"
@@ -28,10 +31,24 @@
         android:id="@+id/sacolaFragment"
         android:name="com.example.docegelato.ui.sacola.SacolaFragment"
         android:label="fragment_sacola"
-        tools:layout="@layout/fragment_sacola" />
+        tools:layout="@layout/fragment_sacola" >
+        <action
+            android:id="@+id/action_sacolaFragment_to_pedidoFragment"
+            app:destination="@id/pedidoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.docegelato.ui.perfil.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/mapsFragment2"
+        android:name="com.example.docegelato.ui.login.createadress.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/pedidoFragment"
+        android:name="com.example.docegelato.ui.pedido.PedidoFragment"
+        android:label="fragment_pedido"
+        tools:layout="@layout/fragment_pedido" />
 </navigation>

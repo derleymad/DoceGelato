@@ -26,11 +26,6 @@ class PerfilFragment : Fragment() {
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
     val db = Firebase.firestore
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.i("criou", homeViewModel.hideCarrinhoFlutuante.value.toString())
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,11 +73,5 @@ class PerfilFragment : Fragment() {
         homeViewModel.address.observe(viewLifecycleOwner){
             binding.localizacao.text = it.toString()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        homeViewModel.hideNavBar.value = false
-        homeViewModel.checkSeTemPedidoParaEsconderOuMostarCarrinhoFlutuante()
     }
 }

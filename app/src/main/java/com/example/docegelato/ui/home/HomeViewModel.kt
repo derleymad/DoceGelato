@@ -3,9 +3,11 @@ package com.example.docegelato.ui.home
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.docegelato.model.categorias.*
 import com.example.docegelato.network.RetrofitInstance
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,20 +53,21 @@ class HomeViewModel : ViewModel() {
 
 
     fun getCategorias() {
-        RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias> {
-            override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
-                if (response.body() != null) {
-                    isLoadingContent.value = false
-                    categoriaLiveData.value = response.body()
-                } else {
-                    return
+        viewModelScope.launch {
+            RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias> {
+                override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
+                    if (response.body() != null) {
+                        isLoadingContent.value = false
+                        categoriaLiveData.value = response.body()
+                    } else {
+                        return
+                    }
                 }
-            }
-
-            override fun onFailure(call: Call<Categorias>, t: Throwable) {
-                Log.e("TAG", t.message.toString())
-            }
-        })
+                override fun onFailure(call: Call<Categorias>, t: Throwable) {
+                    Log.e("TAG", t.message.toString())
+                }
+            })
+        }
     }
 
     fun removeComidaDosPedidos(pedido: Pedido) {
@@ -90,9 +93,9 @@ class HomeViewModel : ViewModel() {
         //GENERATE UNIQUE ID and ADD INTO SETS
         setOfids.add((0..1000).random())
         listPedidoFeitoLiveData.value?.preco_total =
-            quantityLiveData.value?.times(comida.comida_preco!!)!!
+        quantityLiveData.value?.times(comida.comida_preco!!)!!
         precoTotalLiveData.value =
-            precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+        precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
         listPedidoFeitoLiveData.value?.address = address
         listPedidoFeitoLiveData.value?.user = user
 
@@ -112,23 +115,26 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getDestaques() {
-        RetrofitInstance.api.getDestaques().enqueue(object : Callback<ArrayList<Comida>> {
-            override fun onResponse(
-                call: Call<ArrayList<Comida>>,
-                response: Response<ArrayList<Comida>>
-            ) {
-                if (response.body() != null) {
-                    destaquesLiveData.value = response.body()
-                    isLoadingContent.value = false
-                } else {
-                    return
+        viewModelScope.launch {
+            RetrofitInstance.api.getDestaques().enqueue(object : Callback<ArrayList<Comida>> {
+                override fun onResponse(
+                    call: Call<ArrayList<Comida>>,
+                    response: Response<ArrayList<Comida>>
+                ) {
+                    if (response.body() != null) {
+                        destaquesLiveData.value = response.body()
+                        isLoadingContent.value = false
+                    } else {
+                        return
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<ArrayList<Comida>>, t: Throwable) {
-            }
-        })
+                override fun onFailure(call: Call<ArrayList<Comida>>, t: Throwable) {
+                }
+            })
+        }
     }
+
 
 
     fun clearPedidosAndPrices() {

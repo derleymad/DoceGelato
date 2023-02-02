@@ -45,22 +45,16 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startObservers()
-
         db.collection("users")
             .document("clientes")
             .collection(auth.currentUser?.uid.toString())
             .document("location")
             .get()
             .addOnSuccessListener{
-//                Log.i("dataPerfil", it.toObject(Address::class.java).toString())
                 homeViewModel.address.value = it.toObject(Address::class.java)
             }
             .addOnFailureListener {
             }
-
-        // TODO MUITO IMPORTANTE TENTAR USAR CORROUTINES AKI PRA VER SE DIMIUI A TRAVADA INVEZ DE CHAMAR AS REQUISICOES NA MAIN ACTIVITY
-        homeViewModel.getDestaques()
-        homeViewModel.getCategorias()
 
         binding.lnCarrinhoFlutuante.setOnClickListener {
             it.apply { findNavController().navMainToCarrinho() }
@@ -79,6 +73,13 @@ class MainFragment : Fragment() {
     private fun startObservers() {
         homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner) {
             binding.totalPriceCarrinhoFlutuante.text = Utils.format(it)
+        }
+        homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner){
+            if(it){
+                binding.lnCarrinhoFlutuante.visibility = View.VISIBLE
+            }else{
+                binding.lnCarrinhoFlutuante.visibility = View.GONE
+            }
         }
     }
 

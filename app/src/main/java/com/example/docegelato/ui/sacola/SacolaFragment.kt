@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentSacolaBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.util.Utils
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
@@ -24,10 +28,6 @@ class SacolaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        this.requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
-        homeViewModel.hideNavBar.value = true
-        homeViewModel.hideCarrinhoFlutuante.value = true
-        // Inflate the layout for this fragment
         _binding = FragmentSacolaBinding.inflate(inflater, container, false)
         homeViewModel.idLiveData.observe(viewLifecycleOwner) { id ->
             for (i in homeViewModel.categoriaLiveData.value!!) {
@@ -48,12 +48,7 @@ class SacolaFragment : Fragment() {
                                     homeViewModel.user.value!!,
                                     homeViewModel.address.value!!
                                 )
-                                val base = Snackbar.make(
-                                    binding.root,
-                                    "Pedido adicionado ao carrinho",
-                                    Snackbar.LENGTH_SHORT
-                                )
-                                base.setAnchorView(binding.btnBottomAdicionar).show()
+                                requireActivity().findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                             }
                         }
@@ -95,8 +90,6 @@ class SacolaFragment : Fragment() {
     override fun onDestroyView() {
         homeViewModel.obsLiveData.value = ""
         homeViewModel.quantityLiveData.value = 1
-        homeViewModel.checkSeTemPedidoParaEsconderOuMostarCarrinhoFlutuante()
-        homeViewModel.hideNavBar.value = false
         super.onDestroyView()
     }
 }
