@@ -13,8 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
-    val hideNavBar = MutableLiveData<Boolean>(false)
-    val hideCarrinhoFlutuante = MutableLiveData<Boolean>(true)
+    val hideNavBar = MutableLiveData(false)
     private var _categoriaLiveData = MutableLiveData<Categorias>()
     private var _nomedaruaLiveData = MutableLiveData<String>()
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()
@@ -45,10 +44,6 @@ class HomeViewModel : ViewModel() {
             uid = auth.currentUser?.uid.toString(),
             numero_celular = auth.currentUser?.phoneNumber.toString()
         )
-    }
-
-    fun checkSeTemPedidoParaEsconderOuMostarCarrinhoFlutuante() {
-        hideCarrinhoFlutuante.value = !isPedidoFeitoLiveData.value!!
     }
 
 
@@ -134,8 +129,6 @@ class HomeViewModel : ViewModel() {
             })
         }
     }
-
-
 
     fun clearPedidosAndPrices() {
         listPedidoFeitoLiveData.value?.pedidos?.clear()

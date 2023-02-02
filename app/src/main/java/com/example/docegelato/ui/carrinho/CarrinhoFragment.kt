@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentCarrinhoBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -29,12 +27,6 @@ class CarrinhoFragment : Fragment() {
     var db = Firebase.firestore
 
     private val homeViewModel: HomeViewModel by activityViewModels()
-
-    override fun onResume() {
-        super.onResume()
-        homeViewModel.hideNavBar.value = true
-        homeViewModel.hideCarrinhoFlutuante.value = true
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,15 +43,21 @@ class CarrinhoFragment : Fragment() {
         prepareRecyclerView()
         startObservers()
         startEventClickListeners()
-        val database = Firebase.database
 
         binding.btnFinalizarTudo.setOnClickListener {
             if (homeViewModel.listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == false) {
-                val myUid = homeViewModel.auth.currentUser?.uid!!.toString()
-                val myRefUsers = database.getReference("users")
-                val empId = myRefUsers.push().key!!
-                myRefUsers.child(myUid).child(empId)
-                    .setValue(homeViewModel.listPedidoFeitoLiveData.value)
+                db.collection("users")
+                    .document("clientes")
+                    .collection(auth.currentUser?.uid.toString())
+                    .document("pedidos")
+                    .collection("recente")
+                    .add(it)
+                    .addOnSuccessListener{
+                        Log.i("teste","Sucesso")
+                    }
+                    .addOnFailureListener {
+                        Log.i("teste","Falha")
+                    }
                 homeViewModel.isPedidoFeitoLiveData.value = false
                 homeViewModel.precoTotalLiveData.value = 0f
                 homeViewModel.clearPedidosAndPrices()
@@ -96,18 +94,6 @@ class CarrinhoFragment : Fragment() {
         homeViewModel.listPedidoFeitoLiveData.observe(viewLifecycleOwner) {
             adapterPedidos.addPedidoToRecyclerViewList(it.pedidos!!)
 
-            db.collection("users")
-                .document("clientes")
-                .collection(auth.currentUser?.uid.toString())
-                .document("pedidos")
-                .collection("recente")
-                .add(it)
-                .addOnSuccessListener{
-                    Log.i("teste","Sucesso")
-                }
-                .addOnFailureListener {
-                    Log.i("teste","Falha")
-                }
 
 
         }
@@ -130,8 +116,6 @@ class CarrinhoFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        homeViewModel.hideNavBar.value = false
-        homeViewModel.checkSeTemPedidoParaEsconderOuMostarCarrinhoFlutuante()
         _binding = null
     }
 }

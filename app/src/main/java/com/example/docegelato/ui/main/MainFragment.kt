@@ -51,7 +51,11 @@ class MainFragment : Fragment() {
             .document("location")
             .get()
             .addOnSuccessListener{
-                homeViewModel.address.value = it.toObject(Address::class.java)
+                if(it.exists()){
+                    homeViewModel.address.value = it.toObject(Address::class.java)
+                }else{
+                    findNavController().navigate(R.id.action_mainFragment_to_mapsFragment2)
+                }
             }
             .addOnFailureListener {
             }
