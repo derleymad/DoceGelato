@@ -45,7 +45,6 @@ class HomeFragment : Fragment() {
         loadImgPerfil()
         startEventOnClickListeners()
 
-
         binding.imgPerfil.setOnClickListener {
             it.isEnabled = false
             findNavController().navHomeToPerfil()
@@ -83,11 +82,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun startObservers() {
-        homeViewModel.nomedaruaLiveData.observe(viewLifecycleOwner, Observer {
-            binding.btnExpandmore.text = it
-        })
-
-
+        homeViewModel.address.observe(viewLifecycleOwner){
+            binding.btnExpandmore.text = it.rua+it.numero_da_casa
+        }
     }
 
 

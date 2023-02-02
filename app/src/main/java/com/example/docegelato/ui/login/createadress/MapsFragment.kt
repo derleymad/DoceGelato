@@ -52,6 +52,7 @@ class MapsFragment : Fragment() {
                         Address(
                             binding.editBairro.text.toString(),
                             binding.editRua.text.toString(),
+                            "kariús",
                             binding.editCasa.text.toString(),
                             binding.editPontoReferencia.text.toString(),
                         )

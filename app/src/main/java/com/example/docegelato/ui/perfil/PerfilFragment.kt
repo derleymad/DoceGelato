@@ -10,15 +10,24 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentPerfilBinding
+import com.example.docegelato.model.categorias.Address
+import com.example.docegelato.model.categorias.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
+import com.example.docegelato.util.FirebaseUtils
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 class PerfilFragment : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
-
+//    var database: FirebaseDatabase = FirebaseDatabase.getInstance()
+//    var myRef: DatabaseReference = database.getReference("admins")
+    val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("criou", homeViewModel.hideCarrinhoFlutuante.value.toString())
@@ -38,24 +47,26 @@ class PerfilFragment : Fragment() {
     ): View? {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
 
-        var database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        var myRef: DatabaseReference = database.getReference("admins")
 
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children) {
-                    Log.i("foi?", i.key.toString())
-                    Log.i("foi?", homeViewModel.auth.currentUser?.uid.toString())
-                    if (i.key?.equals(homeViewModel.auth.currentUser?.uid.toString()) == true) {
-                        binding.admin.visibility = View.VISIBLE
-                        return
-                    }
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+        startObservers()
+
+//
+//        myRef.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                for (i in snapshot.children) {
+//                    Log.i("foi?", i.key.toString())
+//                    Log.i("foi?", homeViewModel.auth.currentUser?.uid.toString())
+//                    if (i.key?.equals(homeViewModel.auth.currentUser?.uid.toString()) == true) {
+//                        binding.admin.visibility = View.VISIBLE
+//                        return
+//                    }
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//        })
 
         binding.closePerfilBtn.setOnClickListener {
             findNavController().popBackStack()
@@ -72,6 +83,12 @@ class PerfilFragment : Fragment() {
         binding.localizacao.text = homeViewModel.address.value.toString()
 
         return binding.root
+    }
+
+    fun startObservers(){
+        homeViewModel.address.observe(viewLifecycleOwner){
+            binding.localizacao.text = it.toString()
+        }
     }
 
     override fun onDestroyView() {

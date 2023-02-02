@@ -53,7 +53,7 @@ class SacolaFragment : Fragment() {
                                     "Pedido adicionado ao carrinho",
                                     Snackbar.LENGTH_SHORT
                                 )
-                                base.setAnchorView(binding.btnBackToBaseFragment).show()
+                                base.setAnchorView(binding.btnBottomAdicionar).show()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                             }
                         }
@@ -76,8 +76,6 @@ class SacolaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startOnClickListeners()
-//        requireActivity().findViewById<CardView>(R.id.ln_carrinho_flutuante).visibility = View.GONE
-//        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
     }
 
     private fun startOnClickListeners() {

@@ -15,6 +15,7 @@
             android:id="@+id/close_perfil_btn"
             android:src="@drawable/ic_baseline_close_24"
             android:padding="32dp"
+            android:layout_marginTop="32dp"
             android:background="?attr/actionBarItemBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

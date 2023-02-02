@@ -15,11 +15,13 @@ import androidx.transition.TransitionManager
 import com.example.docegelato.databinding.ActivityMainBinding
 import com.example.docegelato.extensions.navHomeToCarrinho
 import com.example.docegelato.extensions.navNewUserToNewLocation
+import com.example.docegelato.model.categorias.Address
 import com.example.docegelato.model.categorias.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.example.docegelato.util.Utils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var homeViewModel: HomeViewModel
     val pedidoViewModel: PedidoViewModel by viewModels()
+    val auth = FirebaseAuth.getInstance()
     val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +44,17 @@ class MainActivity : AppCompatActivity() {
         startObservers()
         pedidoViewModel.setListenerFirebaseEvent()
 
+        db.collection("users")
+            .document("clientes")
+            .collection(auth.currentUser?.uid.toString())
+            .document("location")
+            .get()
+            .addOnSuccessListener{
+//                Log.i("dataPerfil", it.toObject(Address::class.java).toString())
+                homeViewModel.address.value = it.toObject(Address::class.java)
+            }
+            .addOnFailureListener {
+            }
 
 //        val user = hashMapOf(
 //            "teste" to "doidin"
