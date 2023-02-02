@@ -64,14 +64,13 @@ class PerfilFragment : Fragment() {
         Picasso.get().load(homeViewModel.auth.currentUser?.photoUrl)
             .placeholder(R.drawable.placeholder).into(binding.imgPerfilPhoto)
         binding.perfilName.text = homeViewModel.auth.currentUser?.displayName
-        binding.localizacao.text = homeViewModel.address.value.toString()
-
         return binding.root
+//        binding.localizacao.text = "${homeViewModel.address.value?.bairro+", " +homeViewModel.address.value?.rua+", "+homeViewModel.address.value?.numero_da_casa}"
     }
 
     fun startObservers(){
         homeViewModel.address.observe(viewLifecycleOwner){
-            binding.localizacao.text = it.toString()
+        binding.localizacao.text = "${it.bairro+", " +it.rua+", "+it.numero_da_casa}"
         }
     }
 }

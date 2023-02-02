@@ -15,7 +15,7 @@
             android:id="@+id/close_perfil_btn"
             android:src="@drawable/ic_baseline_close_24"
             android:padding="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:background="?attr/actionBarItemBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -59,10 +59,13 @@
             android:id="@+id/localizacao"
             tools:text="@tools:sample/lorem/random"
             android:layout_marginTop="16dp"
+            android:maxLines="2"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
+            android:drawableStart="@drawable/ic_outline_edit_location_24"
+            android:drawablePadding="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="100dp" />
+            android:layout_height="wrap_content" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/admin"
@@ -74,27 +77,34 @@
             android:visibility="gone"
             android:foreground="?attr/selectableItemBackground"
             android:padding="16dp"
-            android:paddingStart="16dp"
+            android:paddingStart="32dp"
             android:layout_height="wrap_content"
             android:focusable="true">
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_baseline_shopping_cart_24"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:drawablePadding="16dp"
                 android:drawableEnd="@drawable/ic_baseline_expand_more_24"
+                android:drawablePadding="16dp"
                 android:text="@string/admin"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_light_even_more"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:background="@color/gray_light"
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sair"
@@ -105,7 +115,7 @@
             tools:visibility="visible"
             android:foreground="?attr/selectableItemBackground"
             android:padding="16dp"
-            android:paddingStart="16dp"
+            android:paddingStart="32dp"
             android:layout_height="wrap_content"
             android:focusable="true">
 

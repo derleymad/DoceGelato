@@ -29,9 +29,6 @@ class CarrinhoFragment : Fragment() {
     var db = Firebase.firestore
 
     private val homeViewModel: HomeViewModel by activityViewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onResume() {
         super.onResume()
