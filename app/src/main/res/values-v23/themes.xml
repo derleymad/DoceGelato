@@ -23,4 +23,8 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowActivityTransitions">true</item>
     </style>
+
+    <style name="WithoutStatus" parent="Theme.DoceGelato">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 </resources>

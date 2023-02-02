@@ -5,181 +5,175 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.sacola.SacolaFragment">
-
     <ImageView
         android:id="@+id/img_sacola"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:fitsSystemWindows="true"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/placeholder"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="250dp" />
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_back_to_base_fragment"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:foreground="?attr/actionBarItemBackground"
-        android:clickable="true"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-        android:paddingEnd="10dp"
-        android:paddingTop="8dp"
-        android:paddingStart="8dp"
-        android:paddingBottom="8dp"
-        android:background="@drawable/input_rounded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:focusable="true" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="?attr/actionBarItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                app:boxBackgroundMode="none"
+                app:counterEnabled="true"
+                app:counterMaxLength="150"
+                app:errorEnabled="true"
+                app:expandedHintEnabled="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_alguma_observacao">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_observacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/nunito"
+                    android:hint="@string/ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc"
+                    android:maxLength="150"
+                    android:maxLines="4"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textCursorDrawable="@null"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_sacola_title"
-        app:layout_constraintTop_toBottomOf="@id/img_sacola"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Açaí P"
-        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tv_sacola_descricao"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/nunito"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_sacola_title"
-        tools:text="5 acompanhamentos + 1 cobretura." />
+        app:layout_constraintTop_toBottomOf="@+id/img_sacola"
+        tools:text="Açaí P" />
 
-    <TextView
-        android:id="@+id/tv_sacola_preco"
-        app:layout_constraintTop_toBottomOf="@id/tv_sacola_descricao"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="R$ 12,00"
-        android:fontFamily="@font/nunito"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_sacola_descricao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/nunito"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sacola_title"
+                tools:text="5 acompanhamentos + 1 cobretura." />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/gray_light_even_more"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_sacola_preco" />
-
-    <TextView
-        android:id="@+id/tv_alguma_observacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/nunito"
-        android:textSize="16sp"
-        android:drawablePadding="8dp"
-        android:text="@string/alguma_observa_o"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:drawableStartCompat="@drawable/ic_baseline_textsms_24" />
+            <TextView
+                android:id="@+id/tv_sacola_preco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nunito"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sacola_descricao"
+                tools:text="R$ 12,00" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:counterEnabled="true"
-        app:boxBackgroundMode="none"
-        android:layout_marginTop="16dp"
-        app:expandedHintEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/tv_alguma_observacao"
-        app:counterMaxLength="150"
-        app:hintEnabled="false"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+            <!--            <View-->
+            <!--                android:id="@+id/view"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="1dp"-->
+            <!--                android:background="@color/gray_light_even_more"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent" />-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_observacao"
-            android:textCursorDrawable="@null"
-            android:textColor="@color/black"
-            android:layout_marginTop="-16dp"
-            android:paddingTop="16dp"
-            android:background="@drawable/input_rounded"
-            android:fontFamily="@font/nunito"
-            android:paddingBottom="16dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:hint="@string/ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc"
-            android:textSize="16sp"
-            android:maxLines="4"
-            android:maxLength="150"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/tv_alguma_observacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/nunito"
+                android:text="@string/alguma_observa_o"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/ic_baseline_textsms_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sacola_preco" />
 
 
     <LinearLayout
         android:id="@+id/bottom_adicionar"
         android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginBottom="32dp"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
         android:weightSum="1"
-        android:layout_height="?actionBarSize">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/btn_minor"
-            android:src="@drawable/ic_baseline_remove_circle_24"
-            android:background="?attr/actionBarItemBackground"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="?attr/actionBarItemBackground"
+            android:src="@drawable/ic_baseline_remove_circle_24" />
 
         <TextView
             android:id="@+id/edit_bottom_quantity"
             android:layout_width="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/_1"
-            android:fontFamily="@font/nunito"
             android:layout_marginEnd="8dp"
             android:background="@drawable/input_rounded"
-            android:textAlignment="center"
-            android:layout_height="wrap_content" />
+            android:fontFamily="@font/nunito"
+            android:text="@string/_1"
+            android:textAlignment="center" />
 
         <ImageButton
             android:id="@+id/btn_plus"
-            android:src="@drawable/ic_baseline_add_circle_outline_24"
-            android:background="?attr/actionBarItemBackground"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="?attr/actionBarItemBackground"
+            android:src="@drawable/ic_baseline_add_circle_outline_24" />
 
         <Button
             android:id="@+id/btn_bottom_adicionar"
-            android:layout_weight="0.6"
-            android:text="@string/adicionar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textColor="@color/white"
+            android:layout_weight="0.6"
             android:backgroundTint="@color/green_shopper"
             android:fontFamily="@font/nunito"
+            android:text="@string/adicionar"
             android:textAllCaps="false"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

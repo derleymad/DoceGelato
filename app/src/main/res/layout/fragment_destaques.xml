@@ -20,15 +20,9 @@
         app:iss_delay="0"
         app:iss_period="3000"
         app:iss_auto_cycle="true"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="200dp" />
 
-    <!--        <ImageView-->
-    <!--            android:id="@+id/img_banner_main"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:src="@drawable/placeholder"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:scaleType="centerCrop" />-->
     <View
         android:id="@+id/view_line_top"
         android:layout_width="match_parent"
@@ -61,41 +55,72 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        android:foreground="?attr/selectableItemBackground"
-        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_destaques_title"
         tools:itemCount="2"
-        tools:listitem="@layout/comida_destaque_item"
-        android:focusable="true" />
+        tools:listitem="@layout/comida_destaque_item" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/img_banner_cupom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_destaques_title"
+        app:layout_constraintVertical_bias="0.0"
+        app:shimmer_auto_start="false"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <include layout="@layout/shimmer_chucknorris_fact" />
+
+            <include layout="@layout/shimmer_chucknorris_fact" />
+
+            <include layout="@layout/shimmer_chucknorris_fact" />
+
+            <include layout="@layout/shimmer_chucknorris_fact" />
+
+            <include layout="@layout/shimmer_chucknorris_fact" />
+
+        </LinearLayout>
+
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
 
     <ImageView
         android:id="@+id/img_banner_cupom"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="100dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/um_banner_de_comida"
         android:scaleType="centerCrop"
         android:src="@drawable/placeholder"
-        android:contentDescription="@string/um_banner_de_comida"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_destaques" />
+        app:layout_constraintTop_toBottomOf="@+id/rv_destaques"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <View
-        android:id="@+id/view_line"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/gray_light_more"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_banner_cupom" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

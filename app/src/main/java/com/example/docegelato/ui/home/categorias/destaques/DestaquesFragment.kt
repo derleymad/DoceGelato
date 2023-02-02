@@ -81,8 +81,25 @@ class DestaquesFragment : Fragment() {
         homeViewModel.destaquesLiveData.observe(viewLifecycleOwner, Observer {
             destaqueAdapter.setDestaquesList(it)
         })
+
+        homeViewModel.isLoadingContent.observe(viewLifecycleOwner) {
+            if(it) shimmerStart() else shimmerStop()
+        }
     }
 
+    private fun shimmerStart() {
+        binding.shimmerLayout.apply {
+            startShimmer()
+            visibility = View.VISIBLE
+        }
+    }
+
+    private fun shimmerStop() {
+        binding.shimmerLayout.apply {
+            stopShimmer()
+            visibility = View.GONE
+        }
+    }
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()

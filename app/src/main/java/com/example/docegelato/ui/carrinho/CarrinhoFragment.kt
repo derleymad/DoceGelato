@@ -31,7 +31,6 @@ class CarrinhoFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
     }
 
@@ -135,6 +134,8 @@ class CarrinhoFragment : Fragment() {
             }
         }
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

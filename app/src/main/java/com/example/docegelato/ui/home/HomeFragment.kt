@@ -25,6 +25,10 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
 
+    override fun onGetLayoutInflater(savedInstanceState: Bundle?): LayoutInflater {
+        requireContext().setTheme(R.style.WithoutStatus)
+        return super.onGetLayoutInflater(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,10 +87,10 @@ class HomeFragment : Fragment() {
             binding.btnExpandmore.text = it
         })
 
-        homeViewModel.isLoadingContent.observe(viewLifecycleOwner) {
-            binding.homeProgressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE
-        }
+
     }
+
+
 
     private fun startEventOnClickListeners() {
         binding.editSearch.setOnClickListener {

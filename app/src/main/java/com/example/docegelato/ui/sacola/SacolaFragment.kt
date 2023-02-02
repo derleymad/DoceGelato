@@ -27,7 +27,6 @@ class SacolaFragment : Fragment() {
 //        this.requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
         homeViewModel.hideNavBar.value = true
         homeViewModel.hideCarrinhoFlutuante.value = true
-
         // Inflate the layout for this fragment
         _binding = FragmentSacolaBinding.inflate(inflater, container, false)
         homeViewModel.idLiveData.observe(viewLifecycleOwner) { id ->
