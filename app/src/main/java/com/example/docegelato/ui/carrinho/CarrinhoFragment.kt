@@ -9,12 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentCarrinhoBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
@@ -55,7 +53,6 @@ class CarrinhoFragment : Fragment() {
         prepareRecyclerView()
         startObservers()
         startEventClickListeners()
-        clearBadges()
         val database = Firebase.database
 
         binding.btnFinalizarTudo.setOnClickListener {
@@ -78,10 +75,6 @@ class CarrinhoFragment : Fragment() {
         }
     }
 
-    private fun clearBadges() {
-        val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
-        navBar.removeBadge(R.id.navigation_carrinho)
-    }
 
     private fun startEventClickListeners() {
         binding.btnBackToBaseFragment.setOnClickListener {

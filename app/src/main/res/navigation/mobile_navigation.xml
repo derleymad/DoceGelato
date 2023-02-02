@@ -9,66 +9,17 @@
         android:id="@+id/navigation_home"
         android:name="com.example.docegelato.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_navigation_home_to_sacolaFragment"
-            app:destination="@id/sacolaFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_carrinho"
-            app:destination="@id/navigation_carrinho" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_search"
-            app:destination="@id/navigation_search" />
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.example.docegelato.ui.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search">
-        <action
-            android:id="@+id/action_navigation_search_to_navigation_carrinho"
-            app:destination="@id/navigation_carrinho" />
-        <action
-            android:id="@+id/action_navigation_search_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_carrinho"
-        android:name="com.example.docegelato.ui.carrinho.CarrinhoFragment"
-        android:label="@string/title_pedidos"
-        tools:layout="@layout/fragment_carrinho">
-        <action
-            android:id="@+id/action_navigation_carrinho_to_navigation_pedido"
-            app:destination="@id/navigation_pedido" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/sacolaFragment"
-        android:name="com.example.docegelato.ui.sacola.SacolaFragment"
-        android:label="fragment_sacola"
-        tools:layout="@layout/fragment_sacola">
-        <action
-            android:id="@+id/action_sacolaFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
-        <action
-            android:id="@+id/action_sacolaFragment_to_navigation_pedidos2"
-            app:destination="@id/navigation_carrinho" />
-    </fragment>
+        tools:layout="@layout/fragment_search"/>
 
     <fragment
         android:id="@+id/navigation_pedido"
         android:name="com.example.docegelato.ui.pedido.PedidoFragment"
         android:label="fragment_pedido"
-        tools:layout="@layout/fragment_pedido">
-        <action
-            android:id="@+id/action_navigation_pedido_to_navigation_carrinho"
-            app:destination="@id/navigation_carrinho" />
-    </fragment>
-    <fragment
-        android:id="@+id/perfilFragment"
-        android:name="com.example.docegelato.ui.perfil.PerfilFragment"
-        android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_pedido"/>
 </navigation>

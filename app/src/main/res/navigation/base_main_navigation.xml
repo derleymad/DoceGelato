@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_main_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.docegelato.ui.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_sacolaFragment"
+            app:destination="@id/sacolaFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_carrinhoFragment"
+            app:destination="@id/carrinhoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carrinhoFragment"
+        android:name="com.example.docegelato.ui.carrinho.CarrinhoFragment"
+        android:label="fragment_carrinho"
+        tools:layout="@layout/fragment_carrinho" />
+    <fragment
+        android:id="@+id/sacolaFragment"
+        android:name="com.example.docegelato.ui.sacola.SacolaFragment"
+        android:label="fragment_sacola"
+        tools:layout="@layout/fragment_sacola" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.docegelato.ui.perfil.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+</navigation>

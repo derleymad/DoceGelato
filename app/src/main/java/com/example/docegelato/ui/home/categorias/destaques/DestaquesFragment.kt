@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.docegelato.databinding.FragmentDestaquesBinding
-import com.example.docegelato.extensions.navComidaToSacola
+import com.example.docegelato.extensions.navMainToSacola
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.DestaqueAdapter
 import com.squareup.picasso.Picasso
@@ -45,7 +45,7 @@ class DestaquesFragment : Fragment() {
     fun prepareRecyclerView() {
         destaqueAdapter = DestaqueAdapter {
             homeViewModel.idLiveData.value = it
-            findNavController().navComidaToSacola()
+            findNavController().navMainToSacola()
         }
         binding.rvDestaques.apply {
             adapter = destaqueAdapter

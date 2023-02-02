@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
-import com.example.docegelato.extensions.navHomeToPerfil
+import com.example.docegelato.extensions.navMainToPerfil
 import com.example.docegelato.ui.home.adapters.PagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayoutMediator
@@ -47,7 +46,7 @@ class HomeFragment : Fragment() {
 
         binding.imgPerfil.setOnClickListener {
             it.isEnabled = false
-            findNavController().navHomeToPerfil()
+            findNavController().navMainToPerfil()
         }
 
         if (homeViewModel.isPedidoFeitoLiveData.value == true) {
@@ -83,7 +82,7 @@ class HomeFragment : Fragment() {
 
     private fun startObservers() {
         homeViewModel.address.observe(viewLifecycleOwner){
-            binding.btnExpandmore.text = it.rua+it.numero_da_casa
+            binding.btnExpandmore.text = it.rua
         }
     }
 

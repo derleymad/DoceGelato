@@ -22,42 +22,4 @@ class PedidoViewModel : ViewModel() {
     init {
         dataRequest.value = ArrayList()
     }
-
-    fun setListenerFirebaseEvent() {
-
-//        myRef.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                loadingProgressBar.postValue(false)
-//                criarBadge.postValue(true)
-//                dataRequest.value = ArrayList()
-//                dataRequest.value?.clear()
-//
-//                snapshot.children.forEach { user ->
-//                    if (user.key == firebaseAuth?.uid.toString()) {
-//                        user.children.forEach { pedido ->
-//                            dataRequest.value?.add(pedido.getValue(Pedidos::class.java)!!)
-//                        }
-//                    }
-//
-//                }
-//
-////                if (snapshot.exists()) {
-////                    for (user in snapshot.children) {
-////                        if (user.value.toString()==firebaseAuth?.uid.toString()){
-////                        dataRequest.value?.add(user.getValue(Pedidos::class.java)!!)
-////                            Log.i("fala", user.value.toString())
-////                        }
-////                        Log.i("fala", firebaseAuth?.uid.toString())
-////                        Log.i("fala",snapshot.value.toString())
-////                    }
-////                }else{
-////                    Log.i("fala","entrou no else")
-////                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//        })
-    }
-
 }

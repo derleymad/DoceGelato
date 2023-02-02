@@ -25,8 +25,6 @@ class PerfilFragment : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
-//    var database: FirebaseDatabase = FirebaseDatabase.getInstance()
-//    var myRef: DatabaseReference = database.getReference("admins")
     val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,20 +32,11 @@ class PerfilFragment : Fragment() {
 
     }
 
-    override fun onResume() {
-        homeViewModel.hideNavBar.value = true
-        homeViewModel.hideCarrinhoFlutuante.value = true
-        Log.i("enviando", "onresume")
-        super.onResume()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
-
-
 
         startObservers()
 

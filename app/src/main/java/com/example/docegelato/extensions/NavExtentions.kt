@@ -29,17 +29,17 @@ private val navOptionsSlide = NavOptions.Builder()
     .setPopEnterAnim(R.anim.slide_in_left)
     .setPopExitAnim(R.anim.slide_out_right)
     .build()
-fun NavController.navHomeToCarrinho(destinationId: Int = 0) {
 
-    this.navigate(R.id.navigation_carrinho, null, navOptionsPushs)
+fun NavController.navMainToCarrinho(destinationId: Int = 0) {
+    this.navigate(R.id.action_mainFragment_to_carrinhoFragment, null, navOptionsPushs)
 }
 
-fun NavController.navComidaToSacola(destinationId: Int = 0) {
-    this.navigate(R.id.action_navigation_home_to_sacolaFragment, null, navOptionsSlide)
+fun NavController.navMainToSacola(destinationId: Int = 0) {
+    this.navigate(R.id.action_mainFragment_to_sacolaFragment, null, navOptionsSlide)
 }
 
-fun NavController.navHomeToPerfil(destinationId: Int = 0) {
-    this.navigate(R.id.perfilFragment, null, navOptionsPushsPerfil)
+fun NavController.navMainToPerfil(destinationId: Int = 0) {
+    this.navigate(R.id.action_mainFragment_to_perfilFragment, null, navOptionsPushsPerfil)
 }
 
 fun NavController.navNewUserToNewLocation(){
