@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentMainBinding
 import com.example.docegelato.extensions.navMainToCarrinho
+import com.example.docegelato.extensions.navMainToMaps
 import com.example.docegelato.model.categorias.Address
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
@@ -57,7 +58,7 @@ class MainFragment : Fragment() {
                 if(it.exists()){
                     homeViewModel.address.value = it.toObject(Address::class.java)
                 }else{
-                    findNavController().navigate(R.id.action_mainFragment_to_mapsFragment2)
+                    findNavController().navMainToMaps()
                 }
             }
             .addOnFailureListener {

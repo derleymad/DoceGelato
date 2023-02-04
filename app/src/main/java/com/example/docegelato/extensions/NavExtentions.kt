@@ -4,8 +4,10 @@ import android.os.Build
 import android.text.Html
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 
@@ -38,11 +40,15 @@ fun NavController.navMainToSacola(destinationId: Int = 0) {
     this.navigate(R.id.action_mainFragment_to_sacolaFragment, null, navOptionsSlide)
 }
 
-fun NavController.navMainToPerfil(destinationId: Int = 0) {
+fun NavController.navMainToMaps(){
+    this.navigate(R.id.action_mainFragment_to_mapsFragment2)
+}
+
+private fun NavController.navMainToPerfil(destinationId: Int = 0) {
     this.navigate(R.id.action_mainFragment_to_perfilFragment, null, navOptionsPushsPerfil)
 }
 
-fun NavController.navMainToLocation(destinationId: Int = 0) {
+private fun NavController.navMainToLocation(destinationId: Int = 0) {
     this.navigate(R.id.action_mainFragment_to_mapsFragment2, null, navOptionsPushsPerfil)
 }
 
@@ -50,9 +56,17 @@ fun NavController.navNewUserToNewLocation(){
     this.navigate(R.id.action_newUserLoginFragment_to_mapsFragment,null, navOptionsSlide)
 }
 
+fun Fragment.navToMaps(){
+    this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navMainToLocation()
+}
+fun Fragment.navToPerfil(){
+    this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navMainToPerfil()
+}
+
 fun Fragment.getFormattedString(myString : String) :  String{
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         Html.fromHtml(getString(R.string.usar_localiza_o_atual,myString),Html.FROM_HTML_MODE_LEGACY).toString()
+
     } else {
         return myString
     }

@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     private fun getAdminUserFromFirebase(){
         db.collection("users")
             .document("clientes")

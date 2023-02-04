@@ -44,7 +44,7 @@ class MapsFragment : Fragment() {
     private fun initSetOnClickListeners() {
 
         binding.btnBack.setOnClickListener {
-            requireActivity().findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
+            findNavController().popBackStack()
         }
 
         binding.btnSave.setOnClickListener {
