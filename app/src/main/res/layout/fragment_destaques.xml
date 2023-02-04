@@ -39,7 +39,6 @@
         android:id="@+id/tv_destaques_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito"
@@ -73,7 +72,7 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/img_banner_cupom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_destaques_title"
@@ -89,38 +88,36 @@
             android:orientation="horizontal">
 
             <include layout="@layout/shimmer_chucknorris_fact" />
-
             <include layout="@layout/shimmer_chucknorris_fact" />
-
             <include layout="@layout/shimmer_chucknorris_fact" />
-
             <include layout="@layout/shimmer_chucknorris_fact" />
-
             <include layout="@layout/shimmer_chucknorris_fact" />
 
         </LinearLayout>
-
-
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-
-    <ImageView
-        android:id="@+id/img_banner_cupom"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/img_banner_cardview"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:contentDescription="@string/um_banner_de_comida"
-        android:scaleType="centerCrop"
-        android:src="@drawable/placeholder"
+        app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_destaques"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.89">
 
-
-
+        <ImageView
+            android:id="@+id/img_banner_cupom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/um_banner_de_comida"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

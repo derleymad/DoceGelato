@@ -1,6 +1,7 @@
 package com.example.docegelato.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,6 +46,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startObservers()
+//        getAdressFromFirebase()
+
         db.collection("users")
             .document("clientes")
             .collection(auth.currentUser?.uid.toString())
@@ -87,11 +90,4 @@ class MainFragment : Fragment() {
         }
     }
 
-//    private fun toggle(it: Boolean) {
-//        val transition: Transition = Slide(Gravity.BOTTOM)
-//        transition.duration = 300
-//        transition.addTarget(binding.navView)
-//        TransitionManager.beginDelayedTransition(binding.root, transition)
-//        binding.navView.visibility = if (it) View.GONE else View.VISIBLE
-//    }
 }

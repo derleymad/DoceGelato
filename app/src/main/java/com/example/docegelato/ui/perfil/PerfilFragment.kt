@@ -10,16 +10,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentPerfilBinding
-import com.example.docegelato.model.categorias.Address
-import com.example.docegelato.model.categorias.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
-import com.example.docegelato.util.FirebaseUtils
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
+
 
 class PerfilFragment : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
@@ -32,9 +32,8 @@ class PerfilFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
-
         startObservers()
-
+        adminPedidos()
 //
 //        myRef.addValueEventListener(object : ValueEventListener {
 //            override fun onDataChange(snapshot: DataSnapshot) {
@@ -70,7 +69,34 @@ class PerfilFragment : Fragment() {
 
     fun startObservers(){
         homeViewModel.address.observe(viewLifecycleOwner){
-        binding.localizacao.text = "${it.bairro+", " +it.rua+", "+it.numero_da_casa}"
+            binding.localizacao.text = "${it.bairro+", " +it.rua+", "+it.numero_da_casa}"
         }
+        homeViewModel.isAdmin.observe(viewLifecycleOwner){
+            Log.i("isadminObserve",it.toString())
+            binding.admin.visibility = if(it)View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun adminPedidos(){
+
+        val myref = db.collection("pedidos")
+        myref.addSnapshotListener { value, error ->
+            if (value != null) {
+                Log.d("othersTeste", "New city: " + value.documents.toString())
+            }
+        }
+
+//        val docRef = db.collection("pedidos").document("recentes")
+//        docRef.addSnapshotListener{value,error ->
+//            if(error!=null){
+//                Log.i("listenSnapshot","fail to listen")
+//            }
+//
+//            Log.i("listenSnapshot",value.toString())
+//            if(value!=null && value.exists()){
+//                Log.i("listenSnapshot","changes")
+//                Log.i("listenSnapshot",value.toString())
+//            }
+//        }
     }
 }

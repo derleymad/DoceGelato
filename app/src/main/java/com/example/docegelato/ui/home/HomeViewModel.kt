@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.docegelato.model.categorias.*
 import com.example.docegelato.network.RetrofitInstance
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,6 +20,7 @@ class HomeViewModel : ViewModel() {
     private var _nomedaruaLiveData = MutableLiveData<String>()
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()
     private var _idLiveData = MutableLiveData<Int>()
+    var isAdmin = MutableLiveData(false)
     private var _quantityLiveData = MutableLiveData(1)
     private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>(false)
     private var _listPedidoFeitoLiveData = MutableLiveData<Pedidos>()
@@ -31,6 +34,7 @@ class HomeViewModel : ViewModel() {
     var auth: FirebaseAuth
     val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
     val precoTotalLiveData = _precoTotalLiveData
+    val db = Firebase.firestore
 
     val setOfids = mutableSetOf<Int>()
 
@@ -39,6 +43,7 @@ class HomeViewModel : ViewModel() {
         auth = FirebaseAuth.getInstance()
         addressLiveData.value = Address()
         user.value = User(
+
             nome = auth.currentUser?.displayName.toString(),
             imagemPerfil = auth.currentUser?.photoUrl.toString(),
             uid = auth.currentUser?.uid.toString(),
@@ -84,13 +89,23 @@ class HomeViewModel : ViewModel() {
         quantityLiveData.value = quantityLiveData.value?.plus(1)
     }
 
+    fun getUserFromFirebase(){
+        db.collection("users")
+            .document("clientes")
+            .collection(auth.currentUser?.uid.toString())
+            .get()
+            .addOnSuccessListener{
+            }
+            .addOnFailureListener {
+                Log.i("teste","Falha")
+            }
+    }
+
     fun setComidaToPedidos(comida: Comida, user: User, address: Address) {
         //GENERATE UNIQUE ID and ADD INTO SETS
         setOfids.add((0..1000).random())
-        listPedidoFeitoLiveData.value?.preco_total =
-        quantityLiveData.value?.times(comida.comida_preco!!)!!
-        precoTotalLiveData.value =
-        precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+        listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
+        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
         listPedidoFeitoLiveData.value?.address = address
         listPedidoFeitoLiveData.value?.user = user
 
