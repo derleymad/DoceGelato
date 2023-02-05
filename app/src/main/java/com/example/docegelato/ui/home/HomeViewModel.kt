@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.docegelato.model.categorias.*
+import com.example.docegelato.model.pedidos.Pedido
+import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.network.RetrofitInstance
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -13,6 +15,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeViewModel : ViewModel() {
     val hideNavBar = MutableLiveData(false)
@@ -39,11 +43,10 @@ class HomeViewModel : ViewModel() {
     val setOfids = mutableSetOf<Int>()
 
     init {
-        listPedidoFeitoLiveData.value = Pedidos(mutableListOf<Pedido>(), null, null, 0f)
+        listPedidoFeitoLiveData.value = Pedidos(mutableListOf<Pedido>(), null, null, null,0f)
         auth = FirebaseAuth.getInstance()
         addressLiveData.value = Address()
         user.value = User(
-
             nome = auth.currentUser?.displayName.toString(),
             imagemPerfil = auth.currentUser?.photoUrl.toString(),
             uid = auth.currentUser?.uid.toString(),
@@ -102,12 +105,14 @@ class HomeViewModel : ViewModel() {
     }
 
     fun setComidaToPedidos(comida: Comida, user: User, address: Address) {
+        val currentDateTime = Calendar.getInstance()
         //GENERATE UNIQUE ID and ADD INTO SETS
         setOfids.add((0..1000).random())
         listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
         precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
         listPedidoFeitoLiveData.value?.address = address
         listPedidoFeitoLiveData.value?.user = user
+        listPedidoFeitoLiveData.value?.date = currentDateTime.timeInMillis.toString()
 
         val pedido = Pedido(
             comida_desc = comida.comida_desc,

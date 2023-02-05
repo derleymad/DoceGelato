@@ -11,13 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentPerfilBinding
-import com.example.docegelato.model.categorias.Pedidos
+import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
-
 
 class PerfilFragment : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
@@ -33,25 +31,15 @@ class PerfilFragment : Fragment() {
     ): View? {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
         startObservers()
-        adminPedidos()
-        startRecyclerView()
-//
-//        myRef.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                for (i in snapshot.children) {
-//                    Log.i("foi?", i.key.toString())
-//                    Log.i("foi?", homeViewModel.auth.currentUser?.uid.toString())
-//                    if (i.key?.equals(homeViewModel.auth.currentUser?.uid.toString()) == true) {
-//                        binding.admin.visibility = View.VISIBLE
-//                        return
-//                    }
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//        })
+        startEventClickListeners()
 
+        Picasso.get().load(homeViewModel.auth.currentUser?.photoUrl)
+            .placeholder(R.drawable.placeholder).into(binding.imgPerfilPhoto)
+        binding.perfilName.text = homeViewModel.auth.currentUser?.displayName
+        return binding.root
+    }
+
+    private fun startEventClickListeners() {
         binding.closePerfilBtn.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -61,11 +49,6 @@ class PerfilFragment : Fragment() {
             requireActivity().finish()
         }
 
-        Picasso.get().load(homeViewModel.auth.currentUser?.photoUrl)
-            .placeholder(R.drawable.placeholder).into(binding.imgPerfilPhoto)
-        binding.perfilName.text = homeViewModel.auth.currentUser?.displayName
-        return binding.root
-//        binding.localizacao.text = "${homeViewModel.address.value?.bairro+", " +homeViewModel.address.value?.rua+", "+homeViewModel.address.value?.numero_da_casa}"
     }
 
     fun startObservers(){
@@ -73,8 +56,15 @@ class PerfilFragment : Fragment() {
             binding.localizacao.text = "${it.bairro+", " +it.rua+", "+it.numero_da_casa}"
         }
         homeViewModel.isAdmin.observe(viewLifecycleOwner){
-            Log.i("isadminObserve",it.toString())
-            binding.admin.visibility = if(it)View.VISIBLE else View.GONE
+            when (it){
+                true -> {
+                    startRecyclerView()
+                    binding.admin.visibility = if(it)View.VISIBLE else View.GONE
+                    adminPedidos()
+                }
+                else ->{
+                }
+            }
         }
     }
 
@@ -84,30 +74,21 @@ class PerfilFragment : Fragment() {
     }
 
     private fun adminPedidos(){
-
         val myref = db.collection("pedidos")
         myref.addSnapshotListener { value, error ->
             list.clear()
+            if(error!=null){
+                Log.i("TAG","Error with null snapshot")
+            }
             if (value != null) {
                 Log.d("othersTeste", "New city: " + value.documents.toString())
                 for(i in value.documents){
-                    list.add(i.toObject(Pedidos::class.java)!!)
+                    if(i.exists()){
+                        list.add(i.toObject(Pedidos::class.java)!!)
+                    }
                 }
                 adapter.setListToRecyclerView(list)
             }
         }
-
-//        val docRef = db.collection("pedidos").document("recentes")
-//        docRef.addSnapshotListener{value,error ->
-//            if(error!=null){
-//                Log.i("listenSnapshot","fail to listen")
-//            }
-//
-//            Log.i("listenSnapshot",value.toString())
-//            if(value!=null && value.exists()){
-//                Log.i("listenSnapshot","changes")
-//                Log.i("listenSnapshot",value.toString())
-//            }
-//        }
     }
 }

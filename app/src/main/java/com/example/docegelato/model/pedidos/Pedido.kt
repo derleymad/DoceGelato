@@ -1,4 +1,4 @@
-package com.example.docegelato.model.categorias
+package com.example.docegelato.model.pedidos
 
 data class Pedido(
     val comida_desc: String? = "",

@@ -1,13 +1,11 @@
 package com.example.docegelato.ui.pedido
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.docegelato.model.categorias.Pedidos
+import com.example.docegelato.model.pedidos.Pedidos
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class PedidoViewModel : ViewModel() {

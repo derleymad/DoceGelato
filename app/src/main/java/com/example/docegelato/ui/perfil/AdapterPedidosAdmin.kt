@@ -1,13 +1,17 @@
 package com.example.docegelato.ui.perfil
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
-import com.example.docegelato.model.categorias.Pedidos
+import com.example.docegelato.model.pedidos.Pedidos
+import com.example.docegelato.ui.home.adapters.PedidoAdapter
+import java.text.SimpleDateFormat
 
 class AdapterPedidosAdmin : RecyclerView.Adapter<AdapterPedidosAdmin.PedidosAdminViewholder>(){
     val list = ArrayList<Pedidos>()
@@ -38,7 +42,21 @@ class AdapterPedidosAdmin : RecyclerView.Adapter<AdapterPedidosAdmin.PedidosAdmi
     inner class PedidosAdminViewholder(view:View) : RecyclerView.ViewHolder(view){
         fun bind(currentItem : Pedidos){
             val text = itemView.findViewById<TextView>(R.id.tv_pedido_feito_nome_pessoa)
+            val date = itemView.findViewById<TextView>(R.id.tv_pedido_feito_data)
+            val rua = itemView.findViewById<TextView>(R.id.tv_address_rua)
+            val rv = itemView.findViewById<RecyclerView>(R.id.rv_dentro_pedido_feito)
+            val adapter = PedidoAdapter(true)
+
+            rv.adapter = adapter
+            rv.layoutManager = LinearLayoutManager(itemView.context)
+            adapter.addPedidoToRecyclerViewList(currentItem.pedidos!!)
+            Log.i("testando",currentItem.pedidos.toString())
+
+//            date.text = SimpleDateFormat("dd/MM/yyyy").format(currentItem.date)
+            date.text = currentItem.date
             text.text = currentItem.user?.nome
+            rua.text = currentItem.address?.rua
+
         }
     }
 }

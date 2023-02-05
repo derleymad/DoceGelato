@@ -9,22 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
-import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentPedidoBinding
-import com.example.docegelato.model.categorias.Address
-import com.example.docegelato.model.categorias.Pedido
-import com.example.docegelato.model.categorias.Pedidos
-import com.example.docegelato.util.FirebaseUtils
+import com.example.docegelato.model.pedidos.Pedidos
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class PedidoFragment : Fragment() {

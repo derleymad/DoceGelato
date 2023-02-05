@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
-import com.example.docegelato.model.categorias.Pedido
+import com.example.docegelato.model.pedidos.Pedido
 import com.example.docegelato.util.Utils
 import com.squareup.picasso.Picasso
 

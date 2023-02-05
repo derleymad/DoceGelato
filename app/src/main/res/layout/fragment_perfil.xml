@@ -67,6 +67,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sair"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            tools:visibility="visible"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="16dp"
+            android:paddingStart="32dp"
+            android:layout_height="wrap_content"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:drawableStart="@drawable/ic_baseline_close_24"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:drawablePadding="16dp"
+                android:drawableEnd="@drawable/ic_baseline_expand_more_24"
+                android:text="Sair da conta"
+                android:layout_height="wrap_content" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:background="@color/gray_light"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/admin"
             android:layout_width="match_parent"
@@ -103,39 +136,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_static_pedidos"
+            android:layout_gravity="center"
+            android:text="Pedidos a serem aceitos"
+            android:fontFamily="@font/nunito"
+            android:layout_marginBottom="16dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/sair"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            tools:visibility="visible"
-            android:foreground="?attr/selectableItemBackground"
-            android:padding="16dp"
-            android:paddingStart="32dp"
-            android:layout_height="wrap_content"
-            android:focusable="true">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:drawableStart="@drawable/ic_baseline_close_24"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:drawablePadding="16dp"
-                android:drawableEnd="@drawable/ic_baseline_expand_more_24"
-                android:text="Sair da conta"
-                android:layout_height="wrap_content" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:background="@color/gray_light"
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_admin"
             android:layout_width="match_parent"

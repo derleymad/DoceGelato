@@ -3,7 +3,7 @@ package com.example.docegelato.ui.carrinho
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.docegelato.model.categorias.Pedido
+import com.example.docegelato.model.pedidos.Pedido
 
 class PedidosViewModel : ViewModel() {
 
