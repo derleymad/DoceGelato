@@ -136,20 +136,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <TextView
-            android:id="@+id/tv_static_pedidos"
-            android:layout_gravity="center"
-            android:text="Pedidos a serem aceitos"
-            android:fontFamily="@font/nunito"
-            android:layout_marginBottom="16dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_admin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </ScrollView>

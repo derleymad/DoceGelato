@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.docegelato.databinding.ActivityMainBinding
+import com.example.docegelato.network.MyFirebaseMessagingService
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.google.firebase.auth.FirebaseAuth

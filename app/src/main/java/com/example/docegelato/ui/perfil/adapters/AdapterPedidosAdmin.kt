@@ -1,4 +1,4 @@
-package com.example.docegelato.ui.perfil
+package com.example.docegelato.ui.perfil.adapters
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
-import java.text.SimpleDateFormat
 
 class AdapterPedidosAdmin : RecyclerView.Adapter<AdapterPedidosAdmin.PedidosAdminViewholder>(){
     val list = ArrayList<Pedidos>()

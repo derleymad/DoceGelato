@@ -40,7 +40,11 @@
         android:id="@+id/perfilFragment"
         android:name="com.example.docegelato.ui.perfil.PerfilFragment"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_perfilFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapsFragment2"
         android:name="com.example.docegelato.ui.login.createadress.MapsFragment"
@@ -51,4 +55,9 @@
         android:name="com.example.docegelato.ui.pedido.PedidoFragment"
         android:label="fragment_pedido"
         tools:layout="@layout/fragment_pedido" />
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.docegelato.ui.perfil.admin.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
 </navigation>

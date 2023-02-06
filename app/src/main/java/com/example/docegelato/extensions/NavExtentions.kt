@@ -52,6 +52,10 @@ private fun NavController.navMainToLocation(destinationId: Int = 0) {
     this.navigate(R.id.action_mainFragment_to_mapsFragment2, null, navOptionsPushsPerfil)
 }
 
+//private fun NavController.navPerfilToAdmin(destinationId: Int = 0) {
+//    this.navigate(R.id.action_mainFragment_to_mapsFragment2, null, navOptionsPushsPerfil)
+//}
+
 fun NavController.navNewUserToNewLocation(){
     this.navigate(R.id.action_newUserLoginFragment_to_mapsFragment,null, navOptionsSlide)
 }
@@ -61,6 +65,10 @@ fun Fragment.navToMaps(){
 }
 fun Fragment.navToPerfil(){
     this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navMainToPerfil()
+}
+
+fun Fragment.navPerfilToAdmin(){
+    this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_perfilFragment_to_adminFragment)
 }
 
 fun Fragment.getFormattedString(myString : String) :  String{
