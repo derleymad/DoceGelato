@@ -1,123 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.categorias.destaques.DestaquesFragment">
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/image_slider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:iss_corner_radius="16"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:iss_error_image="@drawable/placeholder"
-        app:iss_placeholder="@drawable/placeholder"
-        app:iss_delay="0"
-        app:iss_period="3000"
-        app:iss_auto_cycle="true"
-        android:layout_width="0dp"
-        android:layout_height="200dp" />
-
-    <View
-        android:id="@+id/view_line_top"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/gray_light_more"
-        app:layout_constraintTop_toBottomOf="@id/image_slider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_destaques_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/nunito"
-        android:text="@string/destaques"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_line_top" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_destaques"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_destaques_title"
-        tools:itemCount="2"
-        tools:listitem="@layout/comida_destaque_item" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_destaques_title"
-        app:layout_constraintVertical_bias="0.0"
-        app:shimmer_auto_start="false"
-        tools:visibility="visible">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:iss_corner_radius="16"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:iss_error_image="@drawable/placeholder"
+            app:iss_placeholder="@drawable/placeholder"
+            app:iss_delay="0"
+            app:iss_period="3000"
+            app:iss_auto_cycle="true"
+            android:layout_width="0dp"
+            android:layout_height="200dp" />
 
-            <include layout="@layout/shimmer_chucknorris_fact" />
-            <include layout="@layout/shimmer_chucknorris_fact" />
-            <include layout="@layout/shimmer_chucknorris_fact" />
-            <include layout="@layout/shimmer_chucknorris_fact" />
-            <include layout="@layout/shimmer_chucknorris_fact" />
-
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/img_banner_cardview"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_destaques"
-        app:layout_constraintVertical_bias="0.89">
-
-        <ImageView
-            android:id="@+id/img_banner_cupom"
+        <View
+            android:id="@+id/view_line_top"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/um_banner_de_comida"
-            android:scaleType="centerCrop"
-            android:src="@drawable/placeholder"
-            app:layout_constraintVertical_bias="1.0" />
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="2dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/gray_light_more"
+            app:layout_constraintTop_toBottomOf="@id/image_slider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_destaques_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/destaques"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_line_top" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_destaques"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/img_banner_cardview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_destaques_title"
+            tools:itemCount="2"
+            tools:listitem="@layout/comida_destaque_item" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tv_destaques_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@id/img_banner_cardview"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal">
+
+                <include layout="@layout/shimmer_chucknorris_fact" />
+
+                <include layout="@layout/shimmer_chucknorris_fact" />
+
+                <include layout="@layout/shimmer_chucknorris_fact" />
+
+                <include layout="@layout/shimmer_chucknorris_fact" />
+
+                <include layout="@layout/shimmer_chucknorris_fact" />
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/img_banner_cardview"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/img_banner_cupom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/um_banner_de_comida"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder"
+                app:layout_constraintVertical_bias="1.0" />
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
