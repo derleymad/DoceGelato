@@ -10,7 +10,7 @@
             "comida_desc":"Com arroz, Porção individual",
             "comida_preco":11.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/EscondidinhodeCarnedeSol.png"
+            "image":"https://derleymad.github.io/projeto-delivery/images/EscondidinhodeCarnedeSol.png"
          },
          {
             "comida_id":102,
@@ -18,7 +18,7 @@
             "comida_desc":"Arroz opcional",
             "comida_preco":7.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeFrangoCatupiry.JPG"
+            "image":"https://derleymad.github.io/projeto-delivery/images/PanquecadeFrangoCatupiry.JPG"
          },
          {
             "comida_id":103,
@@ -26,7 +26,7 @@
             "comida_desc":"Arroz opcional",
             "comida_preco":8.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeCalabresaeBacon.jpg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/PanquecadeCalabresaeBacon.jpg"
          },
          {
             "comida_id":104,
@@ -34,7 +34,7 @@
             "comida_desc":"Arroz opcional",
             "comida_preco":8.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeFrangoeCalabresa.png"
+            "image":"https://derleymad.github.io/projeto-delivery/images/PanquecadeFrangoeCalabresa.png"
          },
          {
             "comida_id":105,
@@ -42,7 +42,7 @@
             "comida_desc":"Arroz opcional",
             "comida_preco":9.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/PanquecadeCarnedeSol.png"
+            "image":"https://derleymad.github.io/projeto-delivery/images/PanquecadeCarnedeSol.png"
          },
          {
             "comida_id":106,
@@ -50,7 +50,7 @@
             "comida_desc":"Arroz opcional",
             "comida_preco":9.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/PanquecaMista.jpg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/PanquecaMista.jpg"
          },
          {
             "comida_id":107,
@@ -58,7 +58,7 @@
             "comida_desc":"Sem recheio",
             "comida_preco":9.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/BatataFrita.png"
+            "image":"https://derleymad.github.io/projeto-delivery/images/BatataFrita.png"
          },
          {
             "comida_id":108,
@@ -66,7 +66,7 @@
             "comida_desc":"Com bacon e queijo",
             "comida_preco":13.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/BatataFritaRecheada.jpg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/BatataFritaRecheada.jpg"
          }
       ],
       "image":"https://derleymad.github.io/female-soccer-news-api/images/entradas"
@@ -82,7 +82,7 @@
             "comida_desc":"Pão, Presunto Peito de Peru, Queijo Coalho, Cebola, Alface, Tomate e Molho Especial",
             "comida_preco":5.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/DeliciaXSalada"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/DeliciaXSalada"
          },
          {
             "comida_id":202,
@@ -90,7 +90,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal Bovino, Queijo Coalho, Cebola, Alface, Tomate e Molho Especial",
             "comida_preco":8.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia1.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/Delicia1.jpeg"
          },
          {
             "comida_id":203,
@@ -98,7 +98,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal de Frango, Presunto Peito de Peru, Queijo Coalho, Alface, Tomate, Milho Verde e Molho Especial",
             "comida_preco":8.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia2.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/Delicia2.jpeg"
          },
          {
             "comida_id":204,
@@ -106,7 +106,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal Bovino, Calabresa, Cebola, Molho Especial, Presunto Peito de Peru, Queijo Coalho, Tomate e Alface",
             "comida_preco":10.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia3.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/Delicia3.jpeg"
          },
          {
             "comida_id":205,
@@ -114,7 +114,7 @@
             "comida_desc":"Pão, Hambúrguer Artesanal Bovino, Bacon, Cebola, Molho Especial, Tomate, Presunto Peito de Peru, Queijo Coalho e Alface",
             "comida_preco":10.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia4.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/Delicia4.jpeg"
          },
          {
             "comida_id":206,
@@ -122,7 +122,7 @@
             "comida_desc":"Pão, Hamburguer Artesanal Bovino, Bacon, Calabresa, Ovo, Presunto Peito de Peru, Queijo Coalho, Alface, Tomate, Cebola, Milho Verde, Azeitona e Molho Especial",
             "comida_preco":12.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Delicia5.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/Delicia5.jpeg"
          },
          {
             "comida_id":207,
@@ -130,7 +130,7 @@
             "comida_desc":"Pão Brioche, Molho Especial, Alface, Tomate, Hambúrguer de Frango, Cheddar e Cebola Caramelizada",
             "comida_preco":9.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/DeliciaEspecial6"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/DeliciaEspecial6"
          },
          {
             "comida_id":208,
@@ -138,7 +138,7 @@
             "comida_desc":"Pão Brioche, Alface, Tomate, Hambúrguer Bovino, Cheddar, Milho, Azeitona, Cebola Caramelizada e Molho Barbecue",
             "comida_preco":12.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/DeliciaEspecial7"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/DeliciaEspecial7"
          },
          {
             "comida_id":209,
@@ -146,7 +146,7 @@
             "comida_desc":"Pão Brioche, Tomate, 2 Hambúrgueres Bovinos, Cheddar, Cebola Caramelizada e Molho Barbecue",
             "comida_preco":17.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/DeliciaEspecial8"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/DeliciaEspecial8"
          },
          {
             "comida_id":210,
@@ -154,7 +154,7 @@
             "comida_desc":"Pão Brioche, Molho Especial, Alface, Tomate, 150g Hambúrguer Bovino, Queijo cheddar, Bacon Picado, Cebola Caramelizada e Geléia de Pimenta. Acompanha Batata frita",
             "comida_preco":19.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/DeliciaEspecialBurguer"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/DeliciaEspecialBurguer"
          },
          {
             "comida_id":211,
@@ -162,7 +162,7 @@
             "comida_desc":"Pão Brioche, Molho Barbecue, Alface, Tomate, Azeitona, Hambúrguer Bovino, Queijo Cheddar e Cebola Caramelizada. Acompanha Batata Frita Recheada com Queijo, Bacon e Calabresa.",
             "comida_preco":17.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/DeliciaPremium"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/DeliciaPremium"
          },
          {
             "comida_id":212,
@@ -170,7 +170,7 @@
             "comida_desc":"Massa Caseira Recheada com Frango Desfiado",
             "comida_preco":3.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/CoxinhaDeFrango"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/CoxinhaDeFrango"
          },
          {
             "comida_id":213,
@@ -178,7 +178,7 @@
             "comida_desc":"Massa Caseira Recheada com Frango Desfiado e Catupiry",
             "comida_preco":4.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/CoxinhaDeFrangoComCatupiry"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/CoxinhaDeFrangoComCatupiry"
          },
          {
             "comida_id":214,
@@ -186,7 +186,7 @@
             "comida_desc":"Massa Caseira Recheada com Frango",
             "comida_preco":4.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PastelDeFornoFrango"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PastelDeFornoFrango"
          },
          {
             "comida_id":215,
@@ -194,7 +194,7 @@
             "comida_desc":"Massa Caseira Recheada com Recheio Misto",
             "comida_preco":4.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PastelDeFornoMisto"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PastelDeFornoMisto"
          },
          {
             "comida_id":216,
@@ -202,7 +202,7 @@
             "comida_desc":"Massa Caseira Recheada com Frango",
             "comida_preco":3.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/EmpadaDeFrango"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/EmpadaDeFrango"
          },
          {
             "comida_id":217,
@@ -210,7 +210,7 @@
             "comida_desc":"Molho de Casa, Queijo Mussarela, Calabresa, Tomate, Cebola, Orégano e Azeitona",
             "comida_preco":20.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzadeCalabresa"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzadeCalabresa"
          },
          {
             "comida_id":218,
@@ -218,7 +218,7 @@
             "comida_desc":"Molho da Casa, Queijo Mussarela, Calabresa, Bacon Picado, Tomate, Cebola, Orégano e Azeitona",
             "comida_preco":20.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzaDeCalabresaBacon"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaDeCalabresaBacon"
          },
          {
             "comida_id":219,
@@ -226,7 +226,7 @@
             "comida_desc":"Molho da Casa, Queijo Chedder, Frango, Milho Verde, Tomate, Orégano e Azeitona",
             "comida_preco":18.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzaDeFrangoEchedder"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaDeFrangoEchedder"
          },
          {
             "comida_id":220,
@@ -234,7 +234,7 @@
             "comida_desc":"Molho da Casa, Queijo Mussarela, Frango, Catupiry, Milho Verde, Tomate, Orégano e Azeitona",
             "comida_preco":18.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzaDeFrangoEcatupiry"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaDeFrangoEcatupiry"
          },
          {
             "comida_id":221,
@@ -242,7 +242,7 @@
             "comida_desc":"Molho da casa, Queijo Mussarela, Presunto, Tomate, Ovo Cozido, Cebola, Azeitona, Ervilha e Orégano",
             "comida_preco":18.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzaPortuguesa"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaPortuguesa"
          },
          {
             "comida_id":222,
@@ -250,7 +250,7 @@
             "comida_desc":"Molho da Casa, Frango, Presunto, Mussarela, Milho Verde, Azeitona e Orégano",
             "comida_preco":20.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzaMista"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaMista"
          },
          {
             "comida_id":223,
@@ -258,7 +258,7 @@
             "comida_desc":"Molho da Casa, Mussarela, Carne de Sol, Cebola, Tomate, Orégano e Azeitona",
             "comida_preco":20.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/PizzaNordestina"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaNordestina"
          },
          {
             "comida_id":224,
@@ -266,7 +266,7 @@
             "comida_desc":"Molho da Casa, Queijo Mussarela, Queijo Coalho, Queijo Parmessão, Catupiry e Orégano",
             "comida_preco":20.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/Pizza4Queijos"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/Pizza4Queijos"
          },
          {
             "comida_id":225,
@@ -274,7 +274,7 @@
             "comida_desc":"Qualquer Sabor",
             "comida_preco":5.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/lanches/MiniPizza"
+            "image":"https://derleymad.github.io/projeto-delivery/images/lanches/MiniPizza"
          }
       ],
       "image":"https://derleymad.github.io/female-soccer-news-api/images/1.jpg"
@@ -290,7 +290,7 @@
             "comida_desc":"Pudim Caseiro no Pote",
             "comida_preco":3.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/PudimNoPote"
+            "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/PudimNoPote"
          },
          {
             "comida_id":302,
@@ -298,7 +298,7 @@
             "comida_desc":"Com 2 (Duas) Bolas de Sorvete",
             "comida_preco":10.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/Brownie"
+            "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/Brownie"
          },
          {
             "comida_id":303,
@@ -306,7 +306,7 @@
             "comida_desc":"Brownie Rechado",
             "comida_preco":4.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/BrownieRecheado"
+            "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/BrownieRecheado"
          },
          {
             "comida_id":304,
@@ -314,7 +314,7 @@
             "comida_desc":"1 Taça Coberta Com Chocolate, Recheio Brownie, Sorvete",
             "comida_preco":15.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/TacaDoceGelato"
+            "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/Tacaprojeto-delivery"
          },
          {
             "comida_id":305,
@@ -322,7 +322,7 @@
             "comida_desc":"",
             "comida_preco":3.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/MousseDeMaracuja"
+            "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/MousseDeMaracuja"
          },
          {
             "comida_id":306,
@@ -330,7 +330,7 @@
             "comida_desc":"Vários tipos de sabores",
             "comida_preco":null,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/sobremesas/SorveteEacai"
+            "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/SorveteEacai"
          }
       ],
       "image":""
@@ -346,7 +346,7 @@
             "comida_desc":"",
             "comida_preco":6.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Pepsi1Litro"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/Pepsi1Litro"
          },
          {
             "comida_id":402,
@@ -354,7 +354,7 @@
             "comida_desc":"",
             "comida_preco":6.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Guaraná1Litro"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/Guaraná1Litro"
          },
          {
             "comida_id":403,
@@ -362,7 +362,7 @@
             "comida_desc":"",
             "comida_preco":7.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/Cajuina1Litro"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/Cajuina1Litro"
          },
          {
             "comida_id":404,
@@ -370,7 +370,7 @@
             "comida_desc":"",
             "comida_preco":4.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/GuaranaLata"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/GuaranaLata"
          },
          {
             "comida_id":405,
@@ -378,7 +378,7 @@
             "comida_desc":"",
             "comida_preco":4.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/FantaLranjaLata"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/FantaLranjaLata"
          },
          {
             "comida_id":406,
@@ -386,7 +386,7 @@
             "comida_desc":"",
             "comida_preco":2.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/AguaSemGas"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/AguaSemGas"
          },
          {
             "comida_id":407,
@@ -394,7 +394,7 @@
             "comida_desc":"",
             "comida_preco":2.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/bebidas/AguaComGas"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/AguaComGas"
          }
       ],
       "image":""
@@ -410,7 +410,7 @@
             "comida_desc":"Monte sua Massa, escolhendo entre os ingredientes como molho, Tempero, Tipo de Recheio",
             "comida_preco":null,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/motar/MonteSuaMassa.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/motar/MonteSuaMassa.jpeg"
          },
          {
             "comida_id":502,
@@ -418,7 +418,7 @@
             "comida_desc":"Escolha sua Refeição, Cuzcuz ou Tapioca, Adicionando o Que Quiser Como Caldo, Carne Moída Cremosa, Misto e outros",
             "comida_preco":null,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSuaRefeiçao.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/montar/MonteSuaRefeiçao.jpeg"
          },
          {
             "comida_id":503,
@@ -426,7 +426,7 @@
             "comida_desc":"Escolha entre 9 ingredientes, como Catupiry, Queijo Fatiado, Presunto, Milho, Azeitona, Cheddar entre Outros",
             "comida_preco":null,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/DoceGelato/images/montar/MonteSeuPastel.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/montar/MonteSeuPastel.jpeg"
          }
       ],
       "image":""
