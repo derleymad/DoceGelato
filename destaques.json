@@ -5,7 +5,7 @@
        "comida_desc":"",
        "comida_preco":5.00,
        "comida_desconto":0.30,
-       "image":"https://derleymad.github.io/DoceGelato/images/Pastel.jpg"
+       "image":"https://derleymad.github.io/projeto-delivery/images/Pastel.jpg"
    },
    {
       "comida_id":202,
@@ -13,7 +13,7 @@
       "comida_preco":8.00,
       "comida_description":"",
       "comida_desconto":0.35,
-      "image":"https://derleymad.github.io/DoceGelato/images/Hamburguer.jpeg"
+      "image":"https://derleymad.github.io/projeto-delivery/images/Hamburguer.jpeg"
    },
    {
       "comida_id":212,
@@ -21,7 +21,7 @@
       "comida_preco":3.50,
       "comida_description":"",
       "comida_desconto":0.60,
-      "image":"https://derleymad.github.io/DoceGelato/images/CoxinhaDeFrango.jpeg"
+      "image":"https://derleymad.github.io/projeto-delivery/images/CoxinhaDeFrango.jpeg"
    },
    {
       "comida_id":216,
@@ -29,6 +29,6 @@
       "comida_preco":3.50,
       "comida_description":"",
       "comida_desconto":0.15,
-      "image":"https://derleymad.github.io/DoceGelato/images/EmpadaDeFrango.jpeg"
+      "image":"https://derleymad.github.io/projeto-delivery/images/EmpadaDeFrango.jpeg"
    }
 ]
