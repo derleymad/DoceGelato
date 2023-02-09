@@ -5,10 +5,16 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.docegelato.databinding.ActivityMainBinding
+import com.example.docegelato.extensions.navMainToMaps
+import com.example.docegelato.model.categorias.Address
+import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.network.MyFirebaseMessagingService
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,7 +35,27 @@ class MainActivity : AppCompatActivity() {
         homeViewModel.getDestaques()
         homeViewModel.getCategorias()
         getAdminUserFromFirebase()
+        setEventListeners()
+    }
 
+
+
+    fun setEventListeners(){
+        val ref = db.collection("abertos")
+        ref.whereEqualTo("uid",auth.currentUser?.uid)
+        .addSnapshotListener{value,error->
+
+
+            val list = ArrayList<Pedidos>()
+                for(i in value!!.documents){
+                    if(i.exists()){
+                        Log.i("testandolog2",i.toString())
+                        list.add(i.toObject(Pedidos::class.java)!!)
+                    }
+                }
+                pedidoViewModel.dataRequest.value = list
+                pedidoViewModel.loadingProgressBar.value = false
+        }
     }
 
     private fun getAdminUserFromFirebase(){

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
+import com.example.docegelato.util.Utils.format
 
 class PedidoFeitoAdapter(
     private var comidaOnClickListener: ((Int) -> Unit)? = null
@@ -39,9 +40,10 @@ class PedidoFeitoAdapter(
     inner class PedidoFeitoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(pedidos: Pedidos) {
 //            val nomePessoa = itemView.findViewById<TextView>(R.id.tv_pedido_feito_nome_pessoa)
-            val precoTotal = itemView.findViewById<TextView>(R.id.tv_total_pedido)
+            val precoTotal = itemView.findViewById<TextView>(R.id.tv_pedido_feito_total)
             val addressRua = itemView.findViewById<TextView>(R.id.tv_address_rua)
             val rvDentro = itemView.findViewById<RecyclerView>(R.id.rv_dentro_pedido_feito)
+            val status = itemView.findViewById<TextView>(R.id.tv_status)
 
 
 //            Picasso
@@ -58,6 +60,8 @@ class PedidoFeitoAdapter(
             rvDentro.adapter = adapter
             adapter.addPedidoToRecyclerViewList(pedidos.pedidos!!)
             rvDentro.layoutManager = LinearLayoutManager(itemView.context)
+            precoTotal.text = format(pedidos.preco_total)
+            status.text = pedidos.status
 
         }
     }

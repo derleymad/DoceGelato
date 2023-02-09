@@ -66,7 +66,6 @@ class PerfilFragment : Fragment() {
         homeViewModel.isAdmin.observe(viewLifecycleOwner){
             when (it){
                 true -> {
-
                     binding.admin.visibility = if(it)View.VISIBLE else View.GONE
                 }
                 else ->{

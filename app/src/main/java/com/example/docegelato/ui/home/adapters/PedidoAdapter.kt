@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.pedidos.Pedido
-import com.example.docegelato.util.Utils
+import com.example.docegelato.util.Utils.format
 import com.squareup.picasso.Picasso
 
 class PedidoAdapter(
@@ -51,7 +51,9 @@ class PedidoAdapter(
             val quantity = itemView.findViewById<TextView>(R.id.tv_pedido_quantity)
             val imageView = itemView.findViewById<ImageView>(R.id.img_pedido)
             val obs = itemView.findViewById<TextView>(R.id.tv_obs)
+            val status = itemView.findViewById<TextView>(R.id.tv_status)
             val price = itemView.findViewById<TextView>(R.id.preco)
+            val totalPrice= itemView.findViewById<TextView>(R.id.tv_total_pedido)
 
             if (esconderBtnRemover) {
                 val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
@@ -64,7 +66,6 @@ class PedidoAdapter(
                     pedidoOnClickRemoveListener?.invoke(pedido)
                 }
             }
-
             Picasso
                 .get()
                 .load("${pedido.image}")
@@ -75,7 +76,7 @@ class PedidoAdapter(
             nome.text = pedido.comida_title
             quantity.text = itemView.context.getString(R.string.quantity_pedido_x, pedido.quantity)
             obs.text = pedido.obs
-            price.text = Utils.format(pedido.comida_preco!!)
+            price.text = format(pedido.comida_preco!!)
         }
     }
 }

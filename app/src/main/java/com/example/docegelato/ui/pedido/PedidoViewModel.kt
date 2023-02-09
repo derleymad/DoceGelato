@@ -17,7 +17,4 @@ class PedidoViewModel : ViewModel() {
     var loadingProgressBar = MutableLiveData(true)
     var dataRequest = _dataRequest
 
-    init {
-        dataRequest.value = ArrayList()
-    }
 }

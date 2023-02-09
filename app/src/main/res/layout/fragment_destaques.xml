@@ -61,6 +61,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
+            android:layout_marginBottom="32dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/img_banner_cardview"
@@ -88,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginBottom="32dp"
                 android:layout_marginEnd="16dp"
                 android:orientation="horizontal">
 
@@ -111,6 +113,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/gray_dark"
             app:cardCornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +125,6 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/um_banner_de_comida"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder"
                 app:layout_constraintVertical_bias="1.0" />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

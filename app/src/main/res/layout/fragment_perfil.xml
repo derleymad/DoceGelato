@@ -24,7 +24,6 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
             android:gravity="start"
             android:layout_height="wrap_content">
 
@@ -118,7 +117,6 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_shopping_cart_24"
                 android:drawableEnd="@drawable/ic_baseline_expand_more_24"
                 android:drawablePadding="16dp"
                 android:text="@string/admin"

@@ -125,8 +125,9 @@ class HomeViewModel : ViewModel() {
             quantity = quantityLiveData.value ?: 0,
             obs = obsLiveData.value.toString()
         )
-
+        listPedidoFeitoLiveData.value?.uid = auth.currentUser?.uid
         listPedidoFeitoLiveData.value?.pedidos?.add(pedido)
+        listPedidoFeitoLiveData.value?.preco_total = precoTotalLiveData.value
     }
 
     fun getDestaques() {

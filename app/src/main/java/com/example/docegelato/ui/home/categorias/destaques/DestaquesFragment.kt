@@ -67,13 +67,13 @@ class DestaquesFragment : Fragment() {
     }
 
     fun loadBanners() {
-        imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner1.png"))
-        imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner2.png"))
-        imageList.add(SlideModel("https://derleymad.github.io/DoceGelato/images/banner3.png"))
+        imageList.add(SlideModel("https://derleymad.github.io/projeto-delivery/images/banner1.png"))
+        imageList.add(SlideModel("https://derleymad.github.io/projeto-delivery/images/banner2.png"))
+        imageList.add(SlideModel("https://derleymad.github.io/projeto-delivery/images/banner3.png"))
         binding.imageSlider.setImageList(imageList)
         Picasso
             .get()
-            .load("https://derleymad.github.io/DoceGelato/images/banner2.png")
+            .load("https://derleymad.github.io/projeto-delivery/images/banner2.png")
             .into(binding.imgBannerCupom)
     }
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -15,9 +16,11 @@ import com.example.docegelato.databinding.FragmentMainBinding
 import com.example.docegelato.extensions.navMainToCarrinho
 import com.example.docegelato.extensions.navMainToMaps
 import com.example.docegelato.model.categorias.Address
+import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.example.docegelato.util.Utils
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -47,8 +50,18 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startObservers()
-//        getAdressFromFirebase()
+        setOnClickListeners()
+        getLocateFromFireBase()
+    }
 
+    private fun createOrRemoveBadge(criar: Boolean, size : Int) {
+        when (criar) {
+            true -> binding.navView.getOrCreateBadge(R.id.navigation_pedido).number = size
+            else -> binding.navView.removeBadge(R.id.navigation_pedido)
+        }
+    }
+
+    private fun getLocateFromFireBase() {
         db.collection("users")
             .document("clientes")
             .collection(auth.currentUser?.uid.toString())
@@ -58,27 +71,25 @@ class MainFragment : Fragment() {
                 if(it.exists()){
                     homeViewModel.address.value = it.toObject(Address::class.java)
                 }else{
-                    findNavController().navMainToMaps()
+                   findNavController().navMainToMaps()
                 }
             }
             .addOnFailureListener {
             }
+    }
 
+    private fun setOnClickListeners() {
         binding.lnCarrinhoFlutuante.setOnClickListener {
             it.apply { findNavController().navMainToCarrinho() }
         }
-
     }
 
-    //TODO MELHORAR CREATE E REMOVE BADGES
-//    private fun createOrRemoveBadge(criar: Boolean) {
-//        when (criar) {
-//            true -> binding.navView.getOrCreateBadge(R.id.navigation_pedido).number++
-//            else -> binding.navView.removeBadge(R.id.navigation_pedido)
-//        }
-//    }
-
     private fun startObservers() {
+        pedidoViewModel.dataRequest.observe(viewLifecycleOwner){
+            if(it.isNotEmpty()){
+                createOrRemoveBadge(true,it.size)
+            }else{}
+        }
         homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner) {
             binding.totalPriceCarrinhoFlutuante.text = Utils.format(it)
         }

@@ -5,14 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
+import com.example.docegelato.util.Utils.format
+import com.squareup.picasso.Picasso
 
-class AdapterPedidosAdmin : RecyclerView.Adapter<AdapterPedidosAdmin.PedidosAdminViewholder>(){
+class AdapterPedidosAdmin (
+    private var pedidoFeitoOnClickListener: ((Long?) -> Unit)? = null
+        ): RecyclerView.Adapter<AdapterPedidosAdmin.PedidosAdminViewholder>(){
     val list = ArrayList<Pedidos>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -39,22 +45,46 @@ class AdapterPedidosAdmin : RecyclerView.Adapter<AdapterPedidosAdmin.PedidosAdmi
     }
 
     inner class PedidosAdminViewholder(view:View) : RecyclerView.ViewHolder(view){
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(currentItem : Pedidos){
             val text = itemView.findViewById<TextView>(R.id.tv_pedido_feito_nome_pessoa)
+            val pedidoFeitoTotal = itemView.findViewById<TextView>(R.id.tv_pedido_feito_total)
             val date = itemView.findViewById<TextView>(R.id.tv_pedido_feito_data)
             val rua = itemView.findViewById<TextView>(R.id.tv_address_rua)
             val rv = itemView.findViewById<RecyclerView>(R.id.rv_dentro_pedido_feito)
+            val image = itemView.findViewById<ImageView>(R.id.img_perfil_photo)
+            val status = itemView.findViewById<TextView>(R.id.tv_status)
+            val btnAceitar = itemView.findViewById<Button>(R.id.aceitar_pedido)
             val adapter = PedidoAdapter(true)
-
             rv.adapter = adapter
             rv.layoutManager = LinearLayoutManager(itemView.context)
-            adapter.addPedidoToRecyclerViewList(currentItem.pedidos!!)
-            Log.i("testando",currentItem.pedidos.toString())
 
+            adapter.addPedidoToRecyclerViewList(currentItem.pedidos!!)
+            if(currentItem.pedidos?.isNotEmpty() == true){
+            }
+            Log.i("testando",currentItem.pedidos.toString())
 //            date.text = SimpleDateFormat("dd/MM/yyyy").format(currentItem.date)
+            Picasso
+                .get()
+                .load("${currentItem.user?.imagemPerfil}")
+                .error(R.drawable.placeholder)
+                .placeholder(R.drawable.placeholder)
+                .into(image);
+
             date.text = currentItem.date
             text.text = currentItem.user?.nome
-            rua.text = currentItem.address?.rua
+            rua.text = itemView.context.getString(R.string.endereco_final,
+                currentItem.address?.rua,
+                currentItem.address?.bairro,
+                currentItem.address?.numero_da_casa,
+                currentItem.address?.ponto_referencia
+            )
+            pedidoFeitoTotal.text = format(currentItem.preco_total)
+            status.text = currentItem.status
+
+            btnAceitar.setOnClickListener {
+                pedidoFeitoOnClickListener?.invoke(currentItem.id)
+            }
 
         }
     }

@@ -68,7 +68,7 @@ fun Fragment.navToPerfil(){
 }
 
 fun Fragment.navPerfilToAdmin(){
-    this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_perfilFragment_to_adminFragment)
+    this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_perfilFragment_to_adminFragment,null,navOptions = navOptionsSlide)
 }
 
 fun Fragment.getFormattedString(myString : String) :  String{

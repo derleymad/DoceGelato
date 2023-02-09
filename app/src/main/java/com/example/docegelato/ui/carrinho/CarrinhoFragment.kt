@@ -19,6 +19,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 class CarrinhoFragment : Fragment() {
 
@@ -46,7 +47,6 @@ class CarrinhoFragment : Fragment() {
         startEventClickListeners()
     }
 
-
     private fun startEventClickListeners() {
         binding.btnBackToBaseFragment.setOnClickListener {
             findNavController().popBackStack()
@@ -58,28 +58,42 @@ class CarrinhoFragment : Fragment() {
     }
 
     private fun addOnRecentePedidos() {
-        val currentDateTime = Calendar.getInstance()
+        val currentDateTime = Calendar.getInstance().timeInMillis
+        homeViewModel.listPedidoFeitoLiveData.value?.id = currentDateTime
+
         val pedidos = homeViewModel.listPedidoFeitoLiveData.value?.pedidos
         if (pedidos?.isEmpty() == false) {
-
-            db.collection("pedidos").add(homeViewModel.listPedidoFeitoLiveData.value!!).addOnSuccessListener {
+            db.collection("abertos").document(currentDateTime.toString()).set(homeViewModel.listPedidoFeitoLiveData.value!!).addOnSuccessListener {
                 homeViewModel.isPedidoFeitoLiveData.value = false
+                homeViewModel.precoTotalLiveData.value = 0f
+                homeViewModel.clearPedidosAndPrices()
+            }
+        } else {
+            Snackbar.make(
+                binding.root,
+                "Sem nada no carrinho para o pedido ser feito.",
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun addKeyIdPedidoOnUser(idPedido : HashMap<String,String>) {
+        val pedidos = homeViewModel.listPedidoFeitoLiveData.value?.pedidos
+        if (pedidos?.isEmpty() == false) {
+            db.collection("users")
+                .document("clientes")
+                .collection(auth.currentUser?.uid.toString())
+                .document("pedidos")
+                .set(idPedido)
+                .addOnSuccessListener{
+                    Log.i("teste","Sucesso")
+                    homeViewModel.isPedidoFeitoLiveData.value = false
                     homeViewModel.precoTotalLiveData.value = 0f
                     homeViewModel.clearPedidosAndPrices()
-            }
-//            db.collection("pedidos")
-//                .document("recentes")
-//                .collection(homeViewModel.user.value?.uid!!)
-//                .document(currentDateTime.timeInMillis.toString())
-//                .set(homeViewModel.listPedidoFeitoLiveData.value!!)
-//                .addOnSuccessListener{
-//                    homeViewModel.isPedidoFeitoLiveData.value = false
-//                    homeViewModel.precoTotalLiveData.value = 0f
-//                    homeViewModel.clearPedidosAndPrices()
-//                }
-//                .addOnFailureListener {
-//                    Log.i("teste","Falha")
-//                }
+                }
+                .addOnFailureListener {
+                    Log.i("teste","Falha")
+                }
         } else {
             Snackbar.make(
                 binding.root,
