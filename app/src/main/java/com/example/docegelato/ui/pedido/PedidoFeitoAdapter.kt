@@ -10,6 +10,11 @@ import com.example.docegelato.R
 import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils.format
+import com.example.docegelato.util.Utils.formatDate
+import kotlinx.coroutines.currentCoroutineContext
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PedidoFeitoAdapter(
     private var comidaOnClickListener: ((Int) -> Unit)? = null
@@ -44,24 +49,17 @@ class PedidoFeitoAdapter(
             val addressRua = itemView.findViewById<TextView>(R.id.tv_address_rua)
             val rvDentro = itemView.findViewById<RecyclerView>(R.id.rv_dentro_pedido_feito)
             val status = itemView.findViewById<TextView>(R.id.tv_status)
+            val data = itemView.findViewById<TextView>(R.id.tv_pedido_feito_data)
 
-
-//            Picasso
-//                .get()
-//                .load("${comida.image}")
-//                .error(R.drawable.banner)
-//                .placeholder(R.drawable.banner)
-//                .into(imageView);
-
-//            nomePessoa.text = "${pedidos.user?.nome}"
             addressRua.text = "${pedidos.address?.bairro}"
 
             val adapter = PedidoAdapter(true)
             rvDentro.adapter = adapter
             adapter.addPedidoToRecyclerViewList(pedidos.pedidos!!)
             rvDentro.layoutManager = LinearLayoutManager(itemView.context)
-            precoTotal.text = format(pedidos.preco_total)
+            precoTotal.text = itemView.context.getString(R.string.total_price,format(pedidos.preco_total))
             status.text = pedidos.status
+            data.text = formatDate(pedidos.date)
 
         }
     }

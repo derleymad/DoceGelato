@@ -7,11 +7,11 @@ data class Pedidos(
     val pedidos: MutableList<Pedido>? = null,
     var address: Address? = null,
     var user: User? = null,
-    var date : String? = "0",
+    var date : Long? = null,
     var preco_total: Float? = 0f,
     var uid : String? =null,
     var id : Long? = null,
-    var status : String? = "Pedido feito"
+    var status : String? = "Aguardando confirmação"
 
 ) {
 

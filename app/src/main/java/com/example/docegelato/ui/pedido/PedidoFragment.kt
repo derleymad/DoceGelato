@@ -20,9 +20,6 @@ class PedidoFragment : Fragment() {
     private val binding get() = _binding!!
     private val pedidoViewModel: PedidoViewModel by activityViewModels()
     private lateinit var adapter: PedidoFeitoAdapter
-    private var db = Firebase.firestore
-    private var auth = FirebaseAuth.getInstance()
-    private var data = ArrayList<Pedidos>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,12 +33,16 @@ class PedidoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startObservers()
-        //TODO LEMBRAR DE COLOCAR PARA ARRUMAR A BADGE QUANDO ENTRAR NO FRAGMENTO DOS PEDIDOS
         pedidoViewModel.criarBadge.value = false
     }
 
     fun startObservers(){
         pedidoViewModel.dataRequest.observe(viewLifecycleOwner){
+            if(it.isNotEmpty()){
+                binding.included.root.visibility = View.GONE
+            }else{
+                binding.included.root.visibility = View.VISIBLE
+            }
             adapter.setPedidoFeitoList(it)
         }
         pedidoViewModel.loadingProgressBar.observe(viewLifecycleOwner) {
@@ -56,6 +57,9 @@ class PedidoFragment : Fragment() {
     fun prepareRecyclerView() {
         adapter = PedidoFeitoAdapter {}
         binding.rvPedido.adapter = adapter
-        binding.rvPedido.layoutManager = LinearLayoutManager(requireContext())
+        val layout = LinearLayoutManager(requireContext())
+        layout.reverseLayout= true
+        layout.stackFromEnd = true
+        binding.rvPedido.layoutManager = layout
     }
 }

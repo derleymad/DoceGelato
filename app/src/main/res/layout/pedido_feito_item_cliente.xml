@@ -18,12 +18,12 @@
 
         <TextView
             android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Para ser enviado"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_pedido_feito_data" />
 
         <TextView
             android:id="@+id/tv_pedido_feito_data"
@@ -37,7 +37,7 @@
             android:id="@+id/tv_pedido_feito_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R$ 15,00"
+            android:text="@string/total_price"
             app:layout_constraintBottom_toBottomOf="@+id/tv_address_rua"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_address_rua" />
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Rua donizete Sobreira"
+            tools:text="Rua qualquer uma, N 23"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_pedido_feito_total"
             app:layout_constraintStart_toStartOf="parent"

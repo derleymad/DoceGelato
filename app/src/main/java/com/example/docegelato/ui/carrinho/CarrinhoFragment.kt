@@ -63,66 +63,11 @@ class CarrinhoFragment : Fragment() {
 
         val pedidos = homeViewModel.listPedidoFeitoLiveData.value?.pedidos
         if (pedidos?.isEmpty() == false) {
-            db.collection("abertos").document(currentDateTime.toString()).set(homeViewModel.listPedidoFeitoLiveData.value!!).addOnSuccessListener {
+            db.collection("pedidos").document(currentDateTime.toString()).set(homeViewModel.listPedidoFeitoLiveData.value!!).addOnSuccessListener {
                 homeViewModel.isPedidoFeitoLiveData.value = false
                 homeViewModel.precoTotalLiveData.value = 0f
                 homeViewModel.clearPedidosAndPrices()
             }
-        } else {
-            Snackbar.make(
-                binding.root,
-                "Sem nada no carrinho para o pedido ser feito.",
-                Snackbar.LENGTH_LONG
-            ).show()
-        }
-    }
-
-    private fun addKeyIdPedidoOnUser(idPedido : HashMap<String,String>) {
-        val pedidos = homeViewModel.listPedidoFeitoLiveData.value?.pedidos
-        if (pedidos?.isEmpty() == false) {
-            db.collection("users")
-                .document("clientes")
-                .collection(auth.currentUser?.uid.toString())
-                .document("pedidos")
-                .set(idPedido)
-                .addOnSuccessListener{
-                    Log.i("teste","Sucesso")
-                    homeViewModel.isPedidoFeitoLiveData.value = false
-                    homeViewModel.precoTotalLiveData.value = 0f
-                    homeViewModel.clearPedidosAndPrices()
-                }
-                .addOnFailureListener {
-                    Log.i("teste","Falha")
-                }
-        } else {
-            Snackbar.make(
-                binding.root,
-                "Sem nada no carrinho para o pedido ser feito.",
-                Snackbar.LENGTH_LONG
-            ).show()
-        }
-    }
-
-    private fun addOnUserPedidos() {
-        val currentDateTime = Calendar.getInstance()
-        val pedidos = homeViewModel.listPedidoFeitoLiveData.value?.pedidos
-        if (pedidos?.isEmpty() == false) {
-            db.collection("pedidos")
-                .document("clientes")
-                .collection(auth.currentUser?.uid.toString())
-                .document("pedidos")
-                .collection("recentes")
-                .document(currentDateTime.timeInMillis.toString())
-                .set(homeViewModel.listPedidoFeitoLiveData.value!!)
-                .addOnSuccessListener{
-                    Log.i("teste","Sucesso")
-                    homeViewModel.isPedidoFeitoLiveData.value = false
-                    homeViewModel.precoTotalLiveData.value = 0f
-                    homeViewModel.clearPedidosAndPrices()
-                }
-                .addOnFailureListener {
-                    Log.i("teste","Falha")
-                }
         } else {
             Snackbar.make(
                 binding.root,
@@ -151,11 +96,11 @@ class CarrinhoFragment : Fragment() {
         homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner) { it ->
             binding.apply {
                 if (it) {
-                    lnImgCenter.visibility = View.INVISIBLE
+                    binding.included.root.visibility = View.INVISIBLE
                     lnBottomFinalizar.visibility = View.VISIBLE
                     rvPedidoFeito.visibility = View.VISIBLE
                 } else {
-                    lnImgCenter.visibility = View.VISIBLE
+                    binding.included.root.visibility = View.VISIBLE
                     lnBottomFinalizar.visibility = View.INVISIBLE
                     rvPedidoFeito.visibility = View.INVISIBLE
                 }

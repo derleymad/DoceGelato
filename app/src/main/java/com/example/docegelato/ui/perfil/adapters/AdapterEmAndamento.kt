@@ -1,7 +1,6 @@
 package com.example.docegelato.ui.perfil.adapters
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,11 +20,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AdapterPedidosAdmin (
-    private var pedidoFeitoOnClickListener: ((Long?) -> Unit)? = null,
-    private var pedidoRemovidoOnClickListener: ((Long?) -> Unit)? = null,
-    private var valueBase : Int
-        ): RecyclerView.Adapter<AdapterPedidosAdmin.PedidosAdminViewholder>(){
+class AdapterEmAndamento (
+    private var pedidoFeitoOnClickListener: ((Long?) -> Unit)? = null
+        ): RecyclerView.Adapter<AdapterEmAndamento.PedidosAdminViewholder>(){
     val list = ArrayList<Pedidos>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -62,8 +59,10 @@ class AdapterPedidosAdmin (
             val image = itemView.findViewById<ImageView>(R.id.img_perfil_photo)
             val status = itemView.findViewById<TextView>(R.id.tv_status)
             val btnAceitar = itemView.findViewById<Button>(R.id.aceitar_pedido)
-            val btnRecusar= itemView.findViewById<Button>(R.id.recusar_pedido)
 
+
+            if(currentItem.pedidos?.isNotEmpty() == true){
+            }
 //            Log.i("testando",currentItem.pedidos.toString())
 //            date.text = SimpleDateFormat("dd/MM/yyyy").format(currentItem.date)
             Picasso
@@ -72,31 +71,6 @@ class AdapterPedidosAdmin (
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.placeholder)
                 .into(image);
-
-            when(valueBase){
-                0->{
-                    btnAceitar.setOnClickListener {
-                        pedidoFeitoOnClickListener?.invoke(currentItem.id)
-                    }
-                }
-                1->{
-                    btnAceitar.visibility = View.GONE
-                    btnRecusar.apply {
-                        this.text = "Finalizar"
-                        setOnClickListener {
-                            pedidoRemovidoOnClickListener?.invoke(currentItem.id)
-                        }
-                    }
-                }
-                2->{
-                    btnAceitar.visibility = View.GONE
-                    btnRecusar.visibility = View.GONE
-                }
-                else->{}
-            }
-            if(valueBase.equals(1)){
-
-            }
 
             date.text = formatDate(currentItem.date)
             text.text = currentItem.user?.nome
@@ -109,14 +83,15 @@ class AdapterPedidosAdmin (
             pedidoFeitoTotal.text = format(currentItem.preco_total)
             status.text = currentItem.status
 
-
+            btnAceitar.setOnClickListener {
+                pedidoFeitoOnClickListener?.invoke(currentItem.id)
+            }
 
             val adapter = PedidoAdapter(true)
             rv.adapter = adapter
             rv.layoutManager = LinearLayoutManager(itemView.context)
 
             adapter.addPedidoToRecyclerViewList(currentItem.pedidos!!)
-            Log.i("currentItem",currentItem.toString())
 
         }
     }

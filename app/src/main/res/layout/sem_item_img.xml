@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_dragon"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="300dp"
+            android:src="@drawable/carrinho" />
+
+        <TextView
+            android:id="@+id/fixed_nenhum_pedido"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Nada por aqui!"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fixed_bottom_pedidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:layout_marginTop="8dp"
+            android:text="Não encontramos nenhum item adicionado, que tal fazer um pedido?"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</FrameLayout>

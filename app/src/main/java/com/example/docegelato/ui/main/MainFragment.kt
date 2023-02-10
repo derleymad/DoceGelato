@@ -54,12 +54,6 @@ class MainFragment : Fragment() {
         getLocateFromFireBase()
     }
 
-    private fun createOrRemoveBadge(criar: Boolean, size : Int) {
-        when (criar) {
-            true -> binding.navView.getOrCreateBadge(R.id.navigation_pedido).number = size
-            else -> binding.navView.removeBadge(R.id.navigation_pedido)
-        }
-    }
 
     private fun getLocateFromFireBase() {
         db.collection("users")
@@ -85,11 +79,7 @@ class MainFragment : Fragment() {
     }
 
     private fun startObservers() {
-        pedidoViewModel.dataRequest.observe(viewLifecycleOwner){
-            if(it.isNotEmpty()){
-                createOrRemoveBadge(true,it.size)
-            }else{}
-        }
+
         homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner) {
             binding.totalPriceCarrinhoFlutuante.text = Utils.format(it)
         }

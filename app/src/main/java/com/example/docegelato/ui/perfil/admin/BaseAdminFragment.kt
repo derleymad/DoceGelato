@@ -8,10 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentBaseAdminBinding
+import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.perfil.PerfilViewModel
+import com.example.docegelato.ui.perfil.adapters.AdapterEmAndamento
 import com.example.docegelato.ui.perfil.adapters.AdapterPedidosAdmin
+import com.google.android.material.tabs.TabLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -21,7 +26,7 @@ class BaseAdminFragment(val valueBase : Int) : Fragment() {
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
     private val perfilViewModel : PerfilViewModel by activityViewModels()
-    private lateinit var adapter : AdapterPedidosAdmin
+    private lateinit var adapter: AdapterPedidosAdmin
     val db = Firebase.firestore
 
     override fun onCreateView(
@@ -34,31 +39,46 @@ class BaseAdminFragment(val valueBase : Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startRecyclerView()
         startObservers()
-    }
 
+    }
     private fun startObservers() {
         when(this.valueBase){
             0 -> {
                 perfilViewModel.listAbertos.observe(viewLifecycleOwner){
                     if(it!=null){
+                        startRecyclerView()
                         adapter.setListToRecyclerView(it)
-                        Log.i("chamoui","chamo no update")
+                        if(it.isNotEmpty()){
+                            binding.included.root.visibility = View.GONE
+                        }else{
+                            binding.included.root.visibility = View.VISIBLE
+                        }
+//                        requireActivity().findViewById<TabLayout>(R.id.tab_layout_admin).getTabAt(this.valueBase)?.orCreateBadge!!.number = it.size
                     }
                 }
             }
             1 -> {
                 perfilViewModel.listAndamento.observe(viewLifecycleOwner){
                     if(it!=null){
+                        startRecyclerView()
                         adapter.setListToRecyclerView(it)
+                        if(it.isNotEmpty()){
+                            binding.included.root.visibility = View.GONE
+                        }else{
+                            binding.included.root.visibility = View.VISIBLE
+                        }
                     }
                 }
             }
             2 -> {
-                perfilViewModel.listFechados.observe(viewLifecycleOwner){
-                    if(it!=null){
-                        adapter.setListToRecyclerView(it)
+                perfilViewModel.listFinalizado.observe(viewLifecycleOwner){
+                    startRecyclerView()
+                    adapter.setListToRecyclerView(it)
+                    if(it.isNotEmpty()){
+                        binding.included.root.visibility = View.GONE
+                    }else{
+                        binding.included.root.visibility = View.VISIBLE
                     }
                 }
             }
@@ -67,13 +87,23 @@ class BaseAdminFragment(val valueBase : Int) : Fragment() {
     }
 
     fun startRecyclerView(){
-        adapter = AdapterPedidosAdmin{
-            db.collection("abertos")
-                .document(it.toString())
-                .update("status","Pedido aceito")
-        }
+        adapter = AdapterPedidosAdmin(
+            pedidoFeitoOnClickListener = {
+                db.collection("pedidos")
+                    .document(it.toString())
+                    .update("status","Pedido aceito")
+            },
+            pedidoRemovidoOnClickListener = {
+                db.collection("pedidos")
+                    .document(it.toString())
+                    .update("status","Pedido finalizado")
+            }
+        ,this.valueBase
+        )
         binding.rvAdmin.adapter = adapter
-        binding.rvAdmin.layoutManager = LinearLayoutManager(requireContext())
+        val layout = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,true)
+        layout.stackFromEnd= true
+        binding.rvAdmin.layoutManager = layout
     }
 
 }

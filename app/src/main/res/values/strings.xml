@@ -46,4 +46,5 @@
     <string name="criar_nova_localizacao">Crie um novo endereço</string>
     <string name="o_que_voc_procura">O que você procura?</string>
     <string name="endereco_final">Bairro: %s\nRua: %s,%s\nPonto de Referência: %s</string>
+    <string name="total_price">Total: %s</string>
 </resources>

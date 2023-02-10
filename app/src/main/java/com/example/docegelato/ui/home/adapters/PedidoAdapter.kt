@@ -53,7 +53,6 @@ class PedidoAdapter(
             val obs = itemView.findViewById<TextView>(R.id.tv_obs)
             val status = itemView.findViewById<TextView>(R.id.tv_status)
             val price = itemView.findViewById<TextView>(R.id.preco)
-            val totalPrice= itemView.findViewById<TextView>(R.id.tv_total_pedido)
 
             if (esconderBtnRemover) {
                 val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)

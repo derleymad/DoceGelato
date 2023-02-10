@@ -5,19 +5,12 @@ import androidx.lifecycle.ViewModel
 import com.example.docegelato.model.pedidos.Pedidos
 
 class PerfilViewModel : ViewModel() {
-    private var _listPedidos = MutableLiveData<ArrayList<Pedidos>>()
     private var _listAbertos = MutableLiveData<ArrayList<Pedidos>>()
     private var _listAndamento = MutableLiveData<ArrayList<Pedidos>>()
-    private var _listFechados = MutableLiveData<ArrayList<Pedidos>>()
+    private var _listFinalizado = MutableLiveData<ArrayList<Pedidos>>()
 
-    init {
-        _listAbertos.value = ArrayList<Pedidos>()
-    }
-
-    var listPedidos = _listPedidos
     var listAbertos = _listAbertos
     var listAndamento = _listAndamento
-    var listFechados = _listFechados
-
+    var listFinalizado = _listFinalizado
 
 }

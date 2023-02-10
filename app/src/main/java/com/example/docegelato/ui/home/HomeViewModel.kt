@@ -79,6 +79,7 @@ class HomeViewModel : ViewModel() {
         listPedidoFeitoLiveData.value?.pedidos?.remove(pedido)
         precoTotalLiveData.value =
             precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
+        listPedidoFeitoLiveData.value?.preco_total = precoTotalLiveData.value
         if (listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true) {
             isPedidoFeitoLiveData.value = false
         }
@@ -112,7 +113,7 @@ class HomeViewModel : ViewModel() {
         precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
         listPedidoFeitoLiveData.value?.address = address
         listPedidoFeitoLiveData.value?.user = user
-        listPedidoFeitoLiveData.value?.date = currentDateTime.timeInMillis.toString()
+        listPedidoFeitoLiveData.value?.date = currentDateTime.timeInMillis
 
         val pedido = Pedido(
             comida_desc = comida.comida_desc,
