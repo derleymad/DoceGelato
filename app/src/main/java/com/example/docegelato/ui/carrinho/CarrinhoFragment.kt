@@ -5,10 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentCarrinhoBinding
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
@@ -54,7 +56,18 @@ class CarrinhoFragment : Fragment() {
 
         binding.btnFinalizarTudo.setOnClickListener {
             addOnRecentePedidos()
+            showToast()
+            findNavController().popBackStack()
+
         }
+    }
+
+    private fun showToast() {
+        val toastLayout = layoutInflater.inflate(R.layout.custom_toast,requireActivity().findViewById(R.id.toast))
+        Toast(requireContext()).apply {
+            duration = Toast.LENGTH_LONG
+            view = toastLayout
+        }.show()
     }
 
     private fun addOnRecentePedidos() {

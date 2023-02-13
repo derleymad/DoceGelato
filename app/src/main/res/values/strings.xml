@@ -47,4 +47,8 @@
     <string name="o_que_voc_procura">O que você procura?</string>
     <string name="endereco_final">Bairro: %s\nRua: %s,%s\nPonto de Referência: %s</string>
     <string name="total_price">Total: %s</string>
+    <string name="seu_pedido_foi_feito_e_agora_aguarda_avalia_o">Seu pedido foi feito e agora aguarda avaliação!</string>
+    <string name="sair_da_conta">Sair da conta</string>
+    <string name="close_button">close button</string>
+    <string name="perfil_s_photo">perfil\'s photo</string>
 </resources>

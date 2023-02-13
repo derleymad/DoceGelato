@@ -37,7 +37,7 @@
             android:maxLines="2"
             android:text="@string/bife_de_carne_ovo_arroz_branco_farofa_pur_de_batatas_feij_o_mulatino_e_tudo_o_que_h_de_melhor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/foto"
+            app:layout_constraintEnd_toStartOf="@+id/container_foto"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nome"
@@ -55,13 +55,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descricao" />
 
-        <ImageView
-            android:id="@+id/foto"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/container_foto"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="5:4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +65,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:src="@mipmap/ic_launcher" />
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="8dp"
+            android:layout_height="0dp">
+            <ImageView
+                android:id="@+id/foto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/placeholder" />
+
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

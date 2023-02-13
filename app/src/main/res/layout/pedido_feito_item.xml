@@ -106,7 +106,6 @@
             android:id="@+id/aceitar_pedido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/green_shopper"
             android:text="Aceitar"
@@ -129,7 +128,7 @@
             app:layout_constraintEnd_toStartOf="@+id/aceitar_pedido"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/aceitar_pedido" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_address_rua" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

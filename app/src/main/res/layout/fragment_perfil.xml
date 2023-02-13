@@ -9,7 +9,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/close_perfil_btn"
@@ -18,7 +18,8 @@
             android:layout_marginTop="32dp"
             android:background="?attr/actionBarItemBackground"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/close_button" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -38,14 +39,15 @@
                     android:id="@+id/img_perfil_photo"
                     android:layout_width="match_parent"
                     android:src="@drawable/placeholder"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/perfil_s_photo" />
             </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/perfil_name"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Dodelag"
+                tools:text="Pessoa"
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -60,11 +62,12 @@
             android:layout_marginTop="16dp"
             android:maxLines="2"
             android:layout_marginStart="32dp"
+            android:fontFamily="@font/nunito"
             android:layout_marginEnd="32dp"
-            android:drawableStart="@drawable/ic_outline_edit_location_24"
             android:drawablePadding="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_outline_edit_location_24" />
 
 
 
@@ -76,23 +79,24 @@
             android:layout_marginTop="16dp"
             android:clickable="true"
             tools:visibility="visible"
-            android:foreground="?attr/selectableItemBackground"
             android:padding="16dp"
             android:paddingStart="32dp"
+            android:paddingEnd="32dp"
             android:layout_height="wrap_content"
             android:focusable="true">
 
             <TextView
                 android:layout_width="match_parent"
-                android:drawableStart="@drawable/ic_baseline_close_24"
                 app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/nunito"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:drawablePadding="16dp"
-                android:drawableEnd="@drawable/ic_baseline_expand_more_24"
-                android:text="Sair da conta"
-                android:layout_height="wrap_content" />
+                android:text="@string/sair_da_conta"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/ic_baseline_close_24"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
@@ -107,9 +111,9 @@
             android:clickable="true"
             tools:visibility="visible"
             android:visibility="gone"
-            android:foreground="?attr/selectableItemBackground"
             android:padding="16dp"
             android:paddingStart="32dp"
+            android:paddingEnd="32dp"
             android:layout_height="wrap_content"
             android:focusable="true">
 
@@ -117,24 +121,25 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_baseline_expand_more_24"
+                android:fontFamily="@font/nunito"
                 android:drawablePadding="16dp"
                 android:text="@string/admin"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray_light_even_more"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
-                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light_even_more"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            />
     </LinearLayout>
 
 </ScrollView>

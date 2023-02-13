@@ -1,5 +1,6 @@
 package com.example.docegelato.ui.perfil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.docegelato.databinding.FragmentPerfilBinding
 import com.example.docegelato.extensions.navPerfilToAdmin
 import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
+import com.example.docegelato.ui.login.LoginActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
@@ -51,6 +53,7 @@ class PerfilFragment : Fragment() {
         binding.sair.setOnClickListener {
             homeViewModel.auth.signOut()
             findNavController().popBackStack()
+            requireActivity().startActivity(Intent(requireActivity(),LoginActivity::class.java))
             requireActivity().finish()
         }
         binding.admin.setOnClickListener {

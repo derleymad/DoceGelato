@@ -10,7 +10,6 @@
         <item name="colorSecondaryVariant">@color/light_red</item>
         <item name="colorAccent">@color/green_shopper</item>
         <item name="colorOnSecondary">@color/white</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
@@ -34,6 +33,8 @@
 
     <style name="WithoutStatus" parent="Theme.DoceGelato">
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
 </resources>
