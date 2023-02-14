@@ -4,18 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentSacolaBinding
+import com.example.docegelato.ui.assets.BottomSheetEditFragment
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.util.Utils
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 class SacolaFragment : Fragment() {
@@ -29,10 +26,43 @@ class SacolaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSacolaBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        startOnClickListeners()
+        startObserver()
+    }
+
+    private fun startOnClickListeners() {
+        binding.btnMinor.setOnClickListener {
+            if (homeViewModel.quantityLiveData.value != 1) {
+                homeViewModel.diminuirQuantidade()
+            }
+        }
+        binding.addObs.setOnClickListener {
+            BottomSheetEditFragment().show(requireActivity().supportFragmentManager, "Bottom sheet")
+        }
+
+        binding.btnPlus.setOnClickListener {
+            homeViewModel.aumentarQuantidade()
+        }
+        binding.btnBackToBaseFragment.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun startObserver() {
         homeViewModel.idLiveData.observe(viewLifecycleOwner) { id ->
             for (i in homeViewModel.categoriaLiveData.value!!) {
                 for (j in i.comidas) {
                     if (j.comida_id == id) {
+                        // SE A CATEGORIA FOR MONTE(O ID TEM NUMERO 5)
+                        if(i.id == 5){
+//                            binding.
+
+                        }
                         binding.apply {
                             tvSacolaTitle.text = j.comida_title
                             tvSacolaDescricao.text = j.comida_desc
@@ -42,13 +72,14 @@ class SacolaFragment : Fragment() {
                             btnBottomAdicionar.setOnClickListener {
                                 if (homeViewModel.address.value == null) {
                                 }
-                                homeViewModel.obsLiveData.value = editObservacao.text.toString()
+                                homeViewModel.obsLiveData.value = tvObs.text.toString()
                                 homeViewModel.setComidaToPedidos(
                                     j,
                                     homeViewModel.user.value!!,
                                     homeViewModel.address.value!!
                                 )
-                                requireActivity().findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
+                                requireActivity().findNavController(R.id.nav_host_fragment_activity_main)
+                                    .popBackStack()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                             }
                         }
@@ -60,30 +91,13 @@ class SacolaFragment : Fragment() {
                                 Utils.format(it.times(j.comida_preco!!))
                             )
                         }
+                        homeViewModel.obsLiveData.observe(viewLifecycleOwner) {
+                            binding.tvObs.text = it
+                        }
                     } else {
                     }
                 }
             }
-        }
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        startOnClickListeners()
-    }
-
-    private fun startOnClickListeners() {
-        binding.btnMinor.setOnClickListener {
-            if (homeViewModel.quantityLiveData.value != 1) {
-                homeViewModel.diminuirQuantidade()
-            }
-        }
-        binding.btnPlus.setOnClickListener {
-            homeViewModel.aumentarQuantidade()
-        }
-        binding.btnBackToBaseFragment.setOnClickListener {
-            findNavController().popBackStack()
         }
     }
 

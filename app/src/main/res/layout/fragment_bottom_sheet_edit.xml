@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:weightSum="1"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:orientation="horizontal"
+    tools:context=".ui.assets.BottomSheetEditFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="none"
+        android:layout_weight="0.8"
+        app:counterEnabled="true"
+        app:counterMaxLength="150"
+        app:errorEnabled="true"
+        app:expandedHintEnabled="true"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_alguma_observacao">
+        <EditText
+            android:id="@+id/edit_observacao"
+            android:background="@null"
+            android:hint="@string/ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btn_send_obs"
+        android:src="@drawable/ic_baseline_send_24"
+        android:layout_weight="0.2"
+        android:padding="16dp"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

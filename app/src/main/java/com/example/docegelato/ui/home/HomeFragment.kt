@@ -11,9 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentHomeBinding
-import com.example.docegelato.extensions.*
+import com.example.docegelato.extensions.navToMaps
+import com.example.docegelato.extensions.navToPerfil
 import com.example.docegelato.ui.home.adapters.PagerAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 

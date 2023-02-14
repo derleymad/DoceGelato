@@ -35,6 +35,7 @@ class HomeViewModel : ViewModel() {
     private var addressLiveData = _addressLiveData
     var isLoadingContent = MutableLiveData(true)
 
+
     var auth: FirebaseAuth
     val listPedidoFeitoLiveData = _listPedidoFeitoLiveData
     val precoTotalLiveData = _precoTotalLiveData

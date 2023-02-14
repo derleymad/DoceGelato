@@ -86,6 +86,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_sacola_title"
                 tools:text="5 acompanhamentos + 1 cobretura." />
+    <Spinner
+        android:id="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@id/tv_sacola_descricao"
+        app:layout_constraintStart_toEndOf="@id/tv_sacola_preco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tv_sacola_preco"
@@ -98,19 +104,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_sacola_descricao"
                 tools:text="R$ 12,00" />
 
-            <TextView
-                android:id="@+id/tv_alguma_observacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:drawablePadding="8dp"
-                android:fontFamily="@font/nunito"
-                android:text="@string/alguma_observa_o"
-                android:textSize="16sp"
-                app:drawableStartCompat="@drawable/ic_baseline_textsms_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_sacola_preco" />
+    <TextView
+        android:id="@+id/tv_alguma_observacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/nunito"
+        android:text="@string/alguma_observa_o"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_baseline_textsms_24"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="384dp" />
 
     <LinearLayout
         android:id="@+id/bottom_adicionar"

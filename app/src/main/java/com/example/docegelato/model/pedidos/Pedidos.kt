@@ -8,13 +8,11 @@ data class Pedidos(
     var address: Address? = null,
     var user: User? = null,
     var date : Long? = null,
+//    var preco_total_array : List<Float>? = null,
     var preco_total: Float? = 0f,
     var uid : String? =null,
     var id : Long? = null,
     var status : String? = "Aguardando confirmação"
 
-) {
-
-}
-
+)
 

@@ -9,6 +9,7 @@ import com.example.docegelato.databinding.ActivityMainBinding
 import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="Theme.DoceGelato" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
 
@@ -13,15 +12,9 @@
         <item name="colorAccent">@color/green_shopper</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="FullScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowActivityTransitions">true</item>
     </style>
 
     <style name="WithoutStatus" parent="Theme.DoceGelato">

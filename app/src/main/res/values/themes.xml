@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/light_red</item>
         <item name="colorAccent">@color/green_shopper</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -25,16 +25,8 @@
         <item name="fontFamily">@font/nunito</item>
     </style>
 
-    <style name="FullScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowActivityTransitions">true</item>
-    </style>
-
-    <style name="WithoutStatus" parent="Theme.DoceGelato">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:fitsSystemWindows">true</item>
+    <style name="StatusbarBlack" parent="Theme.DoceGelato">
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 
 </resources>
