@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        homeViewModel.getDestaques()
+//        homeViewModel.getDestaques()
         homeViewModel.getCategorias()
         getAdminUserFromFirebase()
         setEventListeners()

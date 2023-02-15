@@ -4,6 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -13,6 +19,7 @@ import com.example.docegelato.databinding.FragmentSacolaBinding
 import com.example.docegelato.ui.assets.BottomSheetEditFragment
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.util.Utils
+import com.example.docegelato.util.Utils.format
 import com.squareup.picasso.Picasso
 
 class SacolaFragment : Fragment() {
@@ -33,6 +40,11 @@ class SacolaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         startOnClickListeners()
         startObserver()
+
+        val list = mutableListOf("123","321")
+
+        val hashMap = hashMapOf<String,String>("Preco" to "Tamanho")
+
     }
 
     private fun startOnClickListeners() {
@@ -59,14 +71,46 @@ class SacolaFragment : Fragment() {
                 for (j in i.comidas) {
                     if (j.comida_id == id) {
                         // SE A CATEGORIA FOR MONTE(O ID TEM NUMERO 5)
-                        if(i.id == 5){
-//                            binding.
 
+                        if(i.id == 5){
+                            //teste
                         }
+
+                        //SE QUALQUER COMIDA OS HASMAPS DE PRECO NAO FOREM NULOS(SE TIVEREM ALGO)
+                        if(j.precos!=null){
+                            val hasmaplist = j.precos
+                            val otherlist = ArrayList<String>()
+
+                            for(hashmap in j.precos){
+                                otherlist.add("${hashmap?.values?.last()}, ${hashmap?.values?.first()}")
+                            }
+
+                            val adapterSpinner = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_item,
+                                otherlist
+                            )
+
+                            binding.spinner.adapter = adapterSpinner
+                            binding.spinner.onItemSelectedListener = object : OnItemSelectedListener{
+                                override fun onItemSelected(
+                                    parent: AdapterView<*>?,
+                                    p1: View?,
+                                    p2: Int,
+                                    p3: Long
+                                ) {
+                                    val precoDaPosicaoClicada = hasmaplist[p2]?.values?.last()
+                                    binding.tvSacolaPreco.text = precoDaPosicaoClicada.toString()
+                                }
+                                override fun onNothingSelected(p0: AdapterView<*>?) {
+                                }
+                            }
+                        }
+
+                        //Fim DO IF
                         binding.apply {
                             tvSacolaTitle.text = j.comida_title
                             tvSacolaDescricao.text = j.comida_desc
-                            tvSacolaPreco.text = Utils.format(j.comida_preco!!)
+                            tvSacolaPreco.text = format(j.comida_preco!!)
+
                             Picasso.get().load(j.image).error(R.drawable.banner)
                                 .placeholder(R.drawable.banner).into(imgSacola)
                             btnBottomAdicionar.setOnClickListener {
@@ -88,7 +132,7 @@ class SacolaFragment : Fragment() {
                                 homeViewModel.quantityLiveData.value.toString()
                             binding.btnBottomAdicionar.text = getString(
                                 R.string.adicionar_pedido,
-                                Utils.format(it.times(j.comida_preco!!))
+                                format(it.times(j.comida_preco!!))
                             )
                         }
                         homeViewModel.obsLiveData.observe(viewLifecycleOwner) {

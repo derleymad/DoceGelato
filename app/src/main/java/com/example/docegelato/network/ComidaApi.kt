@@ -11,5 +11,8 @@ interface ComidaApi {
 
     @GET("destaques.json")
     fun getDestaques(): Call<ArrayList<Comida>>
+
+    @GET("nova_categorias.json")
+    fun getNovaCategorias(): Call<Categorias>
 }
 

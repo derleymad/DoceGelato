@@ -87,6 +87,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_sacola_title"
                 tools:text="5 acompanhamentos + 1 cobretura." />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sacola_preco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_sacola_preco"
+        app:layout_constraintTop_toTopOf="@+id/tv_sacola_preco" />
+
             <TextView
                 android:id="@+id/tv_sacola_preco"
                 android:layout_width="wrap_content"

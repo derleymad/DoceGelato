@@ -58,17 +58,18 @@ class HomeViewModel : ViewModel() {
 
     fun getCategorias() {
         viewModelScope.launch {
-            RetrofitInstance.api.getCategorias().enqueue(object : Callback<Categorias> {
+            RetrofitInstance.api.getNovaCategorias().enqueue(object : Callback<Categorias> {
                 override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
                     if (response.body() != null) {
                         isLoadingContent.value = false
                         categoriaLiveData.value = response.body()
+                        Log.i("qualovalor",categoriaLiveData.value?.last().toString())
                     } else {
                         return
                     }
                 }
                 override fun onFailure(call: Call<Categorias>, t: Throwable) {
-                    Log.e("TAG", t.message.toString())
+                    Log.e("TAGAPI", t.message.toString())
                 }
             })
         }
