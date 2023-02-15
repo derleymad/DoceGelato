@@ -209,6 +209,20 @@
             "comida_title":"Pizza de Calabresa",
             "comida_desc":"Molho de Casa, Queijo Mussarela, Calabresa, Tomate, Cebola, Orégano e Azeitona",
             "comida_preco":20.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 20.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 26.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 32.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzadeCalabresa"
          },
@@ -217,6 +231,20 @@
             "comida_title":"Pizza de Calabresa Bacon",
             "comida_desc":"Molho da Casa, Queijo Mussarela, Calabresa, Bacon Picado, Tomate, Cebola, Orégano e Azeitona",
             "comida_preco":20.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 20.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 26.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 32.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaDeCalabresaBacon"
          },
@@ -225,6 +253,20 @@
             "comida_title":"Pizza de Frango e Cheddar",
             "comida_desc":"Molho da Casa, Queijo Chedder, Frango, Milho Verde, Tomate, Orégano e Azeitona",
             "comida_preco":18.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 18.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 22.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 30.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaDeFrangoEchedder"
          },
@@ -233,6 +275,20 @@
             "comida_title":"Pizza de Frango e Catupiry",
             "comida_desc":"Molho da Casa, Queijo Mussarela, Frango, Catupiry, Milho Verde, Tomate, Orégano e Azeitona",
             "comida_preco":18.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 18.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 22.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 30.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaDeFrangoEcatupiry"
          },
@@ -241,6 +297,20 @@
             "comida_title":"Pizza Portuguesa",
             "comida_desc":"Molho da casa, Queijo Mussarela, Presunto, Tomate, Ovo Cozido, Cebola, Azeitona, Ervilha e Orégano",
             "comida_preco":18.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 18.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 22.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 30.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaPortuguesa"
          },
@@ -249,6 +319,20 @@
             "comida_title":"Pizza Mista",
             "comida_desc":"Molho da Casa, Frango, Presunto, Mussarela, Milho Verde, Azeitona e Orégano",
             "comida_preco":20.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 20.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 26.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 30.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaMista"
          },
@@ -257,6 +341,20 @@
             "comida_title":"Pizza Nordestina",
             "comida_desc":"Molho da Casa, Mussarela, Carne de Sol, Cebola, Tomate, Orégano e Azeitona",
             "comida_preco":20.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 20.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 26.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 32.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/PizzaNordestina"
          },
@@ -265,6 +363,20 @@
             "comida_title":"Pizza 4 Queijos",
             "comida_desc":"Molho da Casa, Queijo Mussarela, Queijo Coalho, Queijo Parmessão, Catupiry e Orégano",
             "comida_preco":20.00,
+            "precos": [
+               {
+               "tamanho": "P",
+               "preco": 20.0
+               },
+               {
+               "tamanho": "M",
+               "preco": 24.0
+               },
+               {
+               "tamanho": "G",
+               "preco": 30.0
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/lanches/Pizza4Queijos"
          },
