@@ -581,7 +581,7 @@
                "preco": 10.0
                }
             ],
-            "adicionais":[null],
+            "adicionais": ["Catupiry", "Queijo Fatiado", "Presunto", "Calabresa", "Milho", "Azeitona", "Cheddar", "Cebola", "Bacon"],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/montar/MonteSeuPastel.jpeg"
          }
