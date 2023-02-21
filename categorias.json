@@ -424,6 +424,7 @@
             "comida_id":503,
             "comida_title":"Monte Seu Pastel",
             "comida_desc":"Escolha entre 9 ingredientes, como Catupiry, Queijo Fatiado, Presunto, Milho, Azeitona, Cheddar entre Outros",
+            "adicionais": ["aventura", "ação", "ficção"],
             "comida_preco":null,
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/montar/MonteSeuPastel.jpeg"
