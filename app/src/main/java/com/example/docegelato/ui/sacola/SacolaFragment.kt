@@ -1,6 +1,7 @@
 package com.example.docegelato.ui.sacola
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,6 @@ class SacolaFragment : Fragment() {
         startObserver()
 
         val list = mutableListOf("123","321")
-
         val hashMap = hashMapOf<String,String>("Preco" to "Tamanho")
 
     }
@@ -97,12 +97,20 @@ class SacolaFragment : Fragment() {
                                     p2: Int,
                                     p3: Long
                                 ) {
-                                    val precoDaPosicaoClicada = hasmaplist[p2]?.values?.last()
-                                    binding.tvSacolaPreco.text = precoDaPosicaoClicada.toString()
+                                    val precoDaPosicaoClicada = hasmaplist[p2]?.values?.first()
+                                    homeViewModel.precoAtual.value = (precoDaPosicaoClicada as Double).toFloat()
+                                    val teste=  hasmaplist[p2]
+                                    homeViewModel.comida_preco_tamanho.value = teste
+//                                    binding.tvSacolaPreco.text = precoDaPosicaoClicada.toString()
                                 }
                                 override fun onNothingSelected(p0: AdapterView<*>?) {
                                 }
                             }
+                        }
+                        homeViewModel.precoAtual.value = j.comida_preco
+
+                        homeViewModel.precoAtual.observe(viewLifecycleOwner){
+                            binding.tvSacolaPreco.text = format(it)
                         }
 
                         //Fim DO IF
@@ -113,27 +121,33 @@ class SacolaFragment : Fragment() {
 
                             Picasso.get().load(j.image).error(R.drawable.banner)
                                 .placeholder(R.drawable.banner).into(imgSacola)
+
                             btnBottomAdicionar.setOnClickListener {
                                 if (homeViewModel.address.value == null) {
                                 }
                                 homeViewModel.obsLiveData.value = tvObs.text.toString()
+
                                 homeViewModel.setComidaToPedidos(
                                     j,
                                     homeViewModel.user.value!!,
                                     homeViewModel.address.value!!
                                 )
+
                                 requireActivity().findNavController(R.id.nav_host_fragment_activity_main)
                                     .popBackStack()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                             }
                         }
-                        homeViewModel.quantityLiveData.observe(viewLifecycleOwner) {
-                            binding.editBottomQuantity.text =
-                                homeViewModel.quantityLiveData.value.toString()
-                            binding.btnBottomAdicionar.text = getString(
-                                R.string.adicionar_pedido,
-                                format(it.times(j.comida_preco!!))
-                            )
+                        homeViewModel.quantityLiveData.observe(viewLifecycleOwner) { quantity ->
+                            homeViewModel.precoAtual.observe(viewLifecycleOwner){ preco ->
+                                binding.editBottomQuantity.text =
+                                    homeViewModel.quantityLiveData.value.toString()
+                                binding.btnBottomAdicionar.text = getString(
+                                    R.string.adicionar_pedido,
+                                    //O VALOR DO HASMAP ESTA AKI
+                                    format(quantity.times(preco!!))
+                                )
+                            }
                         }
                         homeViewModel.obsLiveData.observe(viewLifecycleOwner) {
                             binding.tvObs.text = it
@@ -148,6 +162,7 @@ class SacolaFragment : Fragment() {
     override fun onDestroyView() {
         homeViewModel.obsLiveData.value = ""
         homeViewModel.quantityLiveData.value = 1
+        homeViewModel.precoAtual.value = 0f
         super.onDestroyView()
     }
 }

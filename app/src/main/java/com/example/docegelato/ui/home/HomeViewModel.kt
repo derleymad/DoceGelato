@@ -17,6 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class HomeViewModel : ViewModel() {
     val hideNavBar = MutableLiveData(false)
@@ -34,6 +35,8 @@ class HomeViewModel : ViewModel() {
     private var _addressLiveData = MutableLiveData<Address>()
     private var addressLiveData = _addressLiveData
     var isLoadingContent = MutableLiveData(true)
+    var precoAtual = MutableLiveData<Float?>()
+    val comida_preco_tamanho = MutableLiveData<HashMap<String,Any>?>(null)
 
 
     var auth: FirebaseAuth
@@ -54,7 +57,6 @@ class HomeViewModel : ViewModel() {
             numero_celular = auth.currentUser?.phoneNumber.toString()
         )
     }
-
 
     fun getCategorias() {
         viewModelScope.launch {
@@ -79,9 +81,19 @@ class HomeViewModel : ViewModel() {
         // ATUALIZA O PRECO TOTAL
         // REMOVE O PRODUTO DO LIVEDATA
         listPedidoFeitoLiveData.value?.pedidos?.remove(pedido)
-        precoTotalLiveData.value =
-            precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
+
+        if(pedido.comida_tamanho_preco!=null){
+            precoTotalLiveData.value = precoTotalLiveData.value?.minus(pedido.comida_tamanho_preco.values
+                .first().toString().toFloat().times(pedido.quantity))
+
+        }else{
+            precoTotalLiveData.value =
+                precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
+        }
+
         listPedidoFeitoLiveData.value?.preco_total = precoTotalLiveData.value
+
+        //SE POR ACASO APAGAR TUDO E NAO TIVER NENHUM PEDIDO
         if (listPedidoFeitoLiveData.value?.pedidos?.isEmpty() == true) {
             isPedidoFeitoLiveData.value = false
         }
@@ -111,8 +123,18 @@ class HomeViewModel : ViewModel() {
         val currentDateTime = Calendar.getInstance()
         //GENERATE UNIQUE ID and ADD INTO SETS
         setOfids.add((0..1000).random())
-        listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
-        precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+
+
+
+        if(comida_preco_tamanho.value!=null){
+            listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(
+                comida_preco_tamanho.value!!.values.first().toString().toFloat())
+            precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+        }else{
+            listPedidoFeitoLiveData.value?.preco_total = quantityLiveData.value?.times(comida.comida_preco!!)!!
+            precoTotalLiveData.value = precoTotalLiveData.value!! + listPedidoFeitoLiveData.value?.preco_total!!
+        }
+
         listPedidoFeitoLiveData.value?.address = address
         listPedidoFeitoLiveData.value?.user = user
         listPedidoFeitoLiveData.value?.date = currentDateTime.timeInMillis
@@ -123,11 +145,13 @@ class HomeViewModel : ViewModel() {
             comida_unique_id = setOfids.last(),
             comida_preco = comida.comida_preco,
             comida_title = comida.comida_title,
+            comida_tamanho_preco = comida_preco_tamanho.value,
             comida_desconto = comida.comida_desconto,
             image = comida.image,
             quantity = quantityLiveData.value ?: 0,
             obs = obsLiveData.value.toString()
         )
+
         listPedidoFeitoLiveData.value?.uid = auth.currentUser?.uid
         listPedidoFeitoLiveData.value?.pedidos?.add(pedido)
         listPedidoFeitoLiveData.value?.preco_total = precoTotalLiveData.value
