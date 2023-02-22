@@ -435,21 +435,13 @@
             "comida_preco":3.00,
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/MousseDeMaracuja"
-         },
-         {
-            "comida_id":306,
-            "comida_title":"Sorvete e Açaí",
-            "comida_desc":"Vários tipos de sabores",
-            "comida_preco":null,
-            "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/sobremesas/SorveteEacai"
          }
       ],
       "image":""
    },
    {
       "id":4,
-      "title":"Bebibdas",
+      "title":"Bebidas",
       "description":"",
       "comidas":[
          {
@@ -516,52 +508,6 @@
       "title":"Monte o Seu",
       "description":"",
       "comidas":[
-         {
-            "comida_id":501,
-            "comida_title":"Monte Sua Massa",
-            "comida_desc":"Monte sua Massa, escolhendo entre os ingredientes como molho, Tempero, Tipo de Recheio",
-            "comida_preco":10.0,
-            "precos": [
-               {
-               "tamanho": "pequena",
-               "preco": 10.0
-               },
-               {
-               "tamanho": "pequena",
-               "preco": 10.0
-               },
-               {
-               "tamanho": "pequena",
-               "preco": 10.0
-               }
-            ],
-            "adicionais":[null],
-            "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/motar/MonteSuaMassa.jpeg"
-         },
-         {
-            "comida_id":502,
-            "comida_title":"Monte Sua Refeição",
-            "comida_desc":"Escolha sua Refeição, Cuzcuz ou Tapioca, Adicionando o Que Quiser Como Caldo, Carne Moída Cremosa, Misto e outros",
-            "comida_preco":10.0,
-            "precos": [
-               {
-               "tamanho": "pequena",
-               "preco": 10.0
-               },
-               {
-               "tamanho": "pequena",
-               "preco": 10.0
-               },
-               {
-               "tamanho": "pequena",
-               "preco": 10.0
-               }
-            ],
-            "adicionais":[null],
-            "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/montar/MonteSuaRefeiçao.jpeg"
-         },
          {
             "comida_id":503,
             "comida_title":"Monte Seu Pastel",
