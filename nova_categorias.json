@@ -450,7 +450,7 @@
             "comida_desc":"",
             "comida_preco":6.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/Pepsi1Litro"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/pepsi1litro.png"
          },
          {
             "comida_id":402,
@@ -458,7 +458,7 @@
             "comida_desc":"",
             "comida_preco":6.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/Guaraná1Litro"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/guarana1litro.png"
          },
          {
             "comida_id":403,
@@ -466,7 +466,7 @@
             "comida_desc":"",
             "comida_preco":7.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/Cajuina1Litro"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/cajuina1litro.png"
          },
          {
             "comida_id":404,
@@ -474,7 +474,7 @@
             "comida_desc":"",
             "comida_preco":4.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/GuaranaLata"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/guaranaLata.png"
          },
          {
             "comida_id":405,
@@ -482,7 +482,7 @@
             "comida_desc":"",
             "comida_preco":4.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/FantaLranjaLata"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/fantaLaranjaLata.png"
          },
          {
             "comida_id":406,
@@ -490,7 +490,7 @@
             "comida_desc":"",
             "comida_preco":2.50,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/AguaSemGas"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/aguaSemGas.png"
          },
          {
             "comida_id":407,
@@ -498,7 +498,7 @@
             "comida_desc":"",
             "comida_preco":2.00,
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/AguaComGas"
+            "image":"https://derleymad.github.io/projeto-delivery/images/bebidas/aguaComGas.png"
          }
       ],
       "image":""
