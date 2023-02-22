@@ -20,7 +20,6 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class HomeViewModel : ViewModel() {
-    val hideNavBar = MutableLiveData(false)
     private var _categoriaLiveData = MutableLiveData<Categorias>()
     private var _nomedaruaLiveData = MutableLiveData<String>()
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()
@@ -37,6 +36,8 @@ class HomeViewModel : ViewModel() {
     var isLoadingContent = MutableLiveData(true)
     var precoAtual = MutableLiveData<Float?>()
     val comida_preco_tamanho = MutableLiveData<HashMap<String,Any>?>(null)
+    val totalAdicionais = MutableLiveData(0)
+    var adiconais = MutableLiveData<ArrayList<String>?>(null)
 
 
     var auth: FirebaseAuth
@@ -47,6 +48,7 @@ class HomeViewModel : ViewModel() {
     val setOfids = mutableSetOf<Int>()
 
     init {
+        adiconais.value = ArrayList<String>()
         listPedidoFeitoLiveData.value = Pedidos(mutableListOf<Pedido>(), null, null, null,0f)
         auth = FirebaseAuth.getInstance()
         addressLiveData.value = Address()
@@ -148,6 +150,7 @@ class HomeViewModel : ViewModel() {
             comida_tamanho_preco = comida_preco_tamanho.value,
             comida_desconto = comida.comida_desconto,
             image = comida.image,
+            adicionais = adiconais.value,
             quantity = quantityLiveData.value ?: 0,
             obs = obsLiveData.value.toString()
         )

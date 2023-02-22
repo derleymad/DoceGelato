@@ -53,6 +53,7 @@ class PedidoAdapter(
             val obs = itemView.findViewById<TextView>(R.id.tv_obs)
             val status = itemView.findViewById<TextView>(R.id.tv_status)
             val price = itemView.findViewById<TextView>(R.id.preco)
+            val adicionais = itemView.findViewById<TextView>(R.id.tv_adiconais)
 
             if (esconderBtnRemover) {
                 val remove = itemView.findViewById<ImageButton>(R.id.btn_remove_pedido)
@@ -78,6 +79,7 @@ class PedidoAdapter(
 
             if(pedido.comida_tamanho_preco!=null){
                 price.text = format(pedido.comida_tamanho_preco.values.first().toString().toFloat()) +"(${ pedido.comida_tamanho_preco.values.last().toString()})"
+                adicionais.text = itemView.context.getString(R.string.adicionais,pedido.adicionais.toString().replace("[","").replace("]",""))
             }else{
                 price.text = format(pedido.comida_preco!!)
             }

@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -15,11 +13,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentSacolaBinding
+import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.ui.assets.BottomSheetEditFragment
 import com.example.docegelato.ui.home.HomeViewModel
-import com.example.docegelato.util.Utils
+import com.example.docegelato.ui.sacola.adapter.AdicionaisAdapter
 import com.example.docegelato.util.Utils.format
 import com.squareup.picasso.Picasso
 
@@ -28,6 +28,7 @@ class SacolaFragment : Fragment() {
     private val homeViewModel: HomeViewModel by activityViewModels()
     private var _binding: FragmentSacolaBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adicionaisAdapter :AdicionaisAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,10 +42,6 @@ class SacolaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         startOnClickListeners()
         startObserver()
-
-        val list = mutableListOf("123","321")
-        val hashMap = hashMapOf<String,String>("Preco" to "Tamanho")
-
     }
 
     private fun startOnClickListeners() {
@@ -71,9 +68,10 @@ class SacolaFragment : Fragment() {
                 for (j in i.comidas) {
                     if (j.comida_id == id) {
                         // SE A CATEGORIA FOR MONTE(O ID TEM NUMERO 5)
-
                         if(i.id == 5){
-                            //teste
+                            binding.spinner.visibility = View.GONE
+                        }else{
+                            binding.spinner.visibility = View.VISIBLE
                         }
 
                         //SE QUALQUER COMIDA OS HASMAPS DE PRECO NAO FOREM NULOS(SE TIVEREM ALGO)
@@ -84,11 +82,9 @@ class SacolaFragment : Fragment() {
                             for(hashmap in j.precos){
                                 otherlist.add("${hashmap?.values?.last()}, ${hashmap?.values?.first()}")
                             }
-
                             val adapterSpinner = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_item,
                                 otherlist
                             )
-
                             binding.spinner.adapter = adapterSpinner
                             binding.spinner.onItemSelectedListener = object : OnItemSelectedListener{
                                 override fun onItemSelected(
@@ -101,16 +97,19 @@ class SacolaFragment : Fragment() {
                                     homeViewModel.precoAtual.value = (precoDaPosicaoClicada as Double).toFloat()
                                     val teste=  hasmaplist[p2]
                                     homeViewModel.comida_preco_tamanho.value = teste
-//                                    binding.tvSacolaPreco.text = precoDaPosicaoClicada.toString()
                                 }
                                 override fun onNothingSelected(p0: AdapterView<*>?) {
                                 }
                             }
                         }
                         homeViewModel.precoAtual.value = j.comida_preco
-
                         homeViewModel.precoAtual.observe(viewLifecycleOwner){
                             binding.tvSacolaPreco.text = format(it)
+                        }
+                        if(j.adicionais !=null){
+                            startAdicionalRecyclerView(j.adicionais)
+                            startAdicionaisObservers(j)
+                        }else{
                         }
 
                         //Fim DO IF
@@ -123,21 +122,13 @@ class SacolaFragment : Fragment() {
                                 .placeholder(R.drawable.banner).into(imgSacola)
 
                             btnBottomAdicionar.setOnClickListener {
-                                if (homeViewModel.address.value == null) {
-                                }
                                 homeViewModel.obsLiveData.value = tvObs.text.toString()
-
-                                homeViewModel.setComidaToPedidos(
-                                    j,
-                                    homeViewModel.user.value!!,
-                                    homeViewModel.address.value!!
-                                )
-
-                                requireActivity().findNavController(R.id.nav_host_fragment_activity_main)
-                                    .popBackStack()
+                                homeViewModel.setComidaToPedidos(j, homeViewModel.user.value!!, homeViewModel.address.value!!)
+                                requireActivity().findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
                                 homeViewModel.isPedidoFeitoLiveData.value = true
                             }
                         }
+
                         homeViewModel.quantityLiveData.observe(viewLifecycleOwner) { quantity ->
                             homeViewModel.precoAtual.observe(viewLifecycleOwner){ preco ->
                                 binding.editBottomQuantity.text =
@@ -159,10 +150,50 @@ class SacolaFragment : Fragment() {
         }
     }
 
+    fun startAdicionalRecyclerView(list:ArrayList<String>){
+        adicionaisAdapter = AdicionaisAdapter({
+            homeViewModel.totalAdicionais.value = homeViewModel.totalAdicionais.value?.plus(1)
+            homeViewModel.adiconais.value?.add(it)
+        },
+            {
+            homeViewModel.totalAdicionais.value = homeViewModel.totalAdicionais.value?.minus(1)
+            homeViewModel.adiconais.value?.remove(it)
+        })
+        binding.rvAdicionais.adapter = adicionaisAdapter
+        binding.rvAdicionais.layoutManager = LinearLayoutManager(requireContext())
+        adicionaisAdapter.addToRecyclerViewList(list)
+    }
+
+    fun startAdicionaisObservers(comida: Comida){
+        homeViewModel.totalAdicionais.observe(viewLifecycleOwner){
+            when{
+                it==4 -> {
+                    //5.0
+                    val precoFisrt = comida.precos?.first()?.values
+                    binding.btnBottomAdicionar.isEnabled = true
+                    homeViewModel.precoAtual.value = precoFisrt?.first().toString().toFloat()
+                    homeViewModel.comida_preco_tamanho.value = comida.precos?.first()
+                }
+                it>=5 -> {
+                    //7.0
+                    val precoLast= comida.precos?.last()?.values
+                    binding.btnBottomAdicionar.isEnabled = true
+                    homeViewModel.precoAtual.value = precoLast?.first().toString().toFloat()
+                    homeViewModel.comida_preco_tamanho.value = comida.precos?.last()
+                }
+                else ->{
+                    binding.btnBottomAdicionar.isEnabled = false
+                }
+            }
+        }
+    }
+
     override fun onDestroyView() {
         homeViewModel.obsLiveData.value = ""
         homeViewModel.quantityLiveData.value = 1
         homeViewModel.precoAtual.value = 0f
+        homeViewModel.totalAdicionais.value = 0
+        homeViewModel.adiconais.value = ArrayList()
         super.onDestroyView()
     }
 }

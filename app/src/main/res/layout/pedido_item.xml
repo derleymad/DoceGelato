@@ -62,14 +62,11 @@
         android:id="@+id/tv_pedido_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/nunito"
         android:text="@string/quantity_pedido_x"
         android:textSize="12sp"
-        android:fontFamily="@font/nunito"
         app:layout_constraintBottom_toBottomOf="@+id/preco"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/preco"
         app:layout_constraintTop_toTopOf="@+id/preco" />
 
@@ -77,26 +74,39 @@
         android:id="@+id/tv_obs"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito"
         android:layout_marginStart="8dp"
-        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito"
         android:maxLength="150"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/btn_remove_pedido"
         app:layout_constraintStart_toEndOf="@id/container_img_pedido"
         app:layout_constraintTop_toBottomOf="@+id/tv_pedido_title"
         tools:text="@tools:sample/lorem/random" />
 
     <TextView
+        android:id="@+id/tv_adiconais"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito"
+        android:textSize="12sp"
+        android:maxLength="150"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_obs"
+        app:layout_constraintStart_toStartOf="@+id/tv_obs"
+        app:layout_constraintTop_toBottomOf="@id/tv_obs"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
         android:id="@+id/preco"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito"
         android:text="@string/r_16_99"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:fontFamily="@font/nunito"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@+id/tv_adiconais"
         app:layout_constraintStart_toStartOf="@id/tv_obs"
-        app:layout_constraintTop_toBottomOf="@id/tv_obs" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_adiconais" />
 </androidx.constraintlayout.widget.ConstraintLayout>

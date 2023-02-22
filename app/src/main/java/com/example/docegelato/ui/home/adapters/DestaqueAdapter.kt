@@ -1,5 +1,6 @@
 package com.example.docegelato.ui.home.adapters
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +58,8 @@ class DestaqueAdapter(
 
             nome.text = comida.comida_title
             desconto.text = "${(comida.comida_desconto * 100).toInt()}%"
+
+            precoAntigo.paintFlags = precoAntigo.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             precoAntigo.text = itemView.context.getString(
                 R.string.preco_riscado,
                 Utils.format(comida.comida_preco)
@@ -65,7 +68,6 @@ class DestaqueAdapter(
                 R.string.comida_destaque_preco,
                 Utils.format(precoDescontado)
             )
-
             itemView.setOnClickListener {
                 destaqueOnClickListener?.invoke(comida.comida_id)
             }

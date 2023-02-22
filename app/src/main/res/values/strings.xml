@@ -51,4 +51,5 @@
     <string name="sair_da_conta">Sair da conta</string>
     <string name="close_button">close button</string>
     <string name="perfil_s_photo">perfil\'s photo</string>
+    <string name="adicionais">%s</string>
 </resources>

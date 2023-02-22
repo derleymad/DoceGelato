@@ -9,6 +9,7 @@ data class Pedido(
     val comida_tamanho_preco : HashMap<String,Any>? = null,
     val comida_desconto: Float = 0f,
     val image: String = "",
+    val adicionais : ArrayList<String>? = null,
     var quantity: Int = 0,
     val obs: String = "Nehuma observação"
 )
