@@ -523,7 +523,44 @@
                "preco": 7.0
                }
             ],
-            "adicionais": ["Catupiry", "Queijo Fatiado", "Presunto", "Calabresa", "Milho", "Azeitona", "Cheddar", "Cebola", "Bacon"],
+            "adicionais": [
+               {
+               "nome":"Catupiry",
+               "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/catupiry.png"
+               },
+               {
+                  "nome":"Queijo Fatiado",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/queijoFatiado.png"
+               },
+               {
+                  "nome":"Presunto",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/presunto.png"
+               },
+               {
+                  "nome":"Calabresa",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/calabresa.png"
+               },
+               {
+                  "nome":"Milho",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/milho.png"
+               },
+               {
+                  "nome":"Azeitona",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/azeitona.png"
+               },
+               {
+                  "nome":"Chedder",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/chedder.png"
+               },
+               {
+                  "nome":"Cebola",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/cebola.png"
+               },
+               {
+                  "nome":"Bacon",
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/bacon.png"
+               }
+            ],
             "comida_desconto":0.00,
             "image":"https://derleymad.github.io/projeto-delivery/images/montar/MonteSeuPastel.jpeg"
          }
