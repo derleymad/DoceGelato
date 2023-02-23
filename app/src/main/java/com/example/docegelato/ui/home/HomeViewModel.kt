@@ -109,6 +109,15 @@ class HomeViewModel : ViewModel() {
         quantityLiveData.value = quantityLiveData.value?.plus(1)
     }
 
+    fun destroyData(){
+        obsLiveData.value = ""
+        quantityLiveData.value = 1
+        precoAtual.value = 0f
+        totalAdicionais.value = 0
+        comida_preco_tamanho.value = null
+        adiconais.value = ArrayList()
+    }
+
     fun getUserFromFirebase(){
         db.collection("users")
             .document("clientes")

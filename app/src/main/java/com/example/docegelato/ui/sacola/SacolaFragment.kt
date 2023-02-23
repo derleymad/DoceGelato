@@ -189,11 +189,7 @@ class SacolaFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        homeViewModel.obsLiveData.value = ""
-        homeViewModel.quantityLiveData.value = 1
-        homeViewModel.precoAtual.value = 0f
-        homeViewModel.totalAdicionais.value = 0
-        homeViewModel.adiconais.value = ArrayList()
+        homeViewModel.destroyData()
         super.onDestroyView()
     }
 }

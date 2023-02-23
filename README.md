@@ -16,9 +16,7 @@
 - Temos um projeto feito em MVVM, dividido em 3 activities, 1 sendo a Main activity, na qual hospeda e faz uso do bototm navigation para sincronizar com os 3 fragmentos principais, a home, a search, e os pedidos... No fragmento home temos outros fragments hospedados, sincronizados com o tablayout, o destaques, e a base fragment (esta ultima é reciclável para todos as demais tabs da home), além disso, temos também na mesma home, fragmentos como o perfil, sacola, e carrinho... é justamente na home que temos o HomeViewModel, o responsável por grande parte da modelagem de dados, ele se comporta como um sharedViewModel, pois seu ciclo de vida está na mainactivity. Voltando aos fragments, temos a search e pedidos (ainda no bottom navigation da main)  e é no pedidos que é feito as requisições ao firestore para pegar os pedidos e informações feitas da conta autenticada. Vale lembrar, que na Login Activity, temos a autentificacao de fato, na verdade ela hospeda 2 fragmentos, o login e o newuserlogin, mas ambos tem funções de cadastro, login, autentificação e informações gerais da conta inicial...Temos uma splash screen destinada em uma activity, temos também varias outras funcões e protótipos que ainda estão sendo ou serão descritos posteriormente.
 -Na sacola fragment, todos os pedidos adicionados serão armazenados via livedate, quando estiver tudo pronto, o cliente deve adicionar ao carrinho e finalizar o pedido, este será enviado diretamente ao firestore onde será guardado e verificado junto a sua conta... Todos os pedidos e detalhes serão enviados ao admin pelo mesmo aplicativo na aba de perfil, onde será aberto uma nova opção somente ao administrador com os pedidos feitos por todos os usuários.
 
-
 ## Tecnologias
-
 
 #### Linguagens:
 
