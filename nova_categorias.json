@@ -550,7 +550,7 @@
                },
                {
                   "nome":"Chedder",
-                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/chedder.png"
+                  "image":"https://derleymad.github.io/projeto-delivery/images/adicionais/cheddar.png"
                },
                {
                   "nome":"Cebola",
@@ -562,7 +562,7 @@
                }
             ],
             "comida_desconto":0.00,
-            "image":"https://derleymad.github.io/projeto-delivery/images/montar/MonteSeuPastel.jpeg"
+            "image":"https://derleymad.github.io/projeto-delivery/images/Pastel.jpg"
          }
       ],
       "image":""
