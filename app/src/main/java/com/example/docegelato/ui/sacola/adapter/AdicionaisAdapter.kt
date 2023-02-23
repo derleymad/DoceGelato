@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
+import com.example.docegelato.model.categorias.Adicionais
+import com.squareup.picasso.Picasso
 
 class AdicionaisAdapter(
     private var adicionalPlusOnClickListener: ((String) -> Unit)? = null,
     private var adicionalMinorOnClickListener: ((String) -> Unit)? = null
 ): RecyclerView.Adapter<AdicionaisAdapter.ViewHolder>() {
-    private val list = ArrayList<String>()
+    private val list = ArrayList<Adicionais>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addToRecyclerViewList(list: ArrayList<String>){
+    fun addToRecyclerViewList(list: ArrayList<Adicionais>){
         this.list.addAll(list)
         notifyDataSetChanged()
     }
@@ -37,20 +40,23 @@ class AdicionaisAdapter(
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bind(currentItem: String) {
+        fun bind(currentItem: Adicionais) {
             val adicional = itemView.findViewById<TextView>(R.id.nome_adicional)
             val btnPlus = itemView.findViewById<ImageButton>(R.id.btn_plus)
             val btnRemove = itemView.findViewById<ImageButton>(R.id.btn_remove)
+            val image = itemView.findViewById<ImageView>(R.id.img_adicional)
 
-            adicional.text = currentItem
+            Picasso.get().load(currentItem.image).placeholder(R.drawable.placeholder).into(image)
+
+            adicional.text = currentItem.nome
             btnPlus.setOnClickListener {
-                adicionalPlusOnClickListener?.invoke(currentItem)
+                adicionalPlusOnClickListener?.invoke(currentItem.nome!!)
                 it.visibility = View.GONE
                 btnRemove.visibility = View.VISIBLE
 
             }
             btnRemove.setOnClickListener {
-                adicionalMinorOnClickListener?.invoke(currentItem)
+                adicionalMinorOnClickListener?.invoke(currentItem.nome!!)
                 it.visibility = View.GONE
                 btnPlus.visibility = View.VISIBLE
             }

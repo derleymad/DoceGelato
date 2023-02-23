@@ -5,7 +5,7 @@ data class Comida(
     val comida_id: Int,
     val comida_preco: Float?,
     val precos : ArrayList<HashMap<String,Any>?>?=null,
-    val adicionais : ArrayList<String>?=null,
+    val adicionais : ArrayList<Adicionais>?=null,
     val comida_title: String,
     val comida_desconto: Float,
     val image: String

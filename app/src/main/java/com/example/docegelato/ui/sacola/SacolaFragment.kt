@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentSacolaBinding
+import com.example.docegelato.model.categorias.Adicionais
 import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.ui.assets.BottomSheetEditFragment
 import com.example.docegelato.ui.home.HomeViewModel
@@ -150,7 +151,7 @@ class SacolaFragment : Fragment() {
         }
     }
 
-    fun startAdicionalRecyclerView(list:ArrayList<String>){
+    fun startAdicionalRecyclerView(list:ArrayList<Adicionais>){
         adicionaisAdapter = AdicionaisAdapter({
             homeViewModel.totalAdicionais.value = homeViewModel.totalAdicionais.value?.plus(1)
             homeViewModel.adiconais.value?.add(it)
