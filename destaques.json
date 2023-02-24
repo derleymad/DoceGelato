@@ -1,7 +1,7 @@
 [
    {
        "comida_id":503,
-       "comida_title": "Pastel - 4 Ingredientes",
+       "comida_title": "Monte Seu Pastel",
        "comida_desc":"",
        "comida_preco":5.00,
        "comida_desconto":0.30,
@@ -9,7 +9,7 @@
    },
    {
       "comida_id":202,
-      "comida_title":"Hamburguer - Delícia 1",
+      "comida_title":"Delícia 1",
       "comida_preco":8.00,
       "comida_description":"",
       "comida_desconto":0.35,
