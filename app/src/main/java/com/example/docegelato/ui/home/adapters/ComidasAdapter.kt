@@ -13,7 +13,7 @@ import java.text.NumberFormat
 import java.util.*
 
 class ComidasAdapter(
-    private var comidaOnClickListener: ((Int) -> Unit)? = null
+    private var comidaOnClickListener: ((String) -> Unit)? = null
 ) : RecyclerView.Adapter<ComidasAdapter.ComidasViewHolder>() {
 
     private var comidasList = ArrayList<Comida>()
@@ -58,7 +58,7 @@ class ComidasAdapter(
                 if (comida.comida_preco != null) format.format(comida.comida_preco) else "Preço por tamanho ou porção"
 
             itemView.setOnClickListener {
-                comidaOnClickListener?.invoke(comida.comida_id)
+                comidaOnClickListener?.invoke(comida.comida_title)
             }
 
         }

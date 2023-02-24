@@ -35,12 +35,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/container_localizacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ln_bottom_finalizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/fixed_pergunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/nunito"
+            android:text="Onde devemos entregar seu pedido?"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/localizacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:drawablePadding="16dp"
+            android:fontFamily="@font/nunito"
+            android:maxLines="2"
+            app:drawableStartCompat="@drawable/ic_outline_edit_location_24"
+            tools:text="@tools:sample/lorem/random" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_pedido_feito"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/ln_bottom_finalizar"
+        app:layout_constraintBottom_toTopOf="@+id/container_localizacao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_back_to_base_fragment"
@@ -49,21 +85,22 @@
     <LinearLayout
         android:id="@+id/ln_bottom_finalizar"
         android:layout_width="match_parent"
-        android:visibility="gone"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ln_cupom"
             android:layout_width="match_parent"
-            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/ln_bottom_finalizar">
 
             <ImageView
@@ -80,9 +117,9 @@
                 android:id="@+id/static_cupom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
                 android:text="@string/cupom"
                 android:textColor="@color/black"
-                android:fontFamily="@font/nunito"
                 app:layout_constraintBottom_toTopOf="@+id/edit_cupom"
                 app:layout_constraintEnd_toEndOf="@+id/edit_cupom"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -95,8 +132,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:enabled="false"
-                android:hint="@string/digite_um_c_digo"
                 android:fontFamily="@font/nunito"
+                android:hint="@string/digite_um_c_digo"
                 app:layout_constraintBottom_toBottomOf="@+id/img_cupom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -106,58 +143,59 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@color/gray_light_even_more"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_height="1dp" />
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:weightSum="1"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="match_parent"
-                android:text="@string/total_com_a_entrega"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/nunito"
                 android:layout_weight="0.5"
+                android:fontFamily="@font/nunito"
+                android:text="@string/total_com_a_entrega"
+                android:textColor="@color/black"
                 android:textSize="13sp"
-                android:layout_height="wrap_content" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_total_pedido"
                 android:layout_width="match_parent"
-                android:text="R$ 16,98"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:textStyle="bold"
                 android:layout_weight="0.5"
-                android:textColor="@color/black"
                 android:fontFamily="@font/nunito"
                 android:gravity="end"
+                android:text="R$ 16,98"
+                android:textColor="@color/black"
                 android:textSize="13sp"
-                android:layout_height="wrap_content" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_finalizar_tudo"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="end"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/green_shopper"
+            android:fontFamily="@font/nunito"
             android:text="@string/finalizar_pedido"
             android:textAllCaps="false"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/white"
-            android:layout_gravity="end"
-            android:fontFamily="@font/nunito"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <include
@@ -165,6 +203,17 @@
         android:visibility="gone"
         layout="@layout/sem_item_img"
         />
-
+    <FrameLayout
+        android:id="@+id/progress_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,19 +11,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentPerfilBinding
 import com.example.docegelato.extensions.navPerfilToAdmin
-import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.login.LoginActivity
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 class PerfilFragment : Fragment() {
     private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
-    private val list = ArrayList<Pedidos>()
-    val db = Firebase.firestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +54,6 @@ class PerfilFragment : Fragment() {
         binding.admin.setOnClickListener {
             navPerfilToAdmin()
         }
-
     }
 
     fun startObservers(){

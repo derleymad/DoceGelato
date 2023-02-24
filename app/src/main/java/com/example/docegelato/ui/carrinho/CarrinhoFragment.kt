@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentCarrinhoBinding
+import com.example.docegelato.extensions.navCarrinhoToMaps
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils
@@ -19,9 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 class CarrinhoFragment : Fragment() {
 
@@ -39,6 +38,7 @@ class CarrinhoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCarrinhoBinding.inflate(inflater, container, false)
+        Log.i("callingresume","chamou")
         return binding.root
     }
 
@@ -47,18 +47,19 @@ class CarrinhoFragment : Fragment() {
         prepareRecyclerView()
         startObservers()
         startEventClickListeners()
+
     }
 
     private fun startEventClickListeners() {
         binding.btnBackToBaseFragment.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.localizacao.setOnClickListener {
+            navCarrinhoToMaps()
+        }
 
         binding.btnFinalizarTudo.setOnClickListener {
             addOnRecentePedidos()
-            showToast()
-            findNavController().popBackStack()
-
         }
     }
 
@@ -71,15 +72,18 @@ class CarrinhoFragment : Fragment() {
     }
 
     private fun addOnRecentePedidos() {
+        homeViewModel.isLoadingContent.value = true
         val currentDateTime = Calendar.getInstance().timeInMillis
         homeViewModel.listPedidoFeitoLiveData.value?.id = currentDateTime
-
         val pedidos = homeViewModel.listPedidoFeitoLiveData.value?.pedidos
         if (pedidos?.isEmpty() == false) {
             db.collection("pedidos").document(currentDateTime.toString()).set(homeViewModel.listPedidoFeitoLiveData.value!!).addOnSuccessListener {
                 homeViewModel.isPedidoFeitoLiveData.value = false
                 homeViewModel.precoTotalLiveData.value = 0f
                 homeViewModel.clearPedidosAndPrices()
+                homeViewModel.isLoadingContent.value = false
+                showToast()
+                findNavController().popBackStack()
             }
         } else {
             Snackbar.make(
@@ -100,6 +104,12 @@ class CarrinhoFragment : Fragment() {
     }
 
     private fun startObservers() {
+        homeViewModel.address.observe(viewLifecycleOwner){
+            binding.localizacao.text = "${it.bairro+", " +it.rua+", "+it.numero_da_casa}"
+        }
+        homeViewModel.isLoadingContent.observe(viewLifecycleOwner){
+            binding.progressBar.visibility = if(it)View.VISIBLE else View.GONE
+        }
         homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner) {
             binding.tvTotalPedido.text = Utils.format(it)
         }
@@ -112,10 +122,12 @@ class CarrinhoFragment : Fragment() {
                     binding.included.root.visibility = View.INVISIBLE
                     lnBottomFinalizar.visibility = View.VISIBLE
                     rvPedidoFeito.visibility = View.VISIBLE
+                    binding.containerLocalizacao.visibility = View.VISIBLE
                 } else {
                     binding.included.root.visibility = View.VISIBLE
                     lnBottomFinalizar.visibility = View.INVISIBLE
                     rvPedidoFeito.visibility = View.INVISIBLE
+                    binding.containerLocalizacao.visibility = View.INVISIBLE
                 }
             }
         }

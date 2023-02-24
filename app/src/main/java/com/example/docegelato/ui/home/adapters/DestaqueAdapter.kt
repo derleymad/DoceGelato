@@ -13,7 +13,7 @@ import com.example.docegelato.util.Utils
 import com.squareup.picasso.Picasso
 
 class DestaqueAdapter(
-    private var destaqueOnClickListener: ((Int) -> Unit)? = null
+    private var destaqueOnClickListener: ((String) -> Unit)? = null
 ) : RecyclerView.Adapter<DestaqueAdapter.ComidasViewHolder>() {
     private var comidasList = ArrayList<Comida>()
 
@@ -69,7 +69,7 @@ class DestaqueAdapter(
                 Utils.format(precoDescontado)
             )
             itemView.setOnClickListener {
-                destaqueOnClickListener?.invoke(comida.comida_id)
+                destaqueOnClickListener?.invoke(comida.comida_title)
             }
 
         }

@@ -73,8 +73,6 @@ class MapsFragment : Fragment() {
                         )
                     )
                     .addOnSuccessListener {
-                        Log.i("tag","Gravou com sucesso")
-                        Snackbar.make(binding.root,"Endereço salvo",Snackbar.LENGTH_SHORT).show()
                         findNavController().popBackStack()
                     }
                     .addOnFailureListener {

@@ -24,6 +24,7 @@ class HomeViewModel : ViewModel() {
     private var _nomedaruaLiveData = MutableLiveData<String>()
     private var _destaquesLiveData = MutableLiveData<ArrayList<Comida>>()
     private var _idLiveData = MutableLiveData<Int>()
+    private var _nameLiveData = MutableLiveData<String>()
     var isAdmin = MutableLiveData(false)
     private var _quantityLiveData = MutableLiveData(1)
     private var _isPedidoFeitoLiveData = MutableLiveData<Boolean>(false)
@@ -87,12 +88,10 @@ class HomeViewModel : ViewModel() {
         if(pedido.comida_tamanho_preco!=null){
             precoTotalLiveData.value = precoTotalLiveData.value?.minus(pedido.comida_tamanho_preco.values
                 .first().toString().toFloat().times(pedido.quantity))
-
         }else{
             precoTotalLiveData.value =
                 precoTotalLiveData.value?.minus(pedido.comida_preco?.times(pedido.quantity) ?: 0f)
         }
-
         listPedidoFeitoLiveData.value?.preco_total = precoTotalLiveData.value
 
         //SE POR ACASO APAGAR TUDO E NAO TIVER NENHUM PEDIDO
@@ -199,6 +198,7 @@ class HomeViewModel : ViewModel() {
     val categoriaLiveData = _categoriaLiveData
     val destaquesLiveData = _destaquesLiveData
     val idLiveData = _idLiveData
+    val nameLiveData = _nameLiveData
     val quantityLiveData = _quantityLiveData
     val isPedidoFeitoLiveData = _isPedidoFeitoLiveData
     val obsLiveData = _obsLiveData

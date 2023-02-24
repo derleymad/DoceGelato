@@ -20,6 +20,7 @@ import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.pedido.PedidoViewModel
 import com.example.docegelato.util.Utils
+import com.example.docegelato.util.Utils.format
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -30,7 +31,6 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     val homeViewModel : HomeViewModel by activityViewModels()
-    val pedidoViewModel: PedidoViewModel by activityViewModels()
     val auth = FirebaseAuth.getInstance()
     val db = Firebase.firestore
 
@@ -40,9 +40,9 @@ class MainFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentMainBinding.inflate(inflater, container, false)
-
         val navHost = childFragmentManager.findFragmentById(R.id.nav_host_fragment_fragment_main) as NavHostFragment
         val navController = navHost.navController
+        Log.d("test","mainfragment created")
         binding.navView.setupWithNavController(navController)
         return binding.root
     }
@@ -73,22 +73,21 @@ class MainFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.lnCarrinhoFlutuante.setOnClickListener {
+        binding.included.lnCarrinhoFlutuante.setOnClickListener {
             it.apply { findNavController().navMainToCarrinho() }
         }
     }
 
     private fun startObservers() {
-
-        homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner) {
-            binding.totalPriceCarrinhoFlutuante.text = Utils.format(it)
-        }
         homeViewModel.isPedidoFeitoLiveData.observe(viewLifecycleOwner){
             if(it){
-                binding.lnCarrinhoFlutuante.visibility = View.VISIBLE
+                binding.included.lnCarrinhoFlutuante.visibility = View.VISIBLE
             }else{
-                binding.lnCarrinhoFlutuante.visibility = View.GONE
+                binding.included.lnCarrinhoFlutuante.visibility = View.GONE
             }
+        }
+        homeViewModel.precoTotalLiveData.observe(viewLifecycleOwner) {
+            binding.included.totalPriceCarrinhoFlutuante.text = format(it)
         }
     }
 

@@ -71,6 +71,13 @@ fun Fragment.navPerfilToAdmin(){
     this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_perfilFragment_to_adminFragment,null,navOptions = navOptionsSlide)
 }
 
+fun Fragment.navCarrinhoToMaps(){
+    this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_carrinhoFragment_to_mapsFragment2,null,navOptions = navOptionsSlide)
+}
+fun Fragment.navSearchToSacola(){
+    this.requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_mainFragment_to_sacolaFragment,null, navOptionsSlide)
+}
+
 fun Fragment.getFormattedString(myString : String) :  String{
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         Html.fromHtml(getString(R.string.usar_localiza_o_atual,myString),Html.FROM_HTML_MODE_LEGACY).toString()

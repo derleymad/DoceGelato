@@ -26,7 +26,11 @@
         android:id="@+id/carrinhoFragment"
         android:name="com.example.docegelato.ui.carrinho.CarrinhoFragment"
         android:label="fragment_carrinho"
-        tools:layout="@layout/fragment_carrinho" />
+        tools:layout="@layout/fragment_carrinho" >
+        <action
+            android:id="@+id/action_carrinhoFragment_to_mapsFragment2"
+            app:destination="@id/mapsFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/sacolaFragment"
         android:name="com.example.docegelato.ui.sacola.SacolaFragment"

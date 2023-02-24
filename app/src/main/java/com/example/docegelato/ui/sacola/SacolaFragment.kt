@@ -20,6 +20,7 @@ import com.example.docegelato.model.categorias.Adicionais
 import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.ui.assets.BottomSheetEditFragment
 import com.example.docegelato.ui.home.HomeViewModel
+import com.example.docegelato.ui.home.adapters.DestaqueAdapter
 import com.example.docegelato.ui.sacola.adapter.AdicionaisAdapter
 import com.example.docegelato.util.Utils.format
 import com.squareup.picasso.Picasso
@@ -29,7 +30,8 @@ class SacolaFragment : Fragment() {
     private val homeViewModel: HomeViewModel by activityViewModels()
     private var _binding: FragmentSacolaBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adicionaisAdapter :AdicionaisAdapter
+    private lateinit var adicionaisAdapter : AdicionaisAdapter
+    private lateinit var compreTambem : DestaqueAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,10 +66,10 @@ class SacolaFragment : Fragment() {
     }
 
     private fun startObserver() {
-        homeViewModel.idLiveData.observe(viewLifecycleOwner) { id ->
+        homeViewModel.nameLiveData.observe(viewLifecycleOwner) { name->
             for (i in homeViewModel.categoriaLiveData.value!!) {
                 for (j in i.comidas) {
-                    if (j.comida_id == id) {
+                    if (j.comida_title==name) {
                         // SE A CATEGORIA FOR MONTE(O ID TEM NUMERO 5)
                         if(i.id == 5){
                             binding.spinner.visibility = View.GONE
@@ -151,7 +153,7 @@ class SacolaFragment : Fragment() {
         }
     }
 
-    fun startAdicionalRecyclerView(list:ArrayList<Adicionais>){
+    private fun startAdicionalRecyclerView(list:ArrayList<Adicionais>){
         adicionaisAdapter = AdicionaisAdapter({
             homeViewModel.totalAdicionais.value = homeViewModel.totalAdicionais.value?.plus(1)
             homeViewModel.adiconais.value?.add(it)

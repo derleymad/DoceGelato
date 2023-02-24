@@ -15,7 +15,8 @@ import com.example.docegelato.model.categorias.Comida
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.home.adapters.ComidasAdapter
 
-class BaseFragment(private val tabNumber: Int) : Fragment() {
+//TODO FIX THIS CONSTRUTOR
+class BaseFragment(val tabNumber: Int=0) : Fragment() {
 
     private var _binding: FragmentBaseBinding? = null
     private val binding get() = _binding!!
@@ -42,7 +43,7 @@ class BaseFragment(private val tabNumber: Int) : Fragment() {
     private fun prepareRecyclerView() {
         adapter = ComidasAdapter {
             findNavController().navMainToSacola()
-            homeViewModel.idLiveData.value = it
+            homeViewModel.nameLiveData.value = it
         }
         binding.rvLanches.adapter = adapter
         binding.rvLanches.layoutManager = LinearLayoutManager(requireContext())

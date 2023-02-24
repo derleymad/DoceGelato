@@ -44,7 +44,7 @@ class DestaquesFragment : Fragment() {
 
     fun prepareRecyclerView() {
         destaqueAdapter = DestaqueAdapter {
-            homeViewModel.idLiveData.value = it
+            homeViewModel.nameLiveData.value = it
             findNavController().navMainToSacola()
         }
         binding.rvDestaques.apply {

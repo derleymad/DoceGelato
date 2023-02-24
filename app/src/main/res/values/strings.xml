@@ -52,4 +52,6 @@
     <string name="close_button">close button</string>
     <string name="perfil_s_photo">perfil\'s photo</string>
     <string name="adicionais">%s</string>
+    <string name="seu_bairro">Seu bairro</string>
+    <string name="salvar">Salvar</string>
 </resources>
