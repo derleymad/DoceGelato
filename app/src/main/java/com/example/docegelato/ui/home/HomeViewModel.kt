@@ -113,6 +113,8 @@ class HomeViewModel : ViewModel() {
         quantityLiveData.value = 1
         precoAtual.value = 0f
         totalAdicionais.value = 0
+        idLiveData.value = null
+        nameLiveData.value = null
         comida_preco_tamanho.value = null
         adiconais.value = ArrayList()
     }

@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:src="@drawable/btn_image_selector_adicionais"
+        android:src="@drawable/ic_baseline_add_circle_outline_24"
         app:layout_constraintBottom_toBottomOf="@+id/container_foto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/container_foto" />

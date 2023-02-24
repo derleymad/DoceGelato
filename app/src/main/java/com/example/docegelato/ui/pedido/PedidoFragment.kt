@@ -8,11 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.docegelato.databinding.FragmentPedidoBinding
-import com.example.docegelato.model.pedidos.Pedidos
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import kotlin.collections.ArrayList
 
 class PedidoFragment : Fragment() {
 

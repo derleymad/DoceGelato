@@ -9,17 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.docegelato.databinding.FragmentAdminBinding
-import com.example.docegelato.model.pedidos.Pedido
 import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.perfil.PerfilViewModel
 import com.example.docegelato.ui.perfil.adapters.AdminPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 

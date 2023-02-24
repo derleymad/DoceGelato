@@ -11,9 +11,6 @@ import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils.format
 import com.example.docegelato.util.Utils.formatDate
-import kotlinx.coroutines.currentCoroutineContext
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 class PedidoFeitoAdapter(

@@ -1,7 +1,6 @@
 package com.example.docegelato.ui.sacola.adapter
 
 import android.annotation.SuppressLint
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

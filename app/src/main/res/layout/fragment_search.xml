@@ -23,6 +23,7 @@
         app:searchIcon="@null"
         app:iconifiedByDefault="false"
         app:searchHintIcon="@null"
+        app:defaultQueryHint="Procure por comidas como pizza, salgados.."
         app:queryBackground="@null"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/btn_close"

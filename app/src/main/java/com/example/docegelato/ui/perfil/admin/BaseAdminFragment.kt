@@ -1,22 +1,16 @@
 package com.example.docegelato.ui.perfil.admin
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentBaseAdminBinding
-import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
 import com.example.docegelato.ui.perfil.PerfilViewModel
-import com.example.docegelato.ui.perfil.adapters.AdapterEmAndamento
 import com.example.docegelato.ui.perfil.adapters.AdapterPedidosAdmin
-import com.google.android.material.tabs.TabLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 

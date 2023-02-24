@@ -6,15 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 import com.example.docegelato.databinding.FragmentSearchBinding
-import com.example.docegelato.extensions.navMainToSacola
 import com.example.docegelato.extensions.navSearchToSacola
 import com.example.docegelato.ui.home.HomeViewModel
 
@@ -34,16 +31,20 @@ class SearchFragment : Fragment() {
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         homeViewModel.categoriaLiveData.observe(viewLifecycleOwner){categorias ->
+            list.clear()
             for(categoriaItem in categorias){
                 for(comida in categoriaItem.comidas){
                     list.add(comida.comida_title)
                 }
             }
-           arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1,list)
+           arrayAdapter = ArrayAdapter(requireContext(),R.layout.search,list)
            binding.rvListview.adapter = arrayAdapter
-           clearList()
+            if(binding.searchView.query.toString().isEmpty() || binding.searchView.query.toString().isBlank()){
+                clearList()
+            }else{
+                arrayAdapter.filter.filter(binding.searchView.query.toString())
+            }
         }
-
         return binding.root
     }
 
@@ -52,14 +53,7 @@ class SearchFragment : Fragment() {
         binding.btnClose.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.searchView.setOnQueryTextFocusChangeListener { view, b ->
-            if(b){
-                clearList()
-            }else{
-                clearList()
-            }
 
-        }
         binding.rvListview.setOnItemClickListener(object : AdapterView.OnItemClickListener{
             override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, Id: Long) {
                 homeViewModel.nameLiveData.value = arrayAdapter.getItem(position)

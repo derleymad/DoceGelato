@@ -16,12 +16,8 @@ import com.example.docegelato.databinding.FragmentMainBinding
 import com.example.docegelato.extensions.navMainToCarrinho
 import com.example.docegelato.extensions.navMainToMaps
 import com.example.docegelato.model.categorias.Address
-import com.example.docegelato.model.pedidos.Pedidos
 import com.example.docegelato.ui.home.HomeViewModel
-import com.example.docegelato.ui.pedido.PedidoViewModel
-import com.example.docegelato.util.Utils
 import com.example.docegelato.util.Utils.format
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

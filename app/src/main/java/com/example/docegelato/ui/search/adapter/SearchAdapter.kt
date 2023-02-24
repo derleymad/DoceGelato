@@ -3,12 +3,10 @@ package com.example.docegelato.ui.search.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.docegelato.R
 import com.example.docegelato.model.categorias.Comida
-import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import java.util.*
 

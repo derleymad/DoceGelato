@@ -2,13 +2,10 @@ package com.example.docegelato.extensions
 
 import android.os.Build
 import android.text.Html
-import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.docegelato.R
 
 private val navOptionsPushs = NavOptions.Builder()
@@ -56,8 +53,8 @@ private fun NavController.navMainToLocation(destinationId: Int = 0) {
 //    this.navigate(R.id.action_mainFragment_to_mapsFragment2, null, navOptionsPushsPerfil)
 //}
 
-fun NavController.navNewUserToNewLocation(){
-    this.navigate(R.id.action_newUserLoginFragment_to_mapsFragment,null, navOptionsSlide)
+fun NavController.navLoginToNewLocation(){
+    this.navigate(R.id.action_loginFragment_to_mapsFragment,null, navOptionsSlide)
 }
 
 fun Fragment.navToMaps(){

@@ -15,8 +15,6 @@ import com.example.docegelato.ui.home.adapters.PedidoAdapter
 import com.example.docegelato.util.Utils.format
 import com.example.docegelato.util.Utils.formatDate
 import com.squareup.picasso.Picasso
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 

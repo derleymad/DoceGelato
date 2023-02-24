@@ -94,63 +94,6 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:visibility="visible">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ln_cupom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/ln_bottom_finalizar">
-
-            <ImageView
-                android:id="@+id/img_cupom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_outline_discount_24"
-                app:layout_constraintBottom_toTopOf="@+id/view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/static_cupom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito"
-                android:text="@string/cupom"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/edit_cupom"
-                app:layout_constraintEnd_toEndOf="@+id/edit_cupom"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/edit_cupom" />
-
-            <EditText
-                android:id="@+id/edit_cupom"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:enabled="false"
-                android:fontFamily="@font/nunito"
-                android:hint="@string/digite_um_c_digo"
-                app:layout_constraintBottom_toBottomOf="@+id/img_cupom"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/img_cupom"
-                app:layout_constraintTop_toTopOf="@+id/img_cupom" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@color/gray_light_even_more"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

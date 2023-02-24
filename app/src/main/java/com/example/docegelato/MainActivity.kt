@@ -65,10 +65,5 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener {
             }
     }
-    private fun createOrRemoveBadge(criar: Boolean, size : Int?) {
 
-    }
-    fun startObservers(){
-
-    }
 }
