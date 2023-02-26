@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.docegelato.ui.home.HomeFragment"
+        android:name="com.derleymad.docegelato.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.example.docegelato.ui.search.SearchFragment"
+        android:name="com.derleymad.docegelato.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search"/>
 
     <fragment
         android:id="@+id/navigation_pedido"
-        android:name="com.example.docegelato.ui.pedido.PedidoFragment"
+        android:name="com.derleymad.docegelato.ui.pedido.PedidoFragment"
         android:label="fragment_pedido"
         tools:layout="@layout/fragment_pedido"/>
 </navigation>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.docegelato.ui.main.MainFragment"
+        android:name="com.derleymad.docegelato.ui.main.MainFragment"
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_sacolaFragment"
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/carrinhoFragment"
-        android:name="com.example.docegelato.ui.carrinho.CarrinhoFragment"
+        android:name="com.derleymad.docegelato.ui.carrinho.CarrinhoFragment"
         android:label="fragment_carrinho"
         tools:layout="@layout/fragment_carrinho" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/sacolaFragment"
-        android:name="com.example.docegelato.ui.sacola.SacolaFragment"
+        android:name="com.derleymad.docegelato.ui.sacola.SacolaFragment"
         android:label="fragment_sacola"
         tools:layout="@layout/fragment_sacola" >
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/perfilFragment"
-        android:name="com.example.docegelato.ui.perfil.PerfilFragment"
+        android:name="com.derleymad.docegelato.ui.perfil.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" >
         <action
@@ -51,17 +51,17 @@
     </fragment>
     <fragment
         android:id="@+id/mapsFragment2"
-        android:name="com.example.docegelato.ui.login.createadress.MapsFragment"
+        android:name="com.derleymad.docegelato.ui.login.createadress.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/pedidoFragment"
-        android:name="com.example.docegelato.ui.pedido.PedidoFragment"
+        android:name="com.derleymad.docegelato.ui.pedido.PedidoFragment"
         android:label="fragment_pedido"
         tools:layout="@layout/fragment_pedido" />
     <fragment
         android:id="@+id/adminFragment"
-        android:name="com.example.docegelato.ui.perfil.admin.AdminFragment"
+        android:name="com.derleymad.docegelato.ui.perfil.admin.AdminFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" />
 </navigation>
