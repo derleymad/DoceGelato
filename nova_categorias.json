@@ -512,7 +512,7 @@
             "comida_id":503,
             "comida_title":"Monte Seu Pastel",
             "comida_desc":"Escolha entre 9 ingredientes, como Catupiry, Queijo Fatiado, Presunto, Milho, Azeitona, Cheddar entre Outros",
-            "comida_preco":10.0,
+            "comida_preco":5.0,
             "precos": [
                {
                "tamanho": "Até 4 ingredientes",
