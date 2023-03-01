@@ -39,7 +39,7 @@
     <string name="alguma_observa_o">Alguma observação?</string>
     <string name="_1">1</string>
     <string name="adicionar">Adicionar</string>
-    <string name="ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc">Ex: tirar a cebola... mais maionese, sem catupiry, etc...</string>
+    <string name="ex_tirar_a_cebola_mais_maionese_sem_catupiry_etc">Ex: tirar a cebola… mais maionese, sem catupiry, etc…</string>
     <string name="bife_de_carne_ovo_arroz_branco_farofa_pur_de_batatas_feij_o_mulatino_e_tudo_o_que_h_de_melhor">Bife de carne, Ovo, Arroz, Branco, Farofa, Puré de batatas, Feijão Mulatino, e tudo o que há de melhor</string>
     <string name="bife_a_cavalo">Bife A Cavalo</string>
     <string name="usar_localiza_o_atual"><b>Usar localização atual</b>\n%s</string>
@@ -54,4 +54,5 @@
     <string name="adicionais">%s</string>
     <string name="seu_bairro">Seu bairro</string>
     <string name="salvar">Salvar</string>
+    <string name="token">772908591323–4t4sqne3bkd8h9pudf1uttgj944ga712.apps.googleusercontent.com</string>
 </resources>

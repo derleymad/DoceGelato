@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import com.derleymad.docegelato.MainActivity
+import com.derleymad.docegelato.R
 import com.derleymad.docegelato.databinding.FragmentLoginBinding
 import com.derleymad.docegelato.extensions.navLoginToNewLocation
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -45,9 +46,10 @@ class LoginFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("772908591323-4t4sqne3bkd8h9pudf1uttgj944ga712.apps.googleusercontent.com")
+            .requestIdToken(requireActivity().getString(R.string.token))
             .requestEmail()
             .build()
+
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         if (auth.currentUser?.email != null) {
             startActivity(Intent(requireActivity(),MainActivity::class.java))
@@ -88,6 +90,7 @@ class LoginFragment : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 if(it.result.additionalUserInfo?.isNewUser == true){
+                    //BUG in LOGIN to not newuser
                     findNavController().navLoginToNewLocation()
                 }else{
                     val intent = Intent(requireActivity(), MainActivity::class.java)

@@ -49,10 +49,6 @@ private fun NavController.navMainToLocation(destinationId: Int = 0) {
     this.navigate(R.id.action_mainFragment_to_mapsFragment2, null, navOptionsPushsPerfil)
 }
 
-//private fun NavController.navPerfilToAdmin(destinationId: Int = 0) {
-//    this.navigate(R.id.action_mainFragment_to_mapsFragment2, null, navOptionsPushsPerfil)
-//}
-
 fun NavController.navLoginToNewLocation(){
     this.navigate(R.id.action_loginFragment_to_mapsFragment,null, navOptionsSlide)
 }

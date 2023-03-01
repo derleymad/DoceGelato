@@ -57,7 +57,6 @@ class CarrinhoFragment : Fragment() {
         binding.localizacao.setOnClickListener {
             navCarrinhoToMaps()
         }
-
         binding.btnFinalizarTudo.setOnClickListener {
             addOnRecentePedidos()
         }
